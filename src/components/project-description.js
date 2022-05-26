@@ -21,7 +21,7 @@ const options = {
     }
 }
 
-const ProjectDescription = ({ projectTitle, projectCopy, projectPressLink, copy, ...props }) => {
+const ProjectDescription = ({ projectTitle, projectPressLink, copy, ...props }) => {
 
     return (
         <div className="page-background">

@@ -20,11 +20,6 @@ export const query = graphql`
       id
       vimeoVideoLink
       pressLink
-      projectCopy {
-          internal {
-              content
-          }
-      }
       copy {
           raw
       }
@@ -43,7 +38,6 @@ export const query = graphql`
 const ProjectPage = props => {
     var projectTitle = props.data.contentfulProject.title;
     var projectPressLink = props.data.contentfulProject.pressLink;
-    var projectCopy = props.data.contentfulProject.projectCopy.internal.content;
     var copy = props.data.contentfulProject.copy;
     let hasVimeoVideo = false;
     let videoSrcURL = "https://player.vimeo.com/video/";
@@ -79,7 +73,6 @@ const ProjectPage = props => {
             />
             <ProjectDescription 
                 projectTitle={projectTitle} 
-                projectCopy={projectCopy}
                 projectPressLink = {projectPressLink}
                 copy = {copy}
             />
