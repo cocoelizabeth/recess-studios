@@ -168,55 +168,6 @@ export const pageQuery = graphql`
 `
 // markup
 
-    let videoHTMLCollection = document.getElementsByTagName('video');
-    let videos = [].slice.call(videoHTMLCollection);
-
-  if (videos.length > 0) {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      for (let i = 0; i < videos.length; i++) {
-        videos[i].autoplay = 'autoplay';
-        videos[i].preload = 'metadata';
-        videos[i].muted = 'muted';
-      }
-    }
-
-
-    window.addEventListener('load', (event) => {
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        for (let i = 0; i < videos.length; i++) {
-          videos[i].autoplay = 'autoplay';
-          videos[i].preload = 'metadata';
-          videos[i].muted = 'muted';
-        }
-        videos[0].play();
-      }
-      videos[0].play();
-    })
-
-    window.addEventListener('scroll', (event) => {
-
-      let videos = document.getElementsByTagName('video');
-      for (let i = 0; i < videos.length; i++) {
-
-        var elOffsetVh = Math.round(parseFloat(-150)) || 0;
-        var elT = videos[i].offsetTop;
-        var elB = elT + videos[i].offsetHeight;
-        var viewT = window.scrollY;
-        var viewB = viewT + (window.outerHeight + elOffsetVh)
-
-        debugger
-        if (elB > viewT && elT < viewB) {
-          videos[i].play();
-        } else {
-          videos[i].pause();
-        }
-      }
-
-    });
-  }
-    
-
-
 
   // const projectData = data.allContentfulProjectDatabase.edges[0].node.listOfProjects.map(edge => {
   //   return (edge)
