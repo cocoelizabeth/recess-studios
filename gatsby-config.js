@@ -1,30 +1,51 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Recess Studios`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.recess.studio`
   },
-  plugins: [{
+  plugins: [
+    {
     resolve: 'gatsby-source-contentful',
     options: {
-      "accessToken": "IQoRcVyd1Zt9pgwjl4giMXprG3dK4GlwO6j_4ArCb8A",
-      "spaceId": ""
+      "accessToken": process.env.CONTENTFUL_ACCESS_TOKEN,
+      "spaceId": process.env.CONTENTFUL_SPACE_ID,
     }
-  }, "gatsby-plugin-sass", {
-    resolve: 'gatsby-plugin-google-analytics',
-    options: {
-      "trackingId": "G-EK73FV95V0"
-    }
-  }, "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "src/images/icon.png"
-    }
-  }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
+    }, "gatsby-plugin-sass", 
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        "trackingId": "G-EK73FV95V0"
+      }
+    }, 
+    "gatsby-plugin-image", 
+    "gatsby-plugin-react-helmet", 
+    "gatsby-plugin-sitemap", 
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        "icon": "src/images/icon.png"
+      }
+    }, 
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: "./data/",
+      },
+    }, 
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `img`,
+        path: `${__dirname}/src/images/`
+      }
     },
-    __key: "images"
-  }]
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp", 
+    "gatsby-transformer-json"
+    // "@contentful/rich-text-types"
+  ]
 };

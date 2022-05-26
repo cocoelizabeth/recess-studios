@@ -1,54 +1,23 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# RECESS.STUDIO README
 
-## 🚀 Quick start
+###  TABLE OF CONTENTS
 
-1.  **Create a Gatsby site.**
+ 1. Logins
+ 2. Content Management (Projects)- Contentful.com
+ 3. Ecommerce Backend Management - CommerceLayer.io
+ 4. Content Management (Ecommerce)
+ 
+ ## 1 - Logins
+ ### Contentful
+ *[Contentful](contentful.com) is the Content Management System that hosts the Project Database and the Ecommerce Database. This is where you will upload/edit/delete projects that will be rendered on the website.*
+ 
+**How to get a login to access the Recess Studio space, where you can start uploading and editing project data:**
+1. Request a login by contacting Coco Kuntz on Slack. 
+2. Once you have been added to the Recess Studios space, you will receive a confirmation email. Click the **link** in the confirmation email and **complete the form** to finish signing up
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## 2 - Content Management  (Projects)
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+### Create and edit content
+1. Click on the **Content**  tab on the navigation menu
 
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+2. 
