@@ -77,13 +77,13 @@ h1 {
     padding: 4px;
     padding-bottom: 2px;
     color: black;
-   
+    letter-spacing: 1px;
     text-transform: uppercase;
     font-size: calc(100vw/120);
     vertical-align: middle;
-    letter-spacing: 1px;
+
     width: fit-content;
-    font-size: 11px;
+    /* font-size: 11px; */
 }
 
 .pp-project-copy,
@@ -98,6 +98,10 @@ h1 {
     hyphens: auto;
 }
 
+.pp-project-copy {
+    letter-spacing: 0px;
+}
+
 .press-link a {
     cursor: pointer;
     opacity: 90%;
@@ -110,4 +114,18 @@ h1 {
         opacity: 100%;
         
             transition: all 0.2s ease;
+}
+
+@media screen & max-width:1080 {
+
+   
+}
+
+@media only screen and (max-width: 1080px) {
+    .pp-project-copy,
+    .pp-project-title,
+    .press-link {
+        font-size: 1.1236vh;
+    }
+
 }
