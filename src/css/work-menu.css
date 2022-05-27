@@ -199,7 +199,7 @@ nav.active .nav-bar .our-work .our-work-text::after {
 }
 
 .logo img {
-    max-height: 30px;
+    max-height: 25px;
 }
 
 .nav-bar .nav-links li.menu-footer-links {
@@ -244,8 +244,7 @@ nav.active .nav-bar .our-work .our-work-text::after {
 }
 
 @media only screen and (max-width: 1080px) {
-    /* .work-menu-footer {
-        font-size: calc(100vh/89);
-    } */
-
+    .logo img {
+        max-width: 85px;
+    }
 }

@@ -9,7 +9,7 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
             webkitallowfullscreen="true"
             mozallowfullscreen="true"
             allowFullScreen
-            style={{ width: '80vw', position: 'absolute', height: "100%", top: 0}}
+            // style={{ width: '80vw', position: 'absolute', height: "100%", top: 0}}
         />
     </div>
 )

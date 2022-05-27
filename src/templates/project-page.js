@@ -4,13 +4,10 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
 import logo from '../images/recess-logo-still.png'
 import '../css/project-page.css'
-
-
-
-
 import WorkMenu from '../components/work-menu';
 import Video from '../components/video';
 import ProjectDescription from '../components/project-description'
+import Slideshow from '../components/slideshow';
 
 
 export const query = graphql`
@@ -39,46 +36,62 @@ const ProjectPage = props => {
     var projectTitle = props.data.contentfulProject.title;
     var projectPressLink = props.data.contentfulProject.pressLink;
     var copy = props.data.contentfulProject.copy;
+    var slideshowMedia = props.data.contentfulProject.slideshowMedia;
     let hasVimeoVideo = false;
     let videoSrcURL = "https://player.vimeo.com/video/";
+    
     if (props.data.contentfulProject.vimeoVideoLink) {
        hasVimeoVideo = true;
         videoSrcURL += props.data.contentfulProject.vimeoVideoLink.split(".com/")[1]
     }
-    console.log(copy)
-    return (
-        <div className='project-page-container'>
-            <nav>
-                <div className="nav-bar">
-                    <div className="back-to-work sidebarOpen">
-                        <Link to="/work" className="sidebarOpen back-to-work-text">BACK TO WORK</Link>
-                    </div>
-                    <span className="logo navLogo">
-                        <a href="/">
-                            <img src={logo} />
-                        </a>
-                    </span>
-                    <div className="menu" >
-                        <div className="logo-toggle">
-                            <span className="logo"></span>
-                            {/* <i className='bx bx-x siderbarClose' onClick={this.toggle}></i> */}
-                        </div>
-
-                    </div>
-                </div>
-            </nav>
+    console.log(hasVimeoVideo)
+    let projectPageMedia;
+    if (hasVimeoVideo) {
+        projectPageMedia = (
             <Video
                 videoSrcURL={videoSrcURL}
                 videoTitle={projectTitle}
             />
-            <ProjectDescription 
-                projectTitle={projectTitle} 
-                projectPressLink = {projectPressLink}
-                copy = {copy}
+        )
+    } else {
+        projectPageMedia = (
+            <Slideshow
+                slideshowMedia={slideshowMedia}
             />
-    
-        </div>
+        )
 
+           
+    
+    }
+    return (
+            <div className='project-page-container'>
+                <nav>
+                    <div className="nav-bar">
+                        <div className="back-to-work sidebarOpen">
+                            <Link to="/work" className="sidebarOpen back-to-work-text">BACK TO WORK</Link>
+                        </div>
+                        <span className="logo navLogo">
+                            <a href="/">
+                                <img src={logo} />
+                            </a>
+                        </span>
+                        <div className="menu" >
+                            <div className="logo-toggle">
+                                <span className="logo"></span>
+                                {/* <i className='bx bx-x siderbarClose' onClick={this.toggle}></i> */}
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+                {projectPageMedia}
+                <ProjectDescription 
+                    projectTitle={projectTitle} 
+                    projectPressLink = {projectPressLink}
+                    copy = {copy}
+                />
+        
+            </div>
 
 
     )
