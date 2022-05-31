@@ -2,7 +2,7 @@ import * as React from "react"
 import Layout from "../components/layout"
 import ProjectHeroItem from "../components/project-hero-item"
 import WorkMenu from "../components/work-menu"
-import { useStaticQuery, StaticQuery, graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 // import Img from "gatsby-image"
 
