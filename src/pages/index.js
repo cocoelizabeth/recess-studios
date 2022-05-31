@@ -13,7 +13,13 @@ import '../css/work-menu.css'
 const IndexPage = () => {
   return (
     <div className="background-image-container">
-      <img className="background-image" src={backgroundImage} alt="Background Image" />
+      <StaticImage 
+        src="../images/background.jpg"
+        alt="Background Image"
+        imgClassName="background-image"
+        backgroundColor="black"
+      />
+      {/* <img className="background-image" src={backgroundImage} alt="Background Image" /> */}
       <div className="grid">
         <div className="grid-item grid-item--width4 grid-item--1" />
         <div className="grid-item grid-item--2 grid-item--width6">
