@@ -2,13 +2,14 @@ import React from 'react';
 import { graphql, Link} from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
-import logo from '../images/recess-logo-still.png'
-import '../css/project-page.css'
-import WorkMenu from '../components/work-menu';
+
 import Video from '../components/video';
 import ProjectDescription from '../components/project-description'
 import Slideshow from '../components/slideshow';
+import WorkMenu from '../components/work-menu';
 
+import logo from '../images/recess-logo-still.png'
+import '../css/project-page.css'
 
 export const query = graphql`
   query($slug: String!) {

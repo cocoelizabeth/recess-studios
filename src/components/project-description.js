@@ -1,9 +1,11 @@
+//plugins 
 import React from "react"
-import '../css/project-page.css'
 import {renderRichText} from 'gatsby-source-contentful/rich-text'
 import { INLINES, BLOCKS, MARKS } from '@contentful/rich-text-types'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
+// stylesheets
+import '../css/project-page.css'
 
 const options = {
     renderMark: {
