@@ -12,15 +12,8 @@ import '../css/work-menu.css'
 // markup
 const IndexPage = () => {
   return (
-    <>
-      <StaticImage 
-        src="../images/background.jpg"
-        alt="Background Image"
-        className = "background-image-container"
-        imgClassName="background-image"
-        backgroundColor="black"
-      />
-      {/* <img className="background-image" src={backgroundImage} alt="Background Image" /> */}
+    <div className="background-image-container">
+      <img className="background-image" src={backgroundImage} alt="Background Image" />
       <div className="grid">
         <div className="grid-item grid-item--width4 grid-item--1" />
         <div className="grid-item grid-item--2 grid-item--width6">
@@ -48,7 +41,7 @@ const IndexPage = () => {
         </div>
         <div className="grid-item grid-item--11 grid-item--width10 " />
       </div>
-    </>
+    </div>
   );
 }
 
