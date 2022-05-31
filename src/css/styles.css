@@ -44,7 +44,6 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
   object-position: 50% 50%;
   background-color: black;
 }
