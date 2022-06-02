@@ -29,6 +29,7 @@ const Slideshow = ({ slideshowMedia, projectTitle }) => {
                 <img
                     src={src}
                     srcSet={srcSet}
+                    className="media-item"
                 // src={image.images.fallback.src}
                 // style={{ maxWidth: 'calc((70vh/5)*4)', minWidth: 'calc((70vh/5)*4)'}}
                 />
