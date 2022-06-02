@@ -9,21 +9,11 @@ import '../css/project-page.css'
 import 'keen-slider/keen-slider.min.css'
 import KeenSlider from 'keen-slider'
 import { useKeenSlider } from 'keen-slider/react' 
+import { useHorizontalScroll } from "./useHorizontalScroll";
 
 
 const Slideshow = ({ slideshowMedia, projectTitle }) => {
-    const [loaded, setLoaded] = React.useState(0);
-    // const [currentSlide, setCurrentSlide] = React.useState(0);
-    // const [visibleSlides, setVisibleSlides] = React.useState(0);
-    const [sliderRef] = useKeenSlider({
-        initial: 0,
-        mode: "snap",
-        slides: {
-            perView: "2",
-            // origin: "center",
-            spacing: 10,
-        }
-    });
+    const scrollRef = useHorizontalScroll();
 
     let slides;
 
@@ -35,7 +25,7 @@ const Slideshow = ({ slideshowMedia, projectTitle }) => {
         const srcSet = getSrcSet(imageData);
 
         return (
-            <div className="keen-slider__slide">
+
                 <img
                     src={src}
                     srcSet={srcSet}
@@ -43,16 +33,14 @@ const Slideshow = ({ slideshowMedia, projectTitle }) => {
                 // style={{ maxWidth: 'calc((70vh/5)*4)', minWidth: 'calc((70vh/5)*4)'}}
                 />
 
-        </div>
-
 
         )
     })
 
 
     return (
-        <div ref={sliderRef} className="keen-slider">
-            { slides }
+        <div ref = {scrollRef} className="project-media-container">
+            {slides}
         </div>
     )
 
@@ -61,6 +49,60 @@ const Slideshow = ({ slideshowMedia, projectTitle }) => {
 
 
 export default Slideshow;
+
+
+
+
+// const Slideshow = ({ slideshowMedia, projectTitle }) => {
+//     const [loaded, setLoaded] = React.useState(0);
+//     // const [currentSlide, setCurrentSlide] = React.useState(0);
+//     // const [visibleSlides, setVisibleSlides] = React.useState(0);
+//     const [sliderRef] = useKeenSlider({
+//         initial: 0,
+//         mode: "snap",
+//         slides: {
+//             perView: "2",
+//             // origin: "center",
+//             spacing: 10,
+//         }
+//     });
+
+//     let slides;
+
+
+//     // create all slides
+//     slides = slideshowMedia.map((imageData, i) => {
+//         const image = getImage(imageData);
+//         const src = getSrc(imageData);
+//         const srcSet = getSrcSet(imageData);
+
+//         return (
+//             <div className="keen-slider__slide">
+//                 <img
+//                     src={src}
+//                     srcSet={srcSet}
+//                 // src={image.images.fallback.src}
+//                 // style={{ maxWidth: 'calc((70vh/5)*4)', minWidth: 'calc((70vh/5)*4)'}}
+//                 />
+
+//         </div>
+
+
+//         )
+//     })
+
+
+//     return (
+//         <div ref={sliderRef} className="keen-slider">
+//             { slides }
+//         </div>
+//     )
+
+// }
+
+
+
+// export default Slideshow;
 
 // REACT SLICK SLIDER
 // class Slideshow extends React.Component {
@@ -192,3 +234,4 @@ export default Slideshow;
 //         width: 'fit-content'
 //     }
 // }
+

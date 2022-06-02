@@ -3,10 +3,7 @@ h1 {
 
 }
 
-.project-page-container {
 
-
-}
 
 .image-slider {
     margin-top: 70px;
@@ -30,16 +27,20 @@ h1 {
 
 
 .project-page-container{
-    
-    width: 80%;
+    width: 100%;
+    margin-top: 70px;
+}
+
+.video-container {
+    width:80%;
     margin: 0 auto;
 }
 .video {
-  
+    
     height: 0;
     position: relative;
     padding-bottom: 56.25%;
-    margin-top: 70px;
+
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -73,6 +74,7 @@ embed,
     /* width: calc(79.984484096vw); */
     display: flex;
     overflow-wrap: normal;
+    width: 80%;
 }
 
 .project-info-container-right {
@@ -202,4 +204,34 @@ embed,
 } */
 .slick-slide {
     width: auto;
+}
+
+.project-media-container {
+  white-space: nowrap;
+  overflow-x: scroll;
+
+  
+}
+
+
+.project-media-container img {
+    display: inline-block;
+    max-width: 80%;
+    max-height: 80vh;
+    margin-left: 18px;
+}
+.project-media-container img:first-of-type {
+    margin-left: 10%;
+}
+
+.project-media-container img:last-of-type{
+    margin-right: 10%;
+}
+/* hide scrollbar  */
+.project-media-container {
+    -ms-overflow-style: none;/* IE and Edge */
+    scrollbar-width: none;/* Firefox */
+}
+.project-media-container::-webkit-scrollbar {
+    display: none;
 }
