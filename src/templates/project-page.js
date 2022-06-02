@@ -58,6 +58,7 @@ const ProjectPage = props => {
         projectPageMedia = (
             <Slideshow
                 slideshowMedia={slideshowMedia}
+                projectTitle = {projectTitle}
             />
         )
 
