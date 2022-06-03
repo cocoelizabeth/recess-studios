@@ -12,8 +12,10 @@
 
 .project-page-container{
     width: 100%;
-    margin-top: 70px;
+    margin-top: 105px;
 }
+
+
 
 .video-container {
     width:80%;
@@ -80,6 +82,10 @@ embed,
 }
 
 @media (max-width: 790px) {
+
+    .project-page-container {
+        margin-top: calc(3vh + 105px);
+    }
     .project-info-container {
         flex-direction: column;
         width: 100%;
