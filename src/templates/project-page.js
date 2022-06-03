@@ -161,6 +161,7 @@ class ProjectPage extends React.Component {
     }
 
     addVimeoVideo() {
+        debugger
         console.log('addVimeoVideo()')
         if (this.state.hasVimeoVideo) {
            
