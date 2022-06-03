@@ -18,34 +18,34 @@ const Slideshow = ({ hasVimeoVideo, videoSrcUrl, slideshowMedia, projectTitle, .
     let slides;
 
     useEffect(() => {
-        // if (slideshowMedia) {
-        //     slides = slideshowMedia.map((imageData, i) => {
+        if (slideshowMedia) {
+            slides = slideshowMedia.map((imageData, i) => {
 
-        //         const image = getImage(imageData);
-        //         const src = getSrc(imageData);
-        //         const srcSet = getSrcSet(imageData);
+                const image = getImage(imageData);
+                const src = getSrc(imageData);
+                const srcSet = getSrcSet(imageData);
 
-        //         if (imageData == "vimeo video") {
-        //             return (
-        //                 <Video
-        //                     videoSrcUrl={videoSrcUrl}
-        //                     projectTitle={projectTitle}
-        //                     className="media-item"
-        //                 />
-        //             )
-        //         } else {
-        //             return (
-        //                 <img
-        //                     src={src}
-        //                     srcSet={srcSet}
-        //                     className="media-item"
-        //                 />
-        //             )
-        //         }
+                if (imageData == "vimeo video") {
+                    return (
+                        <Video
+                            videoSrcUrl={videoSrcUrl}
+                            projectTitle={projectTitle}
+                            className="media-item"
+                        />
+                    )
+                } else {
+                    return (
+                        <img
+                            src={src}
+                            srcSet={srcSet}
+                            className="media-item"
+                        />
+                    )
+                }
 
 
-        //     })
-        // }
+            })
+        }
         // Update the document title using the browser API
 
     });
