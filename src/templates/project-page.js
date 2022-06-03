@@ -107,6 +107,7 @@ export const query = graphql`
 class ProjectPage extends React.Component {
 
     constructor(props) {
+        console.log('constructor')
         super(props)
      
         this.projectTitle = props.data.contentfulProject.title;
@@ -124,7 +125,7 @@ class ProjectPage extends React.Component {
 
 
     videoSrcUrl() {
-        console.log('videoSRCURL')
+        console.log('videoSrcUrl()')
         if (this.vimeoVideoLink) {
             let url = "https://player.vimeo.com/video/"
             url += this.vimeoVideoLink.split(".com/")[1]
@@ -135,7 +136,7 @@ class ProjectPage extends React.Component {
     }
 
     hasVimeoVideo() {
-        console.log('hasVimeoVideo')
+        console.log('hasVimeoVideo()')
         if (this.vimeoVideoLink) {
             return (true)
         } else {
@@ -146,7 +147,7 @@ class ProjectPage extends React.Component {
 
 
     setVimeoVideoLink () {
-        console.log('SetVimeoVideoLink')
+        console.log('SetVimeoVideoLink()')
         if (this.vimeoVideoLink) {
             let videoSrcUrl = "https://player.vimeo.com/video/"
             videoSrcUrl += this.vimeoVideoLink.split(".com/")[1]
@@ -160,11 +161,12 @@ class ProjectPage extends React.Component {
     }
 
     addVimeoVideo() {
+        console.log('addVimeoVideo()')
         if (this.state.hasVimeoVideo) {
            
             let slideshowCopy=this.slideshowMedia || [];
             slideshowCopy.unshift("vimeo video")
-            debugger
+            
             return (
                 slideshowCopy
 
@@ -176,8 +178,8 @@ class ProjectPage extends React.Component {
 
 
     componentDidMount() {
-        console.log('compontentDidMount1')
-        console.log(this.state)
+        console.log('componentDidMount')
+        console.log('this.state=' + this.state)
         // this.setVimeoVideoLink()
        
     }
@@ -194,10 +196,9 @@ class ProjectPage extends React.Component {
                 projectTitle={this.projectTitle}
                 hasVimeoVideo={this.state.hasVimeoVideo}
                 videoSrcUrl={this.state.videoSrcUrl}
+
             />
         )
-        console.log(slideshowMedia)
-        console.log(projectPageMedia)
 
         return (
             <div className='project-page-container'>

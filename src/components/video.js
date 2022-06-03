@@ -1,6 +1,6 @@
 import React from "react"
 const Video = ({ videoSrcUrl, projectTitle, ...props }) => {
-debugger
+
     return (
         <div className="video-container">
             <div className="video">

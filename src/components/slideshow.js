@@ -64,11 +64,11 @@ const Slideshow = ({ hasVimeoVideo, videoSrcUrl, slideshowMedia, projectTitle, .
                         videoSrcUrl={videoSrcUrl}
                         projectTitle={projectTitle}
                         className="media-item"
+                        key={projectTitle + i}
                     />
                 )
             } else {
                 let itemClass = "media-item";
-                debugger
                 if (i===0) {
                     itemClass = "media-item margin-l-10p"
                 } else {
@@ -81,6 +81,7 @@ const Slideshow = ({ hasVimeoVideo, videoSrcUrl, slideshowMedia, projectTitle, .
                         src={src}
                         srcSet={srcSet}
                         className={itemClass}
+                        key={projectTitle + i}
                     />
                 )
             }
