@@ -33,39 +33,173 @@ export const query = graphql`
 `
 
 
-const ProjectPage = props => {
-    var projectTitle = props.data.contentfulProject.title;
-    var projectPressLink = props.data.contentfulProject.pressLink;
-    var copy = props.data.contentfulProject.copy;
-    var slideshowMedia = props.data.contentfulProject.slideshowMedia;
-    let hasVimeoVideo = false;
-    let videoSrcURL = "https://player.vimeo.com/video/";
+// const ProjectPage = props => {
+//     var projectTitle = props.data.contentfulProject.title;
+//     var projectPressLink = props.data.contentfulProject.pressLink;
+//     var copy = props.data.contentfulProject.copy;
+//     var slideshowMedia = props.data.contentfulProject.slideshowMedia;
+//     let hasVimeoVideo = false;
+//     let videoSrcUrl = "";
     
-    if (props.data.contentfulProject.vimeoVideoLink) {
-       hasVimeoVideo = true;
-        videoSrcURL += props.data.contentfulProject.vimeoVideoLink.split(".com/")[1]
+    // let projectPageMedia;
+    // if (props.data.contentfulProject.vimeoVideoLink) {
+    //    hasVimeoVideo = true;
+    //     videoSrcUrl = "https://player.vimeo.com/video/"
+    //     videoSrcUrl += props.data.contentfulProject.vimeoVideoLink.split(".com/")[1]
+
+    //         slideshowMedia.unshift(
+    //             "vimeo video"
+
+    //         )
+
+    //     }
+
+    //     projectPageMedia = (
+                 
+    //         <Slideshow
+    //             slideshowMedia={slideshowMedia}
+    //             projectTitle={projectTitle}
+    //             hasVimeoVideo={hasVimeoVideo}
+    //             videoSrcUrl={videoSrcUrl}
+    //         />
+    //     )
+
+    
+
+    // return (
+    //         <div className='project-page-container'>
+    //             <nav>
+    //                 <div className="nav-bar">
+    //                     <div className="back-to-work sidebarOpen">
+    //                         <Link to="/work" className="sidebarOpen back-to-work-text">BACK TO WORK</Link>
+    //                     </div>
+    //                     <span className="logo navLogo">
+    //                         <a href="/">
+    //                             <img src={logo} />
+    //                         </a>
+    //                     </span>
+    //                     <div className="menu" >
+    //                         <div className="logo-toggle">
+    //                             <span className="logo"></span>
+    //                             {/* <i className='bx bx-x siderbarClose' onClick={this.toggle}></i> */}
+    //                         </div>
+
+    //                     </div>
+    //                 </div>
+    //             </nav>
+    //             {projectPageMedia}
+    //             <ProjectDescription 
+    //                 projectTitle={projectTitle} 
+    //                 projectPressLink = {projectPressLink}
+    //                 copy = {copy}
+    //             />
+        
+    //         </div>
+
+
+    // )
+// }
+
+// export default ProjectPage;
+
+
+
+class ProjectPage extends React.Component {
+
+    constructor(props) {
+        super(props)
+     
+        this.projectTitle = props.data.contentfulProject.title;
+        this.projectPressLink = props.data.contentfulProject.pressLink;
+        this.copy = props.data.contentfulProject.copy;
+        this.slideshowMedia = props.data.contentfulProject.slideshowMedia;
+        this.vimeoVideoLink = props.data.contentfulProject.vimeoVideoLink;
+        this.state = {
+            hasVimeoVideo: this.hasVimeoVideo(),
+            videoSrcUrl: this.videoSrcUrl(),
+        
+        }
+
     }
-    console.log(hasVimeoVideo)
-    let projectPageMedia;
-    if (hasVimeoVideo) {
-        projectPageMedia = (
-            <Video
-                videoSrcURL={videoSrcURL}
-                videoTitle={projectTitle}
-            />
-        )
-    } else {
-        projectPageMedia = (
+
+
+    videoSrcUrl() {
+        console.log('videoSRCURL')
+        if (this.vimeoVideoLink) {
+            let url = "https://player.vimeo.com/video/"
+            url += this.vimeoVideoLink.split(".com/")[1]
+            return(url)
+        } else {
+            return("")
+        }
+    }
+
+    hasVimeoVideo() {
+        console.log('hasVimeoVideo')
+        if (this.vimeoVideoLink) {
+            return (true)
+        } else {
+            return (false)
+        }
+    }
+
+
+
+    setVimeoVideoLink () {
+        console.log('SetVimeoVideoLink')
+        if (this.vimeoVideoLink) {
+            let videoSrcUrl = "https://player.vimeo.com/video/"
+            videoSrcUrl += this.vimeoVideoLink.split(".com/")[1]
+            this.setState({
+                hasVimeoVideo: true,
+                videoSrcUrl: videoSrcUrl,
+               
+            })
+        }
+       
+    }
+
+    addVimeoVideo() {
+        if (this.state.hasVimeoVideo) {
+           
+            let slideshowCopy=this.slideshowMedia || [];
+            slideshowCopy.unshift("vimeo video")
+            debugger
+            return (
+                slideshowCopy
+
+            ) 
+        } else {
+            return (this.slideshowMedia)
+        }
+    }
+
+
+    componentDidMount() {
+        console.log('compontentDidMount1')
+        console.log(this.state)
+        // this.setVimeoVideoLink()
+       
+    }
+
+
+    render ()   {
+        console.log('render')
+        
+        let slideshowMedia = this.addVimeoVideo()
+        let projectPageMedia = (
+                 
             <Slideshow
                 slideshowMedia={slideshowMedia}
-                projectTitle = {projectTitle}
+                projectTitle={this.projectTitle}
+                hasVimeoVideo={this.state.hasVimeoVideo}
+                videoSrcUrl={this.state.videoSrcUrl}
             />
         )
+        console.log(slideshowMedia)
+        console.log(projectPageMedia)
 
-           
-    
-    }
-    return (
+        return (
             <div className='project-page-container'>
                 <nav>
                     <div className="nav-bar">
@@ -87,45 +221,21 @@ const ProjectPage = props => {
                     </div>
                 </nav>
                 {projectPageMedia}
-                <ProjectDescription 
-                    projectTitle={projectTitle} 
-                    projectPressLink = {projectPressLink}
-                    copy = {copy}
+                <ProjectDescription
+                    projectTitle={this.projectTitle}
+                    projectPressLink={this.projectPressLink}
+                    copy={this.copy}
                 />
-        
+
             </div>
 
 
-    )
+        )
+    }
+
+
 }
 
+
+
 export default ProjectPage;
-
-
-
-{/*             
-
-
-                <object width="100%" height="100%" style={{ position: 'absolute', top: 0}}>
-                    <param name="movie" value="https://player.vimeo.com/video/711002833?h=632bc15c0c" />
-                    <param name="allowFullScreen" value="true" />
-                    <param name="allowscriptaccess" value="always" />
-                    <embed width="100vw" height="100%" src="https://player.vimeo.com/video/711002833?h=632bc15c0c" class="youtube-player" type="text/html" allowscriptaccess="always" allowfullscreen="true" />
-                </object> */}
-
-{/* <iframe src="https://player.vimeo.com/video/711002833?h=632bc15c0c" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} width="100%" height="auto" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> */ }
-
-
-{/* <div style={{ padding:'70px 0 0 56.25%'}}>
-                    <iframe 
-                        src="https://player.vimeo.com/video/711002833?h=632bc15c0c&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen 
-                        style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}} 
-                        title="AM1_Final-002_032122_4K">
-                    </iframe>
-                </div> */}
-{/* <script src="https://player.vimeo.com/api/player.js"></script> */ }
-
-{/* <iframe src="https://player.vimeo.com/video/711002833?h=632bc15c0c" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> */}
