@@ -1,10 +1,12 @@
 import React from "react"
+import { useHorizontalScroll } from "./useHorizontalScroll";
 const Video = ({ videoSrcUrl, projectTitle, ...props }) => {
-
+    const scrollRef = useHorizontalScroll();
     return (
         <div className="video-container">
             <div className="video">
                 <iframe
+                    ref={scrollRef} 
                     src={videoSrcUrl}
                     title={projectTitle}
                     allow=" autoplay; picture-in-picture"

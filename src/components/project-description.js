@@ -26,7 +26,7 @@ const options = {
 const ProjectDescription = ({ projectTitle, projectPressLink, copy, ...props }) => {
 
     return (
-        <div className="page-background">
+        <div className="page-background project-page">
             <div className="project-info-container ">
                 <div className="project-info-container-left">
                     <div className='pp-project-title'>

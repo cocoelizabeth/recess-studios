@@ -52,7 +52,7 @@ const Slideshow = ({ hasVimeoVideo, videoSrcUrl, slideshowMedia, projectTitle, .
 
     // create all image slides
     if (slideshowMedia) {
-        debugger
+     
         slides = slideshowMedia.map((imageData, i) => {
 
             const image = getImage(imageData);

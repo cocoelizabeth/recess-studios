@@ -161,18 +161,21 @@ class ProjectPage extends React.Component {
     }
 
     addVimeoVideo() {
-        debugger
-        console.log('addVimeoVideo()')
-        if (this.state.hasVimeoVideo) {
+        
+        console.log('addVimeoVideo() ==> SLIDESHOWCOPY')
+        if (this.state.hasVimeoVideo &&  (  this.slideshowMedia[0] != "vimeo video")) {
            
             let slideshowCopy=this.slideshowMedia || [];
+     
             slideshowCopy.unshift("vimeo video")
+        
             
             return (
                 slideshowCopy
 
             ) 
         } else {
+            
             return (this.slideshowMedia)
         }
     }

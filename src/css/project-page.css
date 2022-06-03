@@ -40,6 +40,8 @@ embed,
         top: 0;
 }
 
+
+
 @media only screen and (max-width: 1080px) {
     /* .video iframe {
             width: 100vw;
@@ -58,6 +60,7 @@ embed,
     display: flex;
     overflow-wrap: normal;
     width: 80%;
+    margin-top: 35px;
 }
 
 .project-info-container-right {
@@ -76,8 +79,21 @@ embed,
     max-width: 20%;
 }
 
+@media (max-width: 790px) {
+    .project-info-container {
+        flex-direction: column;
+        width: 100%;
+        margin-left: 20%;
+    }
+    .project-info-container-left,
+    .project-info-container-right {
+        padding-left:0;
+        width: 100%;
+    }
+}
+
 /* white background project text */
-/* .pp-project-title,
+.pp-project-title,
 .pp-project-copy,
 .press-link {
     box-sizing: border-box;
@@ -92,7 +108,7 @@ embed,
 
     width: fit-content;
     /* font-size: 11px; */
-  
+}
 
 .pp-project-title,
 .pp-project-copy,
@@ -103,10 +119,11 @@ embed,
     text-transform: uppercase;
     font-size: calc(100vw/120);
     vertical-align: middle;
-    color: white;
+    /* color: white; */
     width: fit-content;
     /* font-size: 11px; */
 }
+
 
 .pp-project-copy,
 .press-link {
@@ -168,10 +185,8 @@ embed,
 .project-media-container img {
     display: inline-block;
     max-width: 80%;
-
-    max-height: 80vh;
     margin-left: 18px;
-        height: 44.5vw;
+    height: 44.5vw;
 }
 
 .project-media-container img.margin-l-10p {
@@ -187,4 +202,34 @@ embed,
 }
 .project-media-container::-webkit-scrollbar {
     display: none;
+}
+
+@media only screen and (min-width: 1600px) {
+    .video-container {
+        width: 60%;
+        margin-left: 20%;
+    }
+
+    .page-background.project-page {
+        align-items: flex-start;
+    }
+
+    .project-info-container {
+        width: 60%;
+        margin-left: 20%;
+
+    }
+
+    .project-media-container img {
+        max-height: 33.75vw;
+    }
+
+    .project-media-container img.margin-l-10p {
+        margin-left: 20%;
+    }
+
+    .project-media-container .media-item:last-of-type {
+        margin-right: 20%;
+    }
+
 }
