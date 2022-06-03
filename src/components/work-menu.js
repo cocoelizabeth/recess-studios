@@ -27,7 +27,7 @@ class WorkMenu extends React.Component {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-
+                    debugger
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
                         behavior: 'smooth'
                     });
@@ -100,11 +100,13 @@ class WorkMenu extends React.Component {
     render() {
         const completedProjectList = Object.values(this.props.projects);
         let projectLinks;
+        
         // create all menu link items
         projectLinks = completedProjectList.map(project => {
+            let hrefId = "#a".concat(project.id)
             return (
                 <li key={project.id}>
-                    <a href={"#" + project.id}>{project.title}</a>
+                    <a href={hrefId}>{project.title}</a>
                 </li>
             )
         })

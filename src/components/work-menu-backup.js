@@ -103,9 +103,10 @@ class WorkMenu extends React.Component {
         let projectLinks;
         // create all menu link items
         projectLinks = completedProjectList.map(project => {
+            let href = "#a".concat(project.id)
             return (
                 <li key={project.id}>
-                    <a href={"#" + project.id}>{project.title}</a>
+                    <a href={href}>{project.title}</a>
                 </li>
             )
         })

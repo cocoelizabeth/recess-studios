@@ -14,7 +14,8 @@ class ProjectHeroItem extends React.Component {
     }
     render() {
         let projectMedia;
-
+        let hrefId = "a".concat(this.id)
+ 
         if (this.contentType.includes("video")) {
             projectMedia= (
                 <video playsInline muted loop width="100%">
@@ -27,7 +28,7 @@ class ProjectHeroItem extends React.Component {
             )
         }
         return (
-            <Link to={`/work/${this.slug}/`} className="project-link" target="_blank" key={this.id} id={this.id} title={this.projectTitle}>
+            <Link to={`/work/${this.slug}/`} className="project-link" target="_blank" key={this.id} id={hrefId} title={this.projectTitle}>
                 <div className="project-group">
                     {projectMedia}
                     <div className="project-title">{this.projectTitle}</div>
