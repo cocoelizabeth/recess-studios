@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
 import logoGif from '../images/recess-chrome-v2-optimized.gif'
 import backgroundImage from '../images/background.jpg'
 
@@ -9,7 +8,7 @@ import '../css/reset.css'
 import '../css/styles.css'
 import '../css/work-menu.css'
 
-// markup
+
 const IndexPage = () => {
   return (
     <div className="background-image-container">

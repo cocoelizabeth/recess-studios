@@ -18,44 +18,43 @@ const Slideshow = ({ hasVimeoVideo, videoSrcUrl, slideshowMedia, projectTitle, .
     let slides;
 
     useEffect(() => {
-        if (slideshowMedia) {
-            slides = slideshowMedia.map((imageData, i) => {
+        //! Not Sure If I need this code
+        // if (slideshowMedia) {
+        //     slides = slideshowMedia.map((imageData, i) => {
+        //         const src = getSrc(imageData);
+        //         const srcSet = getSrcSet(imageData);
 
-                const image = getImage(imageData);
-                const src = getSrc(imageData);
-                const srcSet = getSrcSet(imageData);
+        //         if (imageData == "vimeo video") {
+        //             return (
+        //                 <Video
+        //                     videoSrcUrl={videoSrcUrl}
+        //                     projectTitle={projectTitle}
+        //                     className="media-item"
+        //                 />
+        //             )
+        //         } else {
+        //             // add 10% margin if the first item in the slideshow is not a video
+        //             let itemClass = (i === 0) ? "media-item margin-l-10p" : "media-item"
+        //             return (
+                       
+        //                 <img
+        //                     src={src}
+        //                     srcSet={srcSet}
+        //                     className = { itemClass }
+        //                 />
+        //             )
+        //         }
 
-                if (imageData == "vimeo video") {
-                    return (
-                        <Video
-                            videoSrcUrl={videoSrcUrl}
-                            projectTitle={projectTitle}
-                            className="media-item"
-                        />
-                    )
-                } else {
-                    return (
-                        <img
-                            src={src}
-                            srcSet={srcSet}
-                            className="media-item"
-                        />
-                    )
-                }
 
-
-            })
-        }
-        // Update the document title using the browser API
-
+        //     })
+        // }
     });
 
-    // create all image slides
+    //* create all slides
     if (slideshowMedia) {
      
         slides = slideshowMedia.map((imageData, i) => {
 
-            const image = getImage(imageData);
             const src = getSrc(imageData);
             const srcSet = getSrcSet(imageData);
 
@@ -69,12 +68,8 @@ const Slideshow = ({ hasVimeoVideo, videoSrcUrl, slideshowMedia, projectTitle, .
                     />
                 )
             } else {
-                let itemClass = "media-item";
-                if (i===0) {
-                    itemClass = "media-item margin-l-10p"
-                } else {
-                    itemClass ="media-item"
-                }
+                // add 10% margin if the first item in the slideshow is not a video
+                let itemClass = (i === 0) ? "media-item margin-l-10p" : "media-item"
                 return ( 
 
                 
