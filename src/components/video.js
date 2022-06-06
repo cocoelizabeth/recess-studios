@@ -1,5 +1,5 @@
 import React from "react"
-import { useHorizontalScroll } from "./useHorizontalScroll";
+import { useHorizontalScroll } from "../hooks/useHorizontalScroll";
 const Video = ({ videoSrcUrl, projectTitle, ...props }) => {
     const scrollRef = useHorizontalScroll();
     return (

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { Link } from "gatsby"
-import { useHorizontalScroll } from "./useHorizontalScroll";
+import { useHorizontalScroll } from "../hooks/useHorizontalScroll";
 import Video from "./video"
 import { GatsbyImage, getImage, getSrc, getSrcSet} from 'gatsby-plugin-image'
 import '../css/project-page.css'
