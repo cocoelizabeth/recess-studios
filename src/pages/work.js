@@ -29,7 +29,7 @@ class WorkPage extends React.Component {
     } else {
       console.log(false)
     }
-    this.handleVideo();
+    // this.handleVideo();
   }
 
   isMobile() {

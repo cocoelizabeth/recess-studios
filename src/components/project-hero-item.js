@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import ProjectHeroVideo from "./project-hero-video";
 
 
 class ProjectHeroItem extends React.Component {
@@ -18,9 +19,10 @@ class ProjectHeroItem extends React.Component {
  
         if (this.contentType.includes("video")) {
             projectMedia= (
-                <video playsInline muted loop width="100%">
-                    <source src={this.heroFileUrl} type="video/mp4" />
-                </video>
+                <ProjectHeroVideo heroFileUrl = {this.heroFileUrl}/>
+                // <video playsInline muted loop width="100%">
+                //     <source src={this.heroFileUrl} type="video/mp4" />
+                // </video>
             )
         } else {
             projectMedia= (

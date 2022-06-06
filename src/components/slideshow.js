@@ -5,13 +5,6 @@ import Video from "./video"
 import { GatsbyImage, getImage, getSrc, getSrcSet} from 'gatsby-plugin-image'
 import '../css/project-page.css'
 
-// UNUSED IMPORTS - DELETE THESE LIBRARIES WHEN PROJECT IS COMPLETE
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import 'keen-slider/keen-slider.min.css'
-// import KeenSlider from 'keen-slider'
-// import { useKeenSlider } from 'keen-slider/react' 
 
 const Slideshow = ({ hasVimeoVideo, videoSrcUrl, slideshowMedia, projectTitle, ...props }) => {
     const scrollRef = useHorizontalScroll();
