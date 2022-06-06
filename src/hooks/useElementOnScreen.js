@@ -5,6 +5,7 @@ const useElementOnScreen = (options, targetRef) => {
     const callbackFunction = entries => {
 
         const [entry] = entries //const entry = entries[0]
+        debugger
         setIsVisible(entry.isIntersecting)
   
     }

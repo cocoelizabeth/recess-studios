@@ -18,7 +18,6 @@ class WorkPage extends React.Component {
     super(props)
     this.projectDataBase = this.props.data.allContentfulProjectDatabase.edges[0].node.listOfProjects;
     this.isMobile = this.isMobile.bind(this);
-    this.handleVideo = this.handleVideo.bind(this);
     // this.projects = this.props.data.allContentfulProjectDatabase.edges[0].node.listOfProjects.map(edge => {return (edge)});
     
   }
@@ -29,7 +28,6 @@ class WorkPage extends React.Component {
     } else {
       console.log(false)
     }
-    // this.handleVideo();
   }
 
   isMobile() {
@@ -42,59 +40,10 @@ class WorkPage extends React.Component {
     return result;
   }
 
-  handleVideo() {
-
-    let videoHTMLCollection = document.getElementsByTagName('video');
-    let videos = [].slice.call(videoHTMLCollection);
-
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        for (let i = 0; i < videos.length; i++) {
-          videos[i].autoplay = 'autoplay';
-          videos[i].preload = 'metadata';
-          videos[i].muted = 'muted';
-        }
-      }
-
-
-      window.addEventListener('load', (event) => {
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          for (let i = 0; i < videos.length; i++) {
-            videos[i].autoplay = 'autoplay';
-            videos[i].preload = 'metadata';
-            videos[i].muted = 'muted';
-          }
-          videos[0].play();
-        }
-        videos[0].play();
-      })
-
-      window.addEventListener('scroll', (event) => {
-
-        let videos = document.getElementsByTagName('video');
-        for (let i = 0; i < videos.length; i++) {
-
-          var elOffsetVh = Math.round(parseFloat(-150)) || 0;
-          var elT = videos[i].offsetTop;
-          var elB = elT + videos[i].offsetHeight;
-          var viewT = window.scrollY;
-          var viewB = viewT + (window.outerHeight + elOffsetVh)
-
-          if (elB > viewT && elT < viewB) {
-            videos[i].play();
-          } else {
-            videos[i].pause();
-          }
-        }
-
-      });
-
-  }
-  
 
   render() {
 
     return (
-      // <Layout pageTitle="Work">
       <div>
         <WorkMenu projects={this.projectDataBase}></WorkMenu>
         <div className="page-background">
@@ -112,7 +61,7 @@ class WorkPage extends React.Component {
             </ProjectHeroItem>
           )}
         </div>
-        {/* </Layout> */}
+
       </div>
    
     )
