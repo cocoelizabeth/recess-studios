@@ -1,0 +1,38 @@
+.background-image-container {
+    overflow-y: scroll;
+    padding: 0;
+    margin: 0;
+}
+
+.shop-background-image {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.content {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 99999;
+}
+.product-container {
+    height: auto;
+    width: 100%;
+}
+
+.product-image-container {
+    display: flex;
+    width: 50%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+}
+.product-image {
+    height: 100%;
+    width: auto;
+    max-height: 60vh;
+
+}
