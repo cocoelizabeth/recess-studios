@@ -9,7 +9,7 @@ import * as CLayer from 'commercelayer-react'
 // import 'bulma'
 // import '../stylesheets/main.css'
 import ShoppingBag from './shopping-bag'
-import addJsLibrary from '../hooks/addJSLibrary'
+import addJsLibrary from '../hooks/addJsLibrary'
 
 
 import '../css/font.css'
