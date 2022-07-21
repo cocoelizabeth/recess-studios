@@ -26,7 +26,7 @@ const IndexPage = () => {
           Studio based in NY, LA, &amp; Portland.</div>
         <div className="grid-item grid-item--5 grid-item--width4 " />
         <div className="grid-item grid-item--6 grid-item--width5">
-          <Link to="/work" className="underline-link" title="Work">OUR WORK</Link>
+          {/* <Link to="/work" className="underline-link" title="Work">OUR WORK</Link> */}
         </div>
         <div className="grid-item grid-item--7 grid-item--width20 " />
         <div className="grid-item grid-item--8 grid-item--width11">
