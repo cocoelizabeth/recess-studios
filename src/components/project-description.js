@@ -24,6 +24,16 @@ const options = {
 }
 
 const ProjectDescription = ({ projectTitle, projectPressLink, copy, ...props }) => {
+    let pressLink;
+    if (projectPressLink) {
+        pressLink = (
+            <div className='press-link'>
+                <a className='nav-links' href={projectPressLink} target="_blank">PRESS LINK</a>
+            </div>
+        )
+    } else {
+        pressLink = <div className="display-none"></div>
+    }
 
     return (
         <div className="page-background project-page">
@@ -32,9 +42,7 @@ const ProjectDescription = ({ projectTitle, projectPressLink, copy, ...props }) 
                     <div className='pp-project-title'>
                         {projectTitle}
                     </div>
-                    <div className='press-link'>
-                        <a className='nav-links' href={projectPressLink} target="_blank">PRESS LINK</a>
-                    </div>
+                    {pressLink}
                 </div>
                 <div className="project-info-container-right">
                     <div className="pp-project-copy">
