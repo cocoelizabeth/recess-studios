@@ -17,26 +17,26 @@ import '../css/styles.css'
 import '../css/work-menu.css'
 import '../css/shop.css'
 
-export const query = graphql`
-  query($slug: String!) {
-    contentfulProject(slug: { eq: $slug }) {
-      title
-      id
-      vimeoVideoLink
-      pressLink
-      copy {
-          raw
-      }
-      slideshowMedia {
-          gatsbyImageData
-          file {
-              url
-              contentType
-          }
-      }
-      }
-    }
-`
+// export const query = graphql`
+//   query($slug: String!) {
+//     contentfulProject(slug: { eq: $slug }) {
+//       title
+//       id
+//       vimeoVideoLink
+//       pressLink
+//       copy {
+//           raw
+//       }
+//       slideshowMedia {
+//           gatsbyImageData
+//           file {
+//               url
+//               contentType
+//           }
+//       }
+//       }
+//     }
+// `
 
 const ShopPage = () => {
     return (
