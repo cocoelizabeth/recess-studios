@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const addJsLibrary = (libraryURL) => {
+const useJsLibrary = (libraryURL) => {
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -10,4 +10,4 @@ const addJsLibrary = (libraryURL) => {
     })
 
 }
-export default addJsLibrary
+export default useJsLibrary

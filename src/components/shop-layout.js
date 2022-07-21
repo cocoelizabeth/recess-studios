@@ -9,7 +9,7 @@ import * as CLayer from 'commercelayer-react'
 // import 'bulma'
 // import '../stylesheets/main.css'
 import ShoppingBag from './shopping-bag'
-import addJsLibrary from '../hooks/addJsLibrary'
+import useJsLibrary from '../hooks/useJsLibrary'
 
 
 import '../css/font.css'
@@ -65,15 +65,15 @@ const ShopLayout = (props) => {
                 data-language-code="en"
                 data-cart-url={<Link to="/cart" />}
                 data-return-url={<Link to="/cart" />}
-                data-privacy-url={<Link to="/privacy" />}
-                data-terms-url={<Link to="/terms" />}
+                // data-privacy-url={<Link to="/privacy" />}
+                // data-terms-url={<Link to="/terms" />}
                 data-dev-settings-debug="true"
                 data-dev-settings-console="true"
                 data-dev-settings-trace="true"
             ></div>
             {/* Commerce Layer JS Dropin Library */}
 
-            {addJsLibrary('https://cdn.jsdelivr.net/npm/@commercelayer/js-dropin@1.5.14/lib/index.js')}
+            {useJsLibrary('https://cdn.jsdelivr.net/npm/@commercelayer/js-dropin@1.5.14/lib/index.js')}
         </div>
 
     )
