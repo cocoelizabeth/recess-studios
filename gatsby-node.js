@@ -48,22 +48,23 @@
 // })
 // }
 
+const { count } = require("console")
 const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
-    const response = await graphql(`
-    query {
-      allContentfulProject {
-        edges {
-          node {
-            slug
+    const projectResponse = await graphql(`
+      query {
+        allContentfulProject {
+          edges {
+            node {
+              slug
+            }
           }
         }
       }
-    }
-  `)
-    response.data.allContentfulProject.edges.forEach(edge => {
+    `)
+    projectResponse.data.allContentfulProject.edges.forEach(edge => {
         createPage({
             path: `/work/${edge.node.slug}`,
             component: path.resolve("./src/templates/project-page.js"),
@@ -72,4 +73,91 @@ exports.createPages = async ({ graphql, actions }) => {
             },
         })
     })
+
+    const countryResponse = await graphql(`
+      query {
+        allContentfulEcommCountry {
+            edges {
+              node {
+                node_locale
+                code
+                catalog {
+                  name
+                  node_locale
+                  categories {
+                    name
+                    products {
+                      name
+                      contentful_id
+                    }
+                    contentful_id
+                  }
+                }
+              }
+            }
+        }
+      }
+    `)
+
+
+    countryResponse.data.allContentfulEcommCountry.edges.forEach(({ node }) => {
+      // Catalog page
+      createPage({
+        path:
+        `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/`,
+        component: path.resolve(`src/templates/catalog-page.js`),
+        context: {
+          // Data passed to the context is available in page queries as GraphQL variables
+          slug:
+          `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/`,
+            language: node.node_locale,
+            shipping: node.code,
+            pageTitle: "MERCH"
+        }
+      })
+      node.catalog.categories.map( c => {
+        const categorySlug = c.name
+          .trim()
+          .toLowerCase()
+          .replace(' & ', ' ')
+          .replace(/\s/gm, '-')
+          // Category page
+          createPage({
+            path:
+            `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}`,
+            component: path.resolve(`./src/templates/category-page.js`),
+            context: {
+              // Data passed to context is available in page queries as GraphQL variables
+              slug: 
+                `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}`,
+                    language: node.node_locale,
+                    shipping: node.code,
+                    categoryId: c.contentful_id,
+                    categorySlug,
+                    pageTitle: c.name.trim()
+            }
+          })
+          c.products.map(p => {
+            const productSlug = p.name.trim().toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s/gm, '-').replace(/--/, "-")
+            // Product
+            createPage({
+              path:
+                `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}/${productSlug}`,
+                component: path.resolve(`./src/templates/product-page.js`),
+                context: {
+                  slug: 
+                    `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}/${productSlug}`,
+                        language: node.node_locale,
+                        shipping: node.code,
+                        categoryId: c.contentful_id,
+                        categorySlug,
+                        categoryName: c.name.trim(),
+                        productId: p.contentful_id,
+                        pageTitle: p.name.trim()
+                }
+            })
+          })
+      })
+    })
 }
+

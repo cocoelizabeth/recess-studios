@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import logoGif from '../images/recess-chrome-v2-optimized.gif'
 import backgroundImage from '../images/shop/shop-background.jpg'
 import blackHoodie1 from '../images/shop/Black Hoodie 1.gif'
 import blackHoodie2 from '../images/shop/Black Hoodie 2.gif'
@@ -17,28 +16,29 @@ import '../css/styles.css'
 import '../css/work-menu.css'
 import '../css/shop.css'
 
-export const query = graphql`
-  query($slug: String!) {
-    contentfulProject(slug: { eq: $slug }) {
-      title
-      id
-      vimeoVideoLink
-      pressLink
-      copy {
-          raw
-      }
-      slideshowMedia {
-          gatsbyImageData
-          file {
-              url
-              contentType
-          }
-      }
-      }
-    }
-`
+// export const query = graphql`
+//   query($slug: String!) {
+//     contentfulProject(slug: { eq: $slug }) {
+//       title
+//       id
+//       vimeoVideoLink
+//       pressLink
+//       copy {
+//           raw
+//       }
+//       slideshowMedia {
+//           gatsbyImageData
+//           file {
+//               url
+//               contentType
+//           }
+//       }
+//       }
+//     }
+// `
 
-const ShopPage = () => {
+const CatalogPage = () => {
+    debugger
     return (
         <>
             <div className="background-image-container">
@@ -88,12 +88,12 @@ const ShopPage = () => {
             </div>
         </>
 
-            
+
 
     );
 }
 
-export default ShopPage
+export default CatalogPage
 
 
 // query MyQuery {
@@ -125,6 +125,3 @@ export default ShopPage
 //     }
 //   }
 // }
-
-
-// export const query = graphql`
