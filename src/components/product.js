@@ -31,7 +31,7 @@ const Product = (props) => {
         debugger
         return {
             code: v.code,
-            name: `${props.data.contenfulEcommProduct.name} (${v.size.name})`,
+            name: `${v.name.split("-")[0].trim()} (${v.size.name})`,
             label: v.size.name
         }
     })
