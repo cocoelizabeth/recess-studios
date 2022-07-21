@@ -23,11 +23,7 @@ class WorkPage extends React.Component {
   }
 
   componentDidMount() {
-    if (this.isMobile()) {
-      console.log(true)
-    } else {
-      console.log(false)
-    }
+
   }
 
   isMobile() {
