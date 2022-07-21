@@ -46,7 +46,9 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp", 
     "gatsby-transformer-json",
-    `gatsby-plugin-netlify`
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-commercelayer`
+
     // "@contentful/rich-text-types"
   ]
 };
