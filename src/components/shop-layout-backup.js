@@ -3,7 +3,7 @@
 import React, { Children } from 'react'
 import { Link, graphql } from 'gatsby'
 // import PropTypes from 'prop-types'
-import * as CLayer from 'commercelayer-react'
+// import * as CLayer from 'commercelayer-react'
 // import Header from './Header'
 // import Footer from './Footer'
 // import 'bulma'
@@ -19,7 +19,7 @@ import '../css/shop.css'
 
 
 const ShopLayout = (props) => {
-    debugger
+
     const shipping = props.pageContext.shipping;
     const countryCode = props.pageContext.shipping;
     const language = props.pageContext.language;
@@ -40,7 +40,7 @@ const ShopLayout = (props) => {
                 open={props.shoppingBagStatus}
                 close={props.setShoppingBagStatus}
             />
-            <CLayer.Config
+            {/* <CLayer.Config
                 baseUrl='https://recess-studios.commercelayer.io'
                 clientId='ca9Lqe-VhQpED4It7n2OO7b9MSFHTFlPyKMJCQ23XZ0'
                 marketId={marketId}
@@ -52,7 +52,7 @@ const ShopLayout = (props) => {
                 // returnUrl={<Link to="/cart" />}
                 // privacyUrl={<Link to="/privacy" />}
                 // termsUrl={<Link to="/terms" />}
-            />
+            /> */}
         </div>
 
     )

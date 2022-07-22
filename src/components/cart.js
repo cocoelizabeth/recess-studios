@@ -1,7 +1,7 @@
 import React from 'react' 
 
 const Cart = (props) => {
-    debugger
+
     return (
         <>
         {/* <!-- Shopping bag --> */ }

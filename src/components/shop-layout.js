@@ -3,7 +3,7 @@
 import React, { Children } from 'react'
 import { Link, graphql } from 'gatsby'
 // import PropTypes from 'prop-types'
-import * as CLayer from 'commercelayer-react'
+// import * as CLayer from 'commercelayer-react'
 // import Header from './Header'
 // import Footer from './Footer'
 // import 'bulma'
@@ -20,7 +20,7 @@ import '../css/shop.css'
 
 
 const ShopLayout = (props) => {
-    debugger
+
     const shipping = props.pageContext.shipping;
     const countryCode = props.pageContext.shipping;
     const language = props.pageContext.language;
@@ -63,8 +63,8 @@ const ShopLayout = (props) => {
                 data-market-id={marketId}
                 data-country-code={countryCode}
                 data-language-code="en"
-                data-cart-url={<Link to="/cart" />}
-                data-return-url={<Link to="/cart" />}
+                // data-cart-url={"/cart"}
+                // data-return-url={<Link to="/cart" />}
                 // data-privacy-url={<Link to="/privacy" />}
                 // data-terms-url={<Link to="/terms" />}
                 data-dev-settings-debug="true"

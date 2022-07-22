@@ -38,7 +38,7 @@ import '../css/shop.css'
 // `
 
 const CatalogPage = () => {
-    debugger
+
     return (
         <>
             <div className="background-image-container">

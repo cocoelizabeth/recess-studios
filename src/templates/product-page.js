@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, graphql } from 'gatsby';
-import * as CLayer from 'commercelayer-react'
+// import * as CLayer from 'commercelayer-react'
 import { useShoppingBag } from "../hooks/useShoppingBag";
 import ShopLayout from '../components/shop-layout';
 // import useShoppingBag from '../hooks'
@@ -12,21 +12,51 @@ import '../css/styles.css'
 import '../css/work-menu.css'
 import '../css/shop.css'
 
+function createVariants(image) {
+    return function(v) {
+        return {
+            code: v.code,
+            name: v.name,
+            label: v.size.name,
+            imageUrl: image
+        }
+    }
+}
+
 export default (props) => {
     
     const product = props.data.contentfulEcommProduct;
     const name = product.name;
     const imageUrl = product.image[0].file.url;
-    const variants = props.data.contentfulEcommProduct.variants.map(v => {
-        // debugger
-        return {
-            code: v.code,
-            name: `${props.data.contentfulEcommProduct.name} (${v.size.name})`,
-            label: v.size.name
-        }
+    // const variants = props.data.contentfulEcommProduct.variants.map(v => {
+    //     return {
+    //         code: v.code,
+    //         name: v.name,
+    //         // name: `${props.data.contentfulEcommProduct.name} (${v.size.name})`,
+    //         label: v.size.name
+    //     }
+    // })
+
+
+    const variants = props.data.contentfulEcommProduct.variants.map(createVariants(imageUrl))
+    
+    const variantOptions = variants.map(v => {
+        return (
+                <option 
+                    className="clayer-variant" 
+                    data-sku-code={v.code}
+                    data-sku-name={v.name} 
+                    data-sku-image-url={v.imageUrl}
+                    value=''
+                >
+                    {v.label}
+                </option>
+        )
     })
 
-    console.log(variants)
+
+
+    // console.log(variants)
     // const handleOnClick = e => {
     //     if (e.target.hasAttribute('disabled')) {
     //         return e.preventDefault()
@@ -66,9 +96,19 @@ export default (props) => {
 
                 <div className="product-details-container">
                     <div className="title">{name}</div>
-                    <CLayer.Price skuCode={product.variants[0].code} />
+                    {/* <!-- Price tag --> */}
+                    {/* <CLayer.Price skuCode={product.variants[0].code} /> */}
+                    <div
+                        className="clayer-price"
+                        id="price"
+                        data-sku-code={product.variants[0].code}
+                    >
+                        <span className="amount"></span>
+                        <span className="compare-at-amount"></span>
+                    </div>
 
-                    <div className="select is-fullwidth variant-select-wrap">
+                    {/* <!-- Variant Select --> */}
+                    {/* <div className="select is-fullwidth variant-select-wrap">
                         <CLayer.VariantSelect
                             className="variant-select"
                             PriceContainerId="price"
@@ -77,17 +117,41 @@ export default (props) => {
                             promptText="Select a size"
                             skus={variants}
                         />
+                    </div> */}
+
+                    <div className="select"> 
+                        <select 
+                            className="clayer-variant-select" 
+                            name="variant" 
+                            data-availability-message-container-id="availability-message" 
+                            data-add-to-bag-id="add-to-bag" 
+                            data-add-to-bag-quantity-id="add-to-bag-quantity"
+                            
+                        >
+                            <option value="" disabled defaultValue>Select a size*</option>
+                            {variantOptions}
+                        </select>
+                            
                     </div>
 
-                    <CLayer.AddToBag
+                    {/* <input id="add-to-bag-quantity" type="number" value="1" min="1" max="25" class="input clayer-add-to-bag-quantity"></input> */}
+
+                    {/* <!-- Add to bag --> */}
+                    
+                    {/*  <CLayer.AddToBag
                         className={`add-to-bag button is-success is-fullwidth`}
                         id="add-to-bag"
                         AvailabilityMessageContainerId="availability-message"
                         text="Add to Bag"
                         onClick={handleOnClick}
-                    />
+                    /> */}
+
+                    <a href="#" className="button is-fullwidth clayer-add-to-bag" onClick={handleOnClick} id="add-to-bag"
+                        data-availability-message-container-id="availability-message">Add to bag</a>
 
 
+
+{/* 
                     <CLayer.AvailabilityMessageContainer id='availability-message' />
                     <CLayer.AvailabilityMessageAvailableTemplate
                         className='available-message has-text-success'
@@ -107,7 +171,7 @@ export default (props) => {
                     <CLayer.AvailabilityMessageUnavailableTemplate
                         className='unavailable-message has-text-danger'
                         unavailableTemplate={<p>{`SOLD OUT`}</p>}
-                    />
+                    /> */}
                 </div>
 
 
