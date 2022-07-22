@@ -1,5 +1,3 @@
-
-
 import React, { Children } from 'react'
 import { Link, graphql } from 'gatsby'
 // import PropTypes from 'prop-types'
@@ -49,9 +47,9 @@ const ShopLayout = (props) => {
                     language ? language.toLowerCase().replace('-us', '') : 'en'
                 }
                 cartUrl={'http://checkout.localhost:8000'}
-                // returnUrl={<Link to="/cart" />}
-                // privacyUrl={<Link to="/privacy" />}
-                // termsUrl={<Link to="/terms" />}
+            // returnUrl={<Link to="/cart" />}
+            // privacyUrl={<Link to="/privacy" />}
+            // termsUrl={<Link to="/terms" />}
             />
         </div>
 

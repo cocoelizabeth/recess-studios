@@ -1,16 +1,15 @@
-
-
 import React from 'react'
 import * as CLayer from 'commercelayer-react'
 // import { ShoppingBagProps } from '../types/index'
 // import locale from '../locale/locale.json'
 
-const ShoppingBag = ({open, close, ...props}) => {
+const ShoppingBag = ({ open, close, ...props }) => {
     // const open = props.open;
     // const close = props.close;
-    const customHandleClick = (e) => {
-        debugger
-    }
+    // debugger
+    // const customOnClick = () => {
+    //     debugger
+    // }
 
 
     return (
@@ -65,7 +64,9 @@ const ShoppingBag = ({open, close, ...props}) => {
                     </div>
                     <div className='column'>
                         {/* <a href="#" className="clayer-shopping-bag-checkout">THIS CHECKOUT WORKS</a> */}
-                        <CLayer.Checkout onClick={customHandleClick} className={'button is-fullwidth is-success'} />
+ 
+
+                        <CLayer.Checkout className={'button is-fullwidth is-success'} />
                     </div>
                 </div>
             </div>

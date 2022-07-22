@@ -1,10 +1,9 @@
-import React from 'react' 
+import React from 'react'
 
 const Cart = (props) => {
-    debugger
     return (
         <>
-        {/* <!-- Shopping bag --> */ }
+            {/* <!-- Shopping bag --> */}
             <h2 class="title">
                 Shopping bag
             </h2>

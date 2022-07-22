@@ -41,7 +41,7 @@ const ShopLayout = (props) => {
                 open={props.shoppingBagStatus}
                 close={props.setShoppingBagStatus}
             />
-            {/* <CLayer.Config
+            <CLayer.Config
                 baseUrl='https://recess-studios.commercelayer.io'
                 clientId='ca9Lqe-VhQpED4It7n2OO7b9MSFHTFlPyKMJCQ23XZ0'
                 marketId={marketId}
@@ -53,9 +53,9 @@ const ShopLayout = (props) => {
                 // returnUrl={<Link to="/cart" />}
                 // privacyUrl={<Link to="/privacy" />}
                 // termsUrl={<Link to="/terms" />}
-            /> */}
+            />
             {/* Config */}
-            <div
+            {/* <div
                 id="clayer-config"
                 data-base-url="https://recess-studios.commercelayer.io"
                 data-cache="true"
@@ -70,10 +70,10 @@ const ShopLayout = (props) => {
                 data-dev-settings-debug="true"
                 data-dev-settings-console="true"
                 data-dev-settings-trace="true"
-            ></div>
+            ></div> */}
             {/* Commerce Layer JS Dropin Library */}
 
-            {useJsLibrary('https://cdn.jsdelivr.net/npm/@commercelayer/js-dropin@1.5.14/lib/index.js')}
+            {/* {useJsLibrary('https://cdn.jsdelivr.net/npm/@commercelayer/js-dropin@1.5.14/lib/index.js')} */}
         </div>
 
     )

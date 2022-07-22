@@ -9,33 +9,33 @@ module.exports = {
   },
   plugins: [
     {
-    resolve: 'gatsby-source-contentful',
-    options: {
-      "accessToken": process.env.CONTENTFUL_ACCESS_TOKEN,
-      "spaceId": process.env.CONTENTFUL_SPACE_ID,
-    }
-    }, "gatsby-plugin-sass", 
+      resolve: 'gatsby-source-contentful',
+      options: {
+        "accessToken": process.env.CONTENTFUL_ACCESS_TOKEN,
+        "spaceId": process.env.CONTENTFUL_SPACE_ID,
+      }
+    }, "gatsby-plugin-sass",
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         "trackingId": "G-EK73FV95V0"
       }
-    }, 
-    "gatsby-plugin-image", 
-    "gatsby-plugin-react-helmet", 
-    "gatsby-plugin-sitemap", 
+    },
+    "gatsby-plugin-image",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
         "icon": "src/images/icon.png"
       }
-    }, 
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         path: "./data/",
       },
-    }, 
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -44,7 +44,7 @@ module.exports = {
       }
     },
     "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp", 
+    "gatsby-transformer-sharp",
     "gatsby-transformer-json",
     `gatsby-plugin-netlify`,
     `gatsby-plugin-commercelayer`

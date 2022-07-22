@@ -13,7 +13,7 @@ import '../css/work-menu.css'
 import '../css/shop.css'
 
 export default (props) => {
-    
+
     const product = props.data.contentfulEcommProduct;
     const name = product.name;
     const imageUrl = product.image[0].file.url;
@@ -35,7 +35,7 @@ export default (props) => {
     //         setStatus()
     //     }, 1000)
 
-        
+
     // }
 
 
@@ -54,7 +54,7 @@ export default (props) => {
         }, 1000)
     }
     return (
-        <ShopLayout 
+        <ShopLayout
             {...props}
             shoppingBagStatus={status}
             setShoppingBagStatus={setStatus}>
