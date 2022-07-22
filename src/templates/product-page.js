@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby';
 import * as CLayer from 'commercelayer-react'
 import { useShoppingBag } from "../hooks/useShoppingBag";
 import ShopLayout from '../components/shop-layout';
+import backgroundImage from '../images/shop/shop-background.jpg'
 // import useShoppingBag from '../hooks'
 // import SEO from '../components/seo'
 
@@ -25,18 +26,6 @@ export default (props) => {
             label: v.size.name
         }
     })
-
-    console.log(variants)
-    // const handleOnClick = e => {
-    //     if (e.target.hasAttribute('disabled')) {
-    //         return e.preventDefault()
-    //     }
-    //     delayTimer.current = window.setInterval(() => {
-    //         setStatus()
-    //     }, 1000)
-
-
-    // }
 
 
     const [status, setStatus] = useShoppingBag()

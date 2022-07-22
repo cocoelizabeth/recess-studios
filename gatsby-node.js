@@ -112,7 +112,7 @@ exports.createPages = async ({ graphql, actions }) => {
           `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/`,
             language: node.node_locale,
             shipping: node.code,
-            pageTitle: "MERCH"
+            pageTitle: "SHOP"
         }
       })
       node.catalog.categories.map( c => {
@@ -123,27 +123,26 @@ exports.createPages = async ({ graphql, actions }) => {
           .replace(/\s/gm, '-')
           // Category page
           createPage({
-            path:
-            `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}`,
+            // path:`/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}`,
+            path: `/shop/${categorySlug}`,
             component: path.resolve(`./src/templates/category-page.js`),
             context: {
               // Data passed to context is available in page queries as GraphQL variables
-              slug: 
-                `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}`,
-                    language: node.node_locale,
-                    shipping: node.code,
-                    categoryId: c.contentful_id,
-                    categorySlug,
-                    pageTitle: c.name.trim()
+              slug: `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}`,
+              language: node.node_locale,
+              shipping: node.code,
+              categoryId: c.contentful_id,
+              categorySlug,
+              pageTitle: c.name.trim()
             }
           })
           c.products.map(p => {
             const productSlug = p.name.trim().toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s/gm, '-').replace(/--/, "-")
             // Product
             createPage({
-              path:
-                `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}/${productSlug}`,
-                component: path.resolve(`./src/templates/product-page.js`),
+              // path:`/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}/${productSlug}`,
+              path: `/shop/${productSlug}`,
+              component: path.resolve(`./src/templates/product-page.js`),
                 context: {
                   slug: 
                     `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}/${productSlug}`,
