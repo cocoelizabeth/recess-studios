@@ -18,7 +18,9 @@ function encode(data) {
     for (const key of Object.keys(data)) {
         formData.append(key, data[key]);
     }
-    debugger
+    for (let key of formData.entries()) {
+        console.log(key[0] + ', ' + key[1]);
+    }
     return formData;
 }
 
@@ -71,10 +73,10 @@ export default class CareersPage extends React.Component {
         this.setState({
             selectedJobLocation: childData.positionLocation,
             selectedJobTitle: childData.positionTitle,
-            // formData: {
-            //     position: childData.positionTitle,
-            //     location: childData.positionLocation,
-            // }
+            formData: {
+                position: childData.positionTitle,
+        
+            }
         })
     
         this.positionsRef.current.classList.add('fadeOut')
@@ -230,8 +232,8 @@ export default class CareersPage extends React.Component {
             method: "POST",
             body: encode({
                 "form-name": form.getAttribute("name"),
-                "position": this.state.selectedJobTitle,
-                "location": this.selectedJobLocation,
+                "job-title": this.state.selectedJobTitle,
+                "location": this.state.selectedJobLocation,
                 ...this.state.formData
             })
         })
@@ -397,7 +399,7 @@ export default class CareersPage extends React.Component {
                                         <input
                                             type="file"
                                             className="req file-upload-input"
-                                            name="cover letter"
+                                            name="cover-letter"
                                             required="required"
                                             id="coverLetter"
                                             ref={this.coverLetterRef}
