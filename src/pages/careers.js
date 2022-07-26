@@ -71,10 +71,10 @@ export default class CareersPage extends React.Component {
         this.setState({
             selectedJobLocation: childData.positionLocation,
             selectedJobTitle: childData.positionTitle,
-            formData: {
-                position: childData.positionTitle,
-                location: childData.positionLocation,
-            }
+            // formData: {
+            //     position: childData.positionTitle,
+            //     location: childData.positionLocation,
+            // }
         })
     
         this.positionsRef.current.classList.add('fadeOut')
@@ -223,14 +223,16 @@ export default class CareersPage extends React.Component {
 
     handleSubmit = e => {
         
-    //    debugger
+       debugger
         const form = e.target;
         // document.getElementById('modal').classList.add('show')
         fetch("/", {
             method: "POST",
             body: encode({
                 "form-name": form.getAttribute("name"),
-                ...this.state
+                "position": this.state.selectedJobTitle,
+                "location": this.selectedJobLocation,
+                ...this.state.formData
             })
         })
             .then(() => alert("Success!"))
