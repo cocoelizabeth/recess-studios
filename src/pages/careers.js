@@ -18,7 +18,7 @@ function encode(data) {
     for (const key of Object.keys(data)) {
         formData.append(key, data[key]);
     }
-
+    debugger
     return formData;
 }
 
@@ -223,9 +223,9 @@ export default class CareersPage extends React.Component {
 
     handleSubmit = e => {
         
-        e.preventDefault();
+    //    debugger
         const form = e.target;
-        document.getElementById('modal').classList.add('show')
+        // document.getElementById('modal').classList.add('show')
         fetch("/", {
             method: "POST",
             body: encode({
@@ -233,10 +233,12 @@ export default class CareersPage extends React.Component {
                 ...this.state
             })
         })
-            .then(() => document.getElementById('modal').classList.remove('shrink'))
-            .then(() => document.getElementById('modal').classList.add('show'))
+            .then(() => alert("Success!"))
+            // .then(() => document.getElementById('modal').classList.remove('shrink'))
+            // .then(() => document.getElementById('modal').classList.add('show'))
             // .then(() => navigate(form.getAttribute("action")))
             .catch(error => alert(error));
+        e.preventDefault();
     };
 
     openModal() {
