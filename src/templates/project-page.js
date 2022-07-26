@@ -190,7 +190,6 @@ class ProjectPage extends React.Component {
 
 
     render ()   {
-        console.log('render')
         
         let slideshowMedia = this.addVimeoVideo()
         let projectPageMedia = (

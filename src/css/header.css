@@ -1,0 +1,14 @@
+.left-text {
+    text-align: left;
+    text-transform: uppercase;
+}
+.left-text::after {
+    content: "  +";
+    transition: all 0.3s ease;
+}
+
+nav.active .nav-bar .our-work .left-text::after {
+    content: "  —";
+    transition: all 0.5s ease;
+    transform: rotate(90deg);
+}

@@ -28,7 +28,7 @@ const Product = (props) => {
     }
     let products;
     const variants = props.variants.map(v => {
-        debugger
+        
         return {
             code: v.code,
             name: `${v.name.split("-")[0].trim()} (${v.size.name})`,

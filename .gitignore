@@ -3,3 +3,5 @@ node_modules/
 public
 .env.development
 ./src/pages/work-jquery-converted-to-js-but-not-working.js
+./src/components/careersForm.js
+./src/pages/shop-old.js

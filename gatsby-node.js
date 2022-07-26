@@ -74,6 +74,7 @@ exports.createPages = async ({ graphql, actions }) => {
         })
     })
 
+
     const countryResponse = await graphql(`
       query {
         allContentfulEcommCountry {
