@@ -793,3 +793,12 @@ btn.submit-job-application-btn {
 .return {
     margin-left: 40px;
 }
+
+ input:-webkit-autofill,
+ input:-webkit-autofill:focus {
+     transition: background-color 600000s 0s, color 600000s 0s;
+ }
+
+ input:-webkit-autofill {
+     -webkit-box-shadow: 0 0 0px 1000px #010718 inset;
+ }
