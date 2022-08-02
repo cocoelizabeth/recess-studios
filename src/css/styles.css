@@ -327,3 +327,30 @@ video {
   }
 
 }
+
+
+/* ##################################################################### */
+/* ############################# 404 PAGE ############################## */
+/* ##################################################################### */
+
+.not-found-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  text-transform: uppercase;
+
+}
+
+.not-found-container img {
+  margin-bottom: 40px;
+}
+
+.not-found-container a {
+  text-decoration: underline;
+}
