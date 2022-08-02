@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 // import Header from "../components/header"
 import logoGif from '../images/recess-chrome-v2-optimized.gif'
 import backgroundImage from '../images/background.jpg'
+import '../css/styles.css'
 // styles
 // const pageStyles = {
 //   color: "#232129",
