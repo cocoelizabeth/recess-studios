@@ -34,13 +34,25 @@ export default (props) => {
     useEffect(() => {
         return window.clearInterval(delayTimer.current)
     })
-    const handleOnClick = e => {
+    const handleOnClick = e => {    
+        
+
+    //    getOrder()
+    //        .then((result) => console.log(result.id))
+
         if (e.target.hasAttribute('disabled')) {
             return e.preventDefault()
         }
         delayTimer.current = window.setInterval(() => {
             setStatus()
         }, 1000)
+
+    }
+
+    const getOrder = () => {
+        // if (window.api.getOrder) {
+        //     return window.api.getOrder();
+        // }
     }
     return (
         <ShopLayout

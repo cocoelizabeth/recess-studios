@@ -74,6 +74,8 @@ const Cart = (props) => {
 
                 {/* <!-- Checkout --> */}
 
+                <
+
                 <a href="#" class="button is-success clayer-shopping-bag-checkout">Proceed to checkout</a>
             </div>
         </>

@@ -234,3 +234,7 @@ a {
 .navbar {
     min-height: 56px !important;
 }
+
+a.checkout {
+    color: black;
+}

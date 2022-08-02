@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React, { Children, useState, useEffect } from 'react'
 import { Link, graphql } from 'gatsby'
 // import PropTypes from 'prop-types'
 import * as CLayer from 'commercelayer-react'
@@ -23,6 +23,7 @@ const ShopLayout = (props) => {
     const language = props.pageContext.language;
     let marketId = "10564"
     const sectionOpacity = props.shoppingBagStatus ? 'open' : ''
+
     switch (countryCode) {
         case 'US':
             marketId = "10564";

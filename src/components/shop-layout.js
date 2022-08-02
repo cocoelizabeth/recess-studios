@@ -20,7 +20,7 @@ import '../css/shop.css'
 
 
 const ShopLayout = (props) => {
-    debugger
+    
     const shipping = props.pageContext.shipping;
     const countryCode = props.pageContext.shipping;
     const language = props.pageContext.language;
@@ -49,7 +49,7 @@ const ShopLayout = (props) => {
                 languageCode={
                     language ? language.toLowerCase().replace('-us', '') : 'en'
                 }
-                cartUrl={'http://checkout.localhost:8000'}
+                // cartUrl={'http://checkout.localhost:8000'}
                 // returnUrl={<Link to="/cart" />}
                 // privacyUrl={<Link to="/privacy" />}
                 // termsUrl={<Link to="/terms" />}
@@ -70,8 +70,8 @@ const ShopLayout = (props) => {
                 data-dev-settings-debug="true"
                 data-dev-settings-console="true"
                 data-dev-settings-trace="true"
-            ></div> */}
-            {/* Commerce Layer JS Dropin Library */}
+            ></div>  */}
+            {/* {/* Commerce Layer JS Dropin Library */}
 
             {/* {useJsLibrary('https://cdn.jsdelivr.net/npm/@commercelayer/js-dropin@1.5.14/lib/index.js')} */}
         </div>
