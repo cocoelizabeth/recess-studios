@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 class CareersThanks extends React.Component {
     constructor(props) {
         super(props)
+        
     }
 
 

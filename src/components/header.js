@@ -8,6 +8,7 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.leftText = this.props.leftText;
+        this.background = this.props.background;
         // this.projects = this.props.projects;
         this.state = { visible: false }
         this.toggle = this.toggle.bind(this)
@@ -55,7 +56,7 @@ class Header extends React.Component {
         // })
 
         return (
-            <nav className={(this.state.visible ? "active" : "")} >
+            <nav className={(this.state.visible ? "active" : "") + " " + (this.props.background) } >
                 <div className="nav-bar">
                     <div className="our-work sidebarOpen">
                         <div className="sidebarOpen left-text" onClick={this.toggle}>{this.leftText}</div>

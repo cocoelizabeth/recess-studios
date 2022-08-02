@@ -11,11 +11,27 @@ import '../css/styles.css'
 import '../css/work-menu.css'
 import '../css/careers.scss'
 
+
+function encode(data) {
+    const formData = new FormData();
+
+    for (const key of Object.keys(data)) {
+        formData.append(key, data[key]);
+    }
+    for (let key of formData.entries()) {
+        console.log(key[0] + ', ' + key[1]);
+    }
+    return formData;
+}
+
+
 export default class CareersPage extends React.Component {
     constructor(props) {
         super(props);
         this.totalJobs = props.data.allContentfulJobListing.totalListings;
         this.jobs = props.data.allContentfulJobListing.edges;
+        this.btnRef = React.createRef();
+
 
         this.state = {
             selectedJobLocation: "",
@@ -24,39 +40,37 @@ export default class CareersPage extends React.Component {
             coverLetterFile: "Cover Letter",
             removeResumeBtn: "hidden",
             removeCoverLetterBtn: "hidden",
-            formData: {},
-            errors: {},
-            fileError: "",
+            formData: {}
         }
-
         this.setSelectedJobCallback = this.setSelectedJobCallback.bind(this)
-        this.handleReturnClick = this.handleReturnClick.bind(this);  
-        this.closeModal = this.closeModal.bind(this);
-        this.handleFormChange = this.handleFormChange.bind(this);
-        this.handleFileUpload = this.handleFileUpload.bind(this);
-        this.removeUpload = this.removeUpload.bind(this);
-        this.handleErrors = this.handleErrors.bind(this);
-        this.resetForm = this.resetForm.bind(this)
-
-        this.setBase64Callback = this.setBase64Callback.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.formRef = React.createRef();
-        this.btnRef = React.createRef();
         this.positionsRef = React.createRef();
         this.referCardRef = React.createRef();
         this.returnRef = React.createRef();
+        this.handleReturnClick = this.handleReturnClick.bind(this);
         this.closeModalRef = React.createRef();
         this.modalRef = React.createRef();
+        this.closeModal = this.closeModal.bind(this);
+        this.formRef = React.createRef();
+        this.handleFormChange = this.handleFormChange.bind(this);
         this.resumeRef = React.createRef();
         this.coverLetterRef = React.createRef();
+        this.handleFileUpload = this.handleFileUpload.bind(this);
         this.fileUploadContentRef = React.createRef();
+        this.imageTitleRef = React.createRef();
+        this.fauxResumeBtn = React.createRef();
+        this.fauxCoverLetterBtn = React.createRef();
         this.removeResumeBtn = React.createRef();
         this.removeCoverLetterBtn = React.createRef();
-        this.errorsRef = React.createRef();
-       
+        this.removeUpload = this.removeUpload.bind(this);
+        this.resumeLabelRef = React.createRef();
+        this.coverLetterLabelRef = React.createRef();
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.modalRef = React.createRef();
+        this.closeModal = this.closeModal.bind(this)
+        this.setFileCallback = this.setFileCallback.bind(this);
+        this.setBase64Callback = this.setBase64Callback.bind(this);
     }
 
-    // tracks which position the user clicks the 'apply' button for
     setSelectedJobCallback = (childData) => {
         this.setState({
             ...this.state.formData,
@@ -64,60 +78,98 @@ export default class CareersPage extends React.Component {
             selectedJobTitle: childData.positionTitle,
             formData: {
                 position: childData.positionTitle,
+
             }
         })
+
         this.positionsRef.current.classList.add('fadeOut')
         this.referCardRef.current.classList.add('fade')
         this.returnRef.current.classList.add('fade')
+
     }
 
-    // closes the application form and returns to job listings
+    setFileCallback = (e) => {
+        this.setState({
+            formData: {
+                ...this.state.formData,
+                [e.target.name]: e.target.files[0]
+            }
+        })
+    }
+
+//         formData {
+//             'resume': {
+//                 lastModified: 1658944083779
+//                 lastModifiedDate: Wed Jul 27 2022 13: 48: 03 GMT - 0400(Eastern Daylight Time) { }
+//                 name: "Resume.pdf"
+//                 size: 10938
+//                 type: "application/pdf"
+//                 webkitRelativePath: ""
+//              }
+//         }
+
+
+    setBase64Callback = (inputName, childData) => {
+        var base64 = inputName.concat("Base64")
+        this.setState({
+            formData: {
+                ...this.state.formData,
+                [base64]: childData
+                }
+        })
+    }
+
+
+
     handleReturnClick() {
         this.referCardRef.current.classList.remove('fade');
         this.returnRef.current.classList.remove('fade');
         this.positionsRef.current.classList.remove('fadeOut');
-        this.resetForm();
+
     }
 
-    // success modal
-    openModal() {
-        this.modalRef.current.classList.remove('shrink')
-        this.modalRef.current.classList.add('show')
-    }
 
-    closeModal() {
-        this.modalRef.current.classList.add('shrink')
-        this.modalRef.current.classList.remove('show')
-        this.returnRef.current.click()
-
+    componentDidUpdate(e) {
+        console.log(this.state)
     }
 
     handleFormChange(e) {
+   
         let empty = false;
         let input = e.currentTarget;
-        // if user uploads a file, - store file information in state and display the filename. else, if user changes a different input, store value in state
         if (input.files && input.files[0]) {
-            // store file in state
             this.setState({
                 formData: {
                     ...this.state.formData,
                     [e.target.name]: e.target.files[0]
                 }
             })
-            const name = input.files[0].name.length <= 17 ? input.files[0].name : input.files[0].name.slice(0,17).concat('...')
+            // var reader = new FileReader();
+            // // reader.onload = (function (f) {
+
+            // //     console.log(f.name)
+
+            // // })(input.files[0]);
+
+
+            // reader.readAsDataURL(input.files[0]);
             if (input.id === "resume") {
-            
                 this.setState({
-                    resumeFile: name,
+                    resumeFile: input.files[0].name,
                     removeResumeBtn: ""
+
                 })
             } else if (input.id === "coverLetter") {
                 this.setState({
-                    coverLetterFile: name,
+                    coverLetterFile: input.files[0].name,
                     removeCoverLetterBtn: ""
                 })
             }
+
+   
+
         } else {
+   
             this.setState({
                 formData: {
                     ...this.state.formData,
@@ -134,10 +186,13 @@ export default class CareersPage extends React.Component {
                 requiredField.classList.add("ui-full")
             }
         })
-        // submit btn disable logic: 
-        // check all inputs; if an input is blank and it is not optional, change empty variable to "true"
+
+
+
+
         Array.from(document.getElementsByTagName('input')).forEach((input) => {
-            if (input.value === "" && !(input.classList.contains('optional-field'))) {
+
+            if (input.value === "") {
                 empty = true;
 
             }
@@ -148,17 +203,17 @@ export default class CareersPage extends React.Component {
         } else {
             this.btnRef.current.disabled = false;
         }
-        this.handleErrors(input)
+
+
     }
 
-
-    // clicking the psuedo file upload button triggers the fileupload
     handleFileUpload(file) {
         switch (file) {
             case 'resume':
                 if (this.resumeRef.current) {
                     this.resumeRef.current.click();
                 }
+
                 break;
             case 'coverLetter':
                 if (this.coverLetterRef.current) {
@@ -166,170 +221,84 @@ export default class CareersPage extends React.Component {
                 }
                 break;
         }
+
     }
 
-    // logic for removing uploaded file
+
+
     removeUpload(file) {
+
         switch (file) {
             case 'resume':
                 this.setState({
                     resumeFile: "Resume",
                     removeResumeBtn: "hidden"
                 })
+                if (this.resumeRef.current) {
+                    this.resumeRef.current.value = "";
+                }
+
                 break;
             case 'coverLetter':
                 this.setState({
                     coverLetterFile: "Cover Letter",
                     removeCoverLetterBtn: "hidden"
                 })
+                if (this.coverLetterRef.current) {
+                    this.coverLetterRef.current.value = "";
+                }
                 break;
         }
     }
-
-    // gets base64 data from child components for file uploads
-    setBase64Callback = (inputName, childData) => {
-        var base64 = inputName.concat("Base64")
-        this.setState({
-            formData: {
-                ...this.state.formData,
-                [base64]: childData
-            }
-        })
-        
-    }
-
-    handleErrors(input) {
-        let errors = this.state.errors;
-        const validEmailRegex = RegExp(
-            /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-        );
-        
-        switch (input.name) {
-            case 'name':
-                errors.name =
-                    input.value.length < 5
-                        ? 'Name must be at least 5 characters long.'
-                        : '';
-                break;
-            case 'email':
-                errors.email =
-                    validEmailRegex.test(input.value)
-                        ? ''
-                        : 'Invalid email.';
-                break;
-            case 'resume': 
-                let resumeFileSize = input.files[0].size/1024/1024;
-                if (resumeFileSize > 5) {
-                    this.state.fileError = "Invalid file. Resume must be a PDF and cannot exceed 5MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
-                    this.removeUpload('resume');
-                } else {
-                    this.state.fileError = "";
-                }
-                break;
-            case 'coverLetter': 
-                let coverLetterFileSize = input.files[0].size / 1024 / 1024;
-                if (coverLetterFileSize> 5) {
-                    this.state.fileError = "Invalid file. Cover Letter must be a PDF and cannot exceed 5MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
-                    this.removeUpload('coverLetter');
-                } else {
-                    this.state.fileError = "";
-                }
-                break;
-            default:
-                break;
-        }
-        this.setState({ errors, [input.name]: input.value });
-        console.log(this.state.errors)
-    }
-
-    validateForm(errors) {
-        let valid = true;
-        Object.values(errors).forEach(val => val.length > 0 && (valid = false));
-        return valid;
-    }
-
-    resetForm() {
-        let requiredFormFields = Array.from(document.getElementsByClassName('req'));
-        requiredFormFields.forEach((requiredField) => {
-            requiredField.val = "";
-        })
-        this.btnRef.current.disabled=true;
-        this.state.formData={};
-        this.state.errors={};
-        this.state.fileError="";
-
-    }
-    
 
     handleSubmit = e => {
-        const form =  e.target;
-        e.preventDefault();
-        if (this.validateForm(this.state.errors)) {
-            const data = this.state.formData;
-            const name = data.name;
-            const email = data.email;
-            const position = data.position;
-            const location = this.state.selectedJobLocation;
-            const date = new Date().toDateString();
-            const linkToWork = data.linkToWork;
-            const resumeBase64 = data.resumeBase64;
-            const coverLetterBase64 = data.coverLetterBase64;
-            const resumeFileName = name.toUpperCase().split(" ").join("_").concat("_RESUME.pdf");
-            const coverLetterFileName = name.toUpperCase().split(" ").join("_").concat("_COVER_LETTER.pdf");
-            const subject = ["Job App: ", name, " - ", position, " - ", location].join("");
-            console.log(subject)
-            fetch(
-                "https://d5ipc6569a.execute-api.us-east-1.amazonaws.com/sendEmail",
-                {
-                    mode: "no-cors",
-                    method: "POST",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        senderName: '"RECESS CAREERS" <coco@recessworld.com>',
-                        senderEmail: "coco@recessworld.com",
-                        message: "NEW MESSAGE",
-                        base64Data: resumeBase64,
-                        resumeBase64Data: resumeBase64,
-                        coverLetterBase64Data: coverLetterBase64,
-                        fileName: "TEST_FILE_NAME",
-                        name: name,
-                        email: email,
-                        position: position,
-                        location: location,
-                        date: date,
-                        linkToWork: linkToWork,
-                        subject: subject,
-                        resumeFileName: resumeFileName,
-                        coverLetterFileName: coverLetterFileName,
 
-                    })
-                })
-                // .then(() => alert("Success!"))
-                .then(()=> this.resetForm())
-                // .then(() => document.getElementById('modal').classList.remove('shrink'))
-                // .then(() => document.getElementById('modal').classList.add('show'))
-                .then(() => navigate(form.getAttribute("action")))
-                .catch(error => alert(error));
-            // e.preventDefault();
-        } else {
-            this.errorsRef.current.classList.remove('display-none');
-            this.btnRef.current.disabled = true;
-        }
+        e.preventDefault();
+        const form = e.target;
+        const resumeBase64 = this.state.formData.resumeBase64;
+
+        // document.getElementById('modal').classList.add('show')
+        fetch(
+            "https://d5ipc6569a.execute-api.us-east-1.amazonaws.com/sendEmail", 
+        {
+            mode: "no-cors",
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                senderName: "coco@recessworld.com",
+                senderEmail: "coco@recessworld.com",
+                message: "HELLO WORLD THIS IS FROM REACT APP P.S. Lebron the GOAT.",
+                base64Data: resumeBase64,
+                date: new Date(),
+                fileName: "TEST_FILE_NAME",
+            })
+        })
+            .then(() => alert("Success!"))
+            // .then(() => document.getElementById('modal').classList.remove('shrink'))
+            // .then(() => document.getElementById('modal').classList.add('show'))
+            // .then(() => navigate(form.getAttribute("action")))
+            .catch(error => alert(error));
+        e.preventDefault();
     };
 
+    openModal() {
+        this.modalRef.current.classList.remove('shrink')
+        this.modalRef.current.classList.add('show')
+    }
 
+    closeModal() {
+        this.modalRef.current.classList.add('shrink')
+        this.modalRef.current.classList.remove('show')
+        this.returnRef.current.click()
+
+    }
 
 
     render() {
-        let errors = Object.values(this.state.errors).map(error => {
-            return (
-                <p>{error}</p>
-            )
-        })
-      
+
         let careerItems = this.jobs.map(job => {
             return (
                 <Career
@@ -340,11 +309,11 @@ export default class CareersPage extends React.Component {
         })
 
         return (
-            <div className="background-image-container careers-container">
+            <div className="background-image-container">
                 <Header leftText="Careers" background="black-header-background" />
                 <>
                     <div ref={this.positionsRef} className="container positions">
-
+                        {/* <h2>Job Openings</h2> */}
                         <ul>
                             {careerItems}
                         </ul>
@@ -363,22 +332,26 @@ export default class CareersPage extends React.Component {
                         </div>
                         <div className="sign-up card">
                             <div className="card__header">
+                                {/* <h1>{this.state.selectedJobTitle}</h1> */}
                                 <div className="description">
                                     APPLICATION FORM
                                 </div>
-                                <div ref={this.errorsRef} className="errors-container display-none">{errors}</div>
-                                <div className="errors-container">{this.state.fileError}</div>
                             </div>
+                            {/* <div className="card__content">
+                                <CareersForm></CareersForm>
+                            </div> */}
                             <div className="card__content">
-                                
-                             
+
                                 <form
+
                                     name="career-application"
                                     method="post"
+                                    action="/careers/thanks/"
+                                    // data-netlify="true"
+                                    // data-netlify-honeypot="bot-field"
                                     onSubmit={this.handleSubmit}
-                                    className="referral"
                                     ref={this.formRef}
-                                    action="/careers/thanks"
+                                    className="referral"
                                 >
                                     {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
                                     <input type="hidden" name="form-name" value="career-application" />
@@ -386,10 +359,6 @@ export default class CareersPage extends React.Component {
                                         <label>
                                             Don’t fill this out:{" "}
                                             <input name="bot-field" onChange={this.handleFormChange} value="ignore" />
-                                        </label>
-                                        <label>
-                                            Don’t fill this out:{" "}
-                                            <input name="phone" onChange={this.handleFormChange} value="ignore" />
                                         </label>
                                     </p>
                                     <div className="field line">
@@ -423,34 +392,64 @@ export default class CareersPage extends React.Component {
                                         </label>
                                     </div>
                                     {/* BEGIN RESUME UPLOAD */}
-                                    <FormFileInput
-                                        name="resume"
-                                        labelText="Resume"
+                                    <FormFileInput 
+                                        name="resume" 
                                         fileName={this.state.resumeFile}
+                                        setFileCallback={this.setFileCallback}
                                         setBase64Callback={this.setBase64Callback}
-                                        handleFileUploadCallback={this.handleFileUpload}
                                         removeFileBtn={this.state.removeResumeBtn}
                                         handleFormChangeCallback={this.handleFormChange}
+                                        // handleFileUploadCallback={this.handleFileUpload} 
                                         removeUploadCallback={this.removeUpload}
                                     />
-
+                                    
                                     {/* BEGIN COVER LETTER UPLOAD */}
-                                    <FormFileInput
-                                        name="coverLetter"
-                                        labelText="Cover Letter"
-                                        fileName={this.state.coverLetterFile}
-                                        setBase64Callback={this.setBase64Callback}
-                                        handleFileUploadCallback={this.handleFileUpload}
-                                        removeFileBtn={this.state.removeCoverLetterBtn}
-                                        handleFormChangeCallback={this.handleFormChange}
-                                        removeUploadCallback={this.removeUpload}
-                                    />
-                                    {/* LINK TO WORK */}
+                                    <div className="field line">
+                                        {/* <div
+                                            ref={this.fauxCoverLetterBtn}
+                                            class="file-upload-btn"
+                                            type="button"
+                                            onClick={() => { this.handleFileUpload("coverLetter") }}>
+                                            {this.state.coverLetterFile}
+                                        </div>
+                                        <div 
+                                            onClick={()=>{this.removeUpload("coverLetter")}} 
+                                            hidden={this.state.removeCoverLetterBtn}>
+                                            {"[REMOVE]"}
+                                        </div> */}
+                                        <input
+                                            type="file"
+                                            className="req file-upload-input"
+                                            name="cover-letter"
+                                            required="required"
+                                            id="coverLetter"
+                                            ref={this.coverLetterRef}
+                                            onChange={this.handleFormChange}
+                                        // defaultValue=""
+                                        />
+                                        <label hidden="hidden" className="placeholder" htmlFor="name">
+                                            Cover Letter
+                                        </label>
+                                        <div className="file-upload-container">
+                                            <div
+                                                ref={this.fauxCoverLetterBtn}
+                                                className="file-upload-btn"
+                                                onClick={() => { this.handleFileUpload("coverLetter") }}>
+                                                {this.state.coverLetterFile}
+                                            </div>
+                                            <div
+                                                className="remove-file-btn"
+                                                onClick={() => { this.removeUpload("coverLetter") }}
+                                                hidden={this.state.removeCoverLetterBtn}>
+                                                {/* {"X"} */}
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div className="field line">
                                         <input
-                                            className="req optional-field"
+                                            className="req"
                                             type="text"
-                                            name="linkToWork"
+                                            name="Link to Work"
                                             defaultValue=""
                                             id="linkToWork"
                                             onChange={this.handleFormChange}
@@ -497,6 +496,7 @@ export default class CareersPage extends React.Component {
                                             type="submit"
                                             disabled="disabled"
                                             id="btn"
+                                            onClick={this.handleSubmit}
                                             ref={this.btnRef}>
                                             APPLY
                                         </button>

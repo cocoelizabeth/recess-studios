@@ -8,8 +8,11 @@
 $color-white: #fff;
 // $font-size-large-desktop: calc(100vw/36);
 $font-size-large-desktop: calc(100vw/36);
+$font-size-large-mobile: calc(100vw/22);
 $underline-offset-large: 3px;
 $underline-offset-small: 2px;
+$color-off-black: #010718;
+
 html {
     display: flex;
 }
@@ -61,7 +64,7 @@ body {
 
     &__header {
         flex-basis: 100%;
-        margin: 73px 20px 20px 20px;
+        margin: 0px 20px 5px 20px;
 
         .description {
             color: white;
@@ -75,6 +78,7 @@ body {
         flex-basis: 100%;
         padding: 50px;
         padding-top: 15px;
+        padding-bottom: 0px;
         position: relative;
         width: 100%;
     }
@@ -100,11 +104,13 @@ h1 {
     font-size: $font-size-large-desktop;
     line-height: $font-size-large-desktop;
     outline: none;
-    transition: all .1s linear;
-    width: 100%;
+    // transition: all .1s linear;
+    // width: 100%;
     position: relative;
     background: #010718;
-
+    width: fit-content;
+    margin: 0 auto;
+    padding-bottom: 4px;
     &:focus {
         outline: 0;
     }
@@ -114,8 +120,8 @@ h1 {
     &.line {
         // border-bottom: 1px solid #eee;
     }
-
-    margin-bottom: 40px;
+    padding-bottom: 4px;
+    margin-bottom: 2vw;
     position: relative;
 }
 
@@ -126,12 +132,13 @@ h1 {
     color: white;
     opacity: 80%;
     transform: translate3d(0, 0, 0);
-    transition: all 0.2s ease-in-out;
+    // transition: all 0.2s ease-in-out;
     width: 100%;
     text-align: center;
     text-decoration: underline;
     text-underline-offset: $underline-offset-large;
-
+    top: 0;
+    margin-bottom: 2vw;
     &:hover {
         opacity: 100%;
     }
@@ -176,7 +183,7 @@ label {
     position: absolute;
     color: white;
     transform: translate3d(0, 0, 0);
-    transition: all 0.2s ease-in-out;
+    // transition: all 0.2s ease-in-out;
     opacity: 80%;
     font-size: $font-size-large-desktop;
     font-family: "Tiempos Headline", serif;
@@ -263,10 +270,13 @@ select {
     }
 
     &[disabled] {
-        // background-color: #fff !important;
-        color:white !important;
+        background-color: none;
+        color:white;
         opacity: .3;
         cursor: not-allowed;
+    }&:hover:disabled{
+        color: white;
+        background-color: $color-off-black;
     }
 }
 
@@ -279,13 +289,13 @@ a {
     }
 }
 
-.ui-full:invalid+label {
-    color: red;
-}
+// .ui-full:invalid+label {
+//     color: red;
+// }
 
-input.ui-full:invalid {
-    color: red;
-}
+// input.ui-full:invalid {
+//     color: red;
+// }
 
 .modal {
     background-color: black;
@@ -451,6 +461,10 @@ input.ui-full:invalid {
         display: block;
         animation: drop .3s 1;
         animation-fill-mode: forwards;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
     }
 }
 
@@ -546,7 +560,7 @@ li {
         font-size: $font-size-large-desktop;
         color: white;
         opacity: 80%;
-        line-height: $font-size-large-desktop;;
+        line-height: $font-size-large-desktop;
         margin: auto 0;
 
         &:hover {
@@ -701,7 +715,8 @@ h2 {
     outline: none;
     opacity: 0;
     cursor: pointer;
-    height: 40px;
+    
+    // height: 40px;
 }
 
 .desc-left {
@@ -720,13 +735,14 @@ h2 {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: -10px;
+    // top: -10px;
     color: white;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     transition: all 0.2s ease-in-out;
     width: 100%;
     text-align: center;
+    top: 0px;
     
     font-size: $font-size-large-desktop;
     font-family: "Tiempos Headline", serif;
@@ -748,15 +764,21 @@ h2 {
 
 .remove-file-btn {
     color:white;
-    padding-left: 20px;
-    font-size: 10px;
-    letter-spacing: 1px;
+    padding-left: 10px;
+    font-size: 16px;
+    // letter-spacing: 1px;
     z-index: 2;
-    line-height: 12px;
+    // line-height: 12px;
     margin: auto 0;
     opacity:80%;
     // content: "\f404";
     // font-family: 'Ionicons';
+    &::after {
+        content: "\f404";
+        font-family: 'Ionicons';
+        font-size: 20px;
+        color: white;
+    }
     &:hover {
         opacity:100%;
     }
@@ -801,4 +823,120 @@ btn.submit-job-application-btn {
 
  input:-webkit-autofill {
      -webkit-box-shadow: 0 0 0px 1000px #010718 inset;
+ }
+
+ .open-application {
+    padding: 15px 54px;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease-in-out;
+    font-size: 14px;
+    position: relative;
+    right: 0;
+    top: 0;
+    display: table;
+    bottom: 0;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    line-height: 14px;
+    cursor: pointer;
+    &:hover {
+        background-color: #f8f8f8;
+        // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        color: black;
+    }
+
+ }
+
+
+ .careers-container {
+    display: flex;
+    flex-direction: column;
+ }
+
+
+ /* ---- mobile layout ---- */
+
+ @media only screen and (max-width: 790px) {
+    .positions .desc.reveal {
+        flex-direction: column;
+    }
+ 
+    .desc-left,
+    .desc-right {
+        max-width: 90%;
+        max-width: 90%;
+    }
+
+    .desc-right {
+        padding-left: 0%
+    }
+
+    .req,
+    input,
+    label,
+    .file-upload-container,
+    .file-upload-btn {
+        font-size: 6vw;
+        transition: none;
+    }
+}
+
+ @media only screen and (max-width: 1080px) {
+    .req,
+    input,
+    label,
+    .positions .title,
+    .file-upload-container,
+    .file-upload-btn {
+    font-size: $font-size-large-mobile;
+    line-height: $font-size-large-mobile;
+    transition: none;
+    }
+     .positions .desc.reveal {
+         flex-direction: column;
+     }
+
+     .desc-left,
+     .desc-right {
+         width: 90%;
+         max-width: 90%;
+     }
+
+     .desc-right {
+         padding-left: 0%
+     }
+
+    .positions .title.location {
+    max-width: 24vw;
+    min-width: 24vw;
+    }
+
+    .positions .pos-card {
+        padding: 4vw 40px;
+    }
+
+    .positions .desc {
+        display: none;
+        color: white;
+        font-size: 0.9rem;
+        transition: none;
+        // max-width: 78%;
+        margin-left: 24vw;
+    }
+
+
+ }
+
+ .errors-container {
+    color: white;
+    width: 100%;
+    text-align: center;
+    color: brown;
+    padding-top: 4px;
+    height: 57px;
+    max-width: 70%;
+    margin: 0 auto;
  }

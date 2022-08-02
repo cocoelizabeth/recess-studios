@@ -6,6 +6,8 @@ import { INLINES, BLOCKS, MARKS } from '@contentful/rich-text-types'
 const options = {
     renderMark: {
         [MARKS.BOLD]: (text) => <b>{text}</b>,
+        [MARKS.ITALIC]: (text, key) => <em key={key}>{text}</em>,
+        [MARKS.UNDERLINE]: (text, key) => <u key={key}>{text}</u>,
     },
     renderNode: {
         [INLINES.HYPERLINK]: (node, children) => {
@@ -30,12 +32,13 @@ const options = {
 
 class Career extends React.Component {
     constructor({ job, setSelectedJobCallback, ...props}) {
+        
         super(props)
         this.title = job.title;
-        this.description = job.jobDescription;
         this.location = job.jobLocation.cityName;
-        this.responsibilitiesAndQualifications = job.responsibilitiesAndQualifications;
-        this.capacity = job.capacity;
+        this.description = job.jobDescription;
+        this.responsibilities = job.responsibilities;
+        this.qualifications = job.qualifications;
         this.benefits = job.benefits;
         this.setSelectedJobCallback = setSelectedJobCallback;
         
@@ -79,21 +82,7 @@ class Career extends React.Component {
     }
     render() {
         
-        // let projectMedia;
-        // let hrefId = "a".concat(this.id)
 
-        // if (this.contentType.includes("video")) {
-        //     projectMedia = (
-        //         <ProjectHeroVideo heroFileUrl={this.heroFileUrl} />
-        //         // <video playsInline muted loop width="100%">
-        //         //     <source src={this.heroFileUrl} type="video/mp4" />
-        //         // </video>
-        //     )
-        // } else {
-        //     projectMedia = (
-        //         <img className="project-image" src={this.heroFileUrl} alt={this.projectTitle} />
-        //     )
-        // }
         return (
             <li key={this.title} ref={this.posCardRef} className="pos-card" id="pos_1" onClick={this.handlePosCardClick}>
                 <div className="content grid job-container">
@@ -101,28 +90,31 @@ class Career extends React.Component {
                     <div className="title position">{this.title}</div>
                     {/* <div className="dept">Design</div>
                     <div className="date">June 4</div> */}
-                    <div className="refer" data-position-title={this.title} data-position-location={this.location} onClick={this.handleApplyClick} ref={this.applyRef}>Apply</div>
+                    {/* <div className="refer" data-position-title={this.title} data-position-location={this.location} onClick={this.handleApplyClick} ref={this.applyRef}>Apply</div> */}
                 </div>
-                <div ref={this.descRef} className="desc">
+                <div ref={this.descRef} className="desc pp-project-copy">
                     <div className="description-container desc-left">
-                            <p>QUALIFICATIONS</p>
-                            {renderRichText(this.description, options)}
-                            {renderRichText(this.responsibilitiesAndQualifications, options)}
+                        <p>DESCRIPTION</p>
+                        {renderRichText(this.description, options)}
+                        <br></br>
+                        <p>RESPONSIBILITIES</p>
+                        {renderRichText(this.responsibilities, options)}
+                        <br></br>
+                        <p>QUALIFICATIONS</p>
+                        {renderRichText(this.qualifications, options)}
+                        <br></br>
                     </div>
                     <div className="description-container desc-right">
                         <p>BENEFITS</p>
                         {renderRichText(this.benefits, options)}
+                        <div className="open-application" data-position-title={this.title} data-position-location={this.location} onClick={this.handleApplyClick} ref={this.applyRef}>Apply</div>
+
                     </div>
                        
             
                 </div>
             </li>
-            // <Link to={`/work/${this.slug}/`} className="project-link" target="_blank" key={this.id} id={hrefId} title={this.projectTitle}>
-            //     <div className="project-group">
-            //         {projectMedia}
-            //         <div className="project-title">{this.projectTitle}</div>
-            //     </div>
-            // </Link>
+
         )
     }
 
