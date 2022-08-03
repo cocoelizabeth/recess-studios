@@ -35,11 +35,11 @@ const NotFoundPage = () => {
       <div className="background-image-container">
         <img className="background-image" src={backgroundImage} alt="Background Image" />
         <div className="not-found-container">
-          <Link to="/" className="home-link">
+          <Link to="/" >
             <img className="logo not-found-logo" src={logoGif} alt="Logo" />
           </Link>
             <p>Page Not Found</p>
-            <Link to="/">Go home</Link>
+          <Link to="/" className="home-link">Go home</Link>
         </div> 
       </div>
       
