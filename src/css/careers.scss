@@ -866,8 +866,10 @@ btn.submit-job-application-btn {
  
     .desc-left,
     .desc-right {
-        max-width: 90%;
-        max-width: 90%;
+        max-width: 100%;
+        max-width: 100%;
+        word-break: keep-all;
+        text-transform: none;
     }
 
     .desc-right {
@@ -882,6 +884,18 @@ btn.submit-job-application-btn {
         font-size: 6vw;
         transition: none;
     }
+
+    
+
+    // .positions .desc {
+    //     display: none;
+    //     color: white;
+    //     font-size: 0.9rem;
+    //     transition: none;
+    //     // max-width: 78%;
+    //     margin-left: 24vw;
+
+    // }
 }
 
  @media only screen and (max-width: 1080px) {
@@ -903,6 +917,7 @@ btn.submit-job-application-btn {
      .desc-right {
          width: 90%;
          max-width: 90%;
+        text-transform: none;
      }
 
      .desc-right {
@@ -910,8 +925,9 @@ btn.submit-job-application-btn {
      }
 
     .positions .title.location {
-    max-width: 24vw;
-    min-width: 24vw;
+        max-width: 24vw;
+        min-width: 24vw;
+        overflow-y: scroll;
     }
 
     .positions .pos-card {
@@ -921,10 +937,23 @@ btn.submit-job-application-btn {
     .positions .desc {
         display: none;
         color: white;
-        font-size: 0.9rem;
+        font-size: 10px;
         transition: none;
         // max-width: 78%;
         margin-left: 24vw;
+
+    }
+
+    .refer-card {
+        &.fade {
+            height: auto;
+        }
+    }
+    .return {
+        font-size: 10px;
+        &:before {
+            font-size: 10px;
+        }
     }
 
 

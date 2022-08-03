@@ -289,7 +289,7 @@ export default class CareersPage extends React.Component {
                     },
                     body: JSON.stringify({
                         senderName: '"RECESS CAREERS" <coco@recessworld.com>',
-                        senderEmail: "coco@recessworld.com",
+                        senderEmail: "careers@recessworld.com",
                         message: "NEW MESSAGE",
                         base64Data: resumeBase64,
                         resumeBase64Data: resumeBase64,

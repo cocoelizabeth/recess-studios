@@ -59,6 +59,9 @@ class Career extends React.Component {
             case 'portland':
                 this.state = {location: 'Portland'}
                 break;
+            default:
+                this.state = {location: job.jobLocation}
+
         }
 
 
