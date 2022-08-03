@@ -62,14 +62,14 @@ const FormFileInput = (
             <input
                 type="file"
                 accept="application/pdf"
-                className="req file-upload-input"
+                className="req file-upload-input ui-full"
                 name={name}
                 required="required"
                 id={name}
                 onChange={onChange}
                 ref={ref}/>
 
-            <label hidden="hidden" className="placeholder" htmlFor="resume">
+            <label className="placeholder" htmlFor="resume">
                 {labelText}
             </label>
             <div className="file-upload-container">
