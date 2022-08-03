@@ -347,10 +347,10 @@ video {
 
 }
 
-.not-found-container img {
+.not-found-logo {
   margin-bottom: 40px;
 }
 
-.not-found-container a {
+.home-link {
   text-decoration: underline;
 }

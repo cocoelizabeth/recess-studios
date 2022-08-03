@@ -34,9 +34,9 @@ const NotFoundPage = () => {
     {/* <Header></Header> */}
       <div className="background-image-container">
         <img className="background-image" src={backgroundImage} alt="Background Image" />
-        <div class="not-found-container">
-          <Link to="/" >
-            <img className="logo" src={logoGif} alt="Logo" />
+        <div className="not-found-container">
+          <Link to="/" className="home-link">
+            <img className="logo not-found-logo" src={logoGif} alt="Logo" />
           </Link>
             <p>Page Not Found</p>
             <Link to="/">Go home</Link>
