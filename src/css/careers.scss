@@ -858,6 +858,17 @@ btn.submit-job-application-btn {
  .careers-container {
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+-ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+      
+
+    
  }
 
 
@@ -1017,9 +1028,9 @@ btn.submit-job-application-btn {
         margin-bottom: 28px;
     }
 
-    .positions .title.location {
-        overflow-y: scroll;
-    }
+    // .positions .title.location {
+    //     overflow-y: scroll;
+    // }
   }
 
   @media only screen and (max-width: 480px) {

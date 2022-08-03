@@ -221,12 +221,12 @@ export default class CareersPage extends React.Component {
                 break;
             case 'resume': 
                 let resumeFileSize = input.files[0].size/1024/1024;
-                let fileType = input.files[0].type;
+                let resumeFileType = input.files[0].type;
           
-                let invalidFile = fileType === "application/pdf" ? false : true;
-                console.log(fileType)
-                console.log("invalidFile = "+ invalidFile)
-                if (resumeFileSize > 5 || invalidFile) {
+                let invalidResumeFile = resumeFileType === "application/pdf" ? false : true;
+                console.log(resumeFileType)
+                console.log("invalidResumeFile = "+ invalidResumeFile)
+                if (resumeFileSize > 5 || invalidResumeFile) {
                     this.state.fileError = "Invalid file. Resume must be a PDF and cannot exceed 5MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
                     this.removeUpload('resume');
                 } else {
@@ -235,7 +235,9 @@ export default class CareersPage extends React.Component {
                 break;
             case 'coverLetter': 
                 let coverLetterFileSize = input.files[0].size / 1024 / 1024;
-                if (coverLetterFileSize> 5) {
+                let coverLetterFileType = input.files[0].type;
+                let invalidCoverLetterFileType = coverLetterFileType === "application/pdf" ? false : true;
+                if (coverLetterFileSize > 5 || invalidCoverLetterFileType) {
                     this.state.fileError = "Invalid file. Cover Letter must be a PDF and cannot exceed 5MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
                     this.removeUpload('coverLetter');
                 } else {
