@@ -479,6 +479,10 @@ a {
         text-transform: uppercase;
         text-underline-offset: $underline-offset-small;
         text-decoration: underline;
+        font-size: 12px;
+    }
+    &.fade::before {
+        font-size: 12px;
     }
 }
 
@@ -857,48 +861,23 @@ btn.submit-job-application-btn {
  }
 
 
+ .errors-container {
+     color: white;
+     width: 100%;
+     text-align: center;
+     color: #FF8B00;
+     padding-top: 4px;
+     height: 57px;
+     max-width: 70%;
+     margin: 0 auto;
+ }
+
  /* ---- mobile layout ---- */
 
- @media only screen and (max-width: 790px) {
-    .positions .desc.reveal {
-        flex-direction: column;
-    }
- 
-    .desc-left,
-    .desc-right {
-        max-width: 100%;
-        max-width: 100%;
-        word-break: keep-all;
-        text-transform: none;
-    }
 
-    .desc-right {
-        padding-left: 0%
-    }
 
-    .req,
-    input,
-    label,
-    .file-upload-container,
-    .file-upload-btn {
-        font-size: 6vw;
-        transition: none;
-    }
 
-    
-
-    // .positions .desc {
-    //     display: none;
-    //     color: white;
-    //     font-size: 0.9rem;
-    //     transition: none;
-    //     // max-width: 78%;
-    //     margin-left: 24vw;
-
-    // }
-}
-
- @media only screen and (max-width: 1080px) {
+ @media only screen and (max-width: 1023px) {
     .req,
     input,
     label,
@@ -920,6 +899,10 @@ btn.submit-job-application-btn {
         text-transform: none;
      }
 
+     .refer-card {
+        margin-bottom: 0;
+     }
+
      .desc-right {
          padding-left: 0%
      }
@@ -937,7 +920,7 @@ btn.submit-job-application-btn {
     .positions .desc {
         display: none;
         color: white;
-        font-size: 10px;
+        // font-size: 10px;
         transition: none;
         // max-width: 78%;
         margin-left: 24vw;
@@ -949,23 +932,90 @@ btn.submit-job-application-btn {
             height: auto;
         }
     }
-    .return {
-        font-size: 10px;
-        &:before {
-            font-size: 10px;
+
+
+
+ }
+
+
+  @media only screen and (max-width: 767px) {
+      .positions .desc.reveal {
+          flex-direction: column;
+      }
+
+      .desc-left,
+      .desc-right {
+          max-width: 100%;
+          max-width: 100%;
+          word-break: keep-all;
+          text-transform: none;
+      }
+
+      .desc-right {
+          padding-left: 0%
+      }
+
+      .req,
+      input,
+      label,
+      .file-upload-container,
+      .file-upload-btn {
+          font-size: 6vw;
+          transition: none;
+      }
+
+      .card__content {
+          padding: 0;
+      }
+
+      .return {
+        //   font-size: 10px;
+
+          &:before {
+            //   font-size: 10px;
+          }
+      }
+
+      .positions .desc {
+        //   font-size: 10px;
+      }
+
+
+    .open-application {
+        margin-top: 40px;
+        margin-bottom: 28px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+      .desc-left,
+      .desc-right {
+          width: 100%;
+          max-width: 100%;
+          word-break: break-word;
+          text-transform: none;
+          line-height: 15px;
+          font-size: 9px;
+      }
+
+    .positions {
+        .desc {
+            li {
+                line-height: 15px;
+            }
         }
     }
 
+      .open-application {
+        font-size: 10px;
+        padding: 12px 51px;
+        margin-top: 40px;
+        margin-bottom: 28px;
+      }
 
- }
 
- .errors-container {
-    color: white;
-    width: 100%;
-    text-align: center;
-    color: brown;
-    padding-top: 4px;
-    height: 57px;
-    max-width: 70%;
-    margin: 0 auto;
- }
+
+  }
+
+
+

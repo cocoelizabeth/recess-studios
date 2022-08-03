@@ -84,7 +84,15 @@ class Header extends React.Component {
                         </div>
                     </div>
                 </div>
+
+                {/* <div className="nav-logo-btn">
+                    <a href="/">
+                        <img src={logo} />
+                    </a>
+                </div> */}
             </nav>
+
+
         )
     }
 }

@@ -25,7 +25,7 @@ const options = {
         [BLOCKS.OL_LIST]: (node, children) => (
             <ol>{children}</ol>
         ),
-        [BLOCKS.LIST_ITEM]: (node, children) => <li>{children}</li>,
+        [BLOCKS.LIST_ITEM]: (node, children) => <li className="careers-bullets">{children}</li>,
     }
 }
 

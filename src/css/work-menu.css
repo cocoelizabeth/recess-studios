@@ -248,3 +248,52 @@ nav.active .nav-bar .our-work .our-work-text::after {
         max-width: 85px;
     }
 }
+
+@media only screen and (max-width: 480px) {
+    nav .nav-bar .sidebarOpen {
+        font-size: 10px;
+    }
+
+    nav .nav-bar .sidebarOpen::after {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .logo img{
+        max-width: 60px;
+    }
+    nav .nav-bar .sidebarOpen {
+        font-size: 8px;
+    }
+    nav .nav-bar .sidebarOpen::after {
+        font-size: 8px;
+    }
+
+}
+
+.nav-logo-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+}
+.nav-logo-btn a img {
+    max-width: 60px;
+}
+
+  /* span.logo.navLogo {
+      position: absolute;
+      width: 100%;
+      padding-right: 40px;
+      padding-left: 40px;
+      left: 0;
+  }
+  .logo img{
+    margin: 0 auto;
+  } */
