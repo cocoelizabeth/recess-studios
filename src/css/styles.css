@@ -130,6 +130,10 @@ img {
   width: 24%;
 }
 
+a.underline-link {
+  text-decoration: underline;
+}
+
 
 /* ---- mobile layout ---- */
 

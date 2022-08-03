@@ -18,3 +18,15 @@ nav.active .nav-bar .our-work .left-text::after {
  .black-header-background {
     background-color: #010718;
  }
+
+ /* temporary CSS -- delete when implementing new header */
+ .left-text::after {
+     content: "";
+     transition: all 0.3s ease;
+ }
+
+ .left-text {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    
+ }

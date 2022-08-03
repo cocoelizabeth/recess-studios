@@ -23,17 +23,21 @@ const IndexPage = () => {
         <div className="grid-item grid-item--3 grid-item--width6 " />
         <div className="grid-item grid-item--4 grid-item--width24">Recess Studios is a Full Service Marketing Agency &amp;
           Production
-          Studio based in NY, LA, &amp; Portland.</div>
+          Studio based in New York, Los Angeles, &amp; Portland.</div>
         <div className="grid-item grid-item--5 grid-item--width4 " />
         <div className="grid-item grid-item--6 grid-item--width5">
           {/* <Link to="/work" className="underline-link" title="Work">OUR WORK</Link> */}
         </div>
         <div className="grid-item grid-item--7 grid-item--width20 " />
         <div className="grid-item grid-item--8 grid-item--width11">
-          FOR BUSINESS INQUIRIES &amp; CAREER OPPORTUNITIES
+          FOR BUSINESS INQUIRIES
           <br></br>
           <a className="underline-link" href="mailto:321@recessworld.com" title="mailto:321@recessworld.com" target="_blank" rel="noreferrer noopener">321@RECESSWORLD.COM</a>
+          <br></br>
+          <br></br>
+          <Link to="/careers" className="underline-link">CAREER OPPORTUNITIES</Link>
         </div>
+
         <div className="grid-item grid-item-9 grid-item--width4 " />
         <div className="grid-item grid-item--10 grid-item--width6">
           <a className="underline-link" href="https://www.instagram.com/recess.studios/" target="_blank">@RECESS.STUDIOS</a>
