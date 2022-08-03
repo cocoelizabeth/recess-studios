@@ -203,8 +203,10 @@ export default class CareersPage extends React.Component {
         const validEmailRegex = RegExp(
             /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
         );
+        debugger
         
         switch (input.name) {
+           
             case 'name':
                 errors.name =
                     input.value.length < 5
@@ -219,7 +221,12 @@ export default class CareersPage extends React.Component {
                 break;
             case 'resume': 
                 let resumeFileSize = input.files[0].size/1024/1024;
-                if (resumeFileSize > 5) {
+                let fileType = input.files[0].type;
+          
+                let invalidFile = fileType === "application/pdf" ? false : true;
+                console.log(fileType)
+                console.log("invalidFile = "+ invalidFile)
+                if (resumeFileSize > 5 || invalidFile) {
                     this.state.fileError = "Invalid file. Resume must be a PDF and cannot exceed 5MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
                     this.removeUpload('resume');
                 } else {

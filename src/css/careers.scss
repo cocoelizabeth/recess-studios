@@ -874,7 +874,7 @@ btn.submit-job-application-btn {
 
  /* ---- mobile layout ---- */
 
-@media only screen and (max-width: 1520px) {
+@media only screen and (max-width: 1200px) {
         .req,
             input,
             label,
@@ -937,7 +937,7 @@ btn.submit-job-application-btn {
     .positions .title.location {
         max-width: 24vw;
         min-width: 24vw;
-        overflow-y: scroll;
+
     }
 
     .positions .pos-card {
@@ -1015,6 +1015,10 @@ btn.submit-job-application-btn {
     .open-application {
         margin-top: 40px;
         margin-bottom: 28px;
+    }
+
+    .positions .title.location {
+        overflow-y: scroll;
     }
   }
 
