@@ -462,7 +462,7 @@ a {
         animation: drop .3s 1;
         animation-fill-mode: forwards;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         height: 100%;
     }
@@ -874,7 +874,28 @@ btn.submit-job-application-btn {
 
  /* ---- mobile layout ---- */
 
+@media only screen and (max-width: 1520px) {
+        .req,
+            input,
+            label,
+            .file-upload-container,
+            .file-upload-btn {
+                font-size: $font-size-large-mobile;
+                line-height: $font-size-large-mobile;
+                transition: none;
+            }
 
+         .refer-card {
+             margin-bottom: 0;
+         }
+
+
+
+         .return.fade {
+             margin-bottom: 40;
+             
+         }
+}
 
 
  @media only screen and (max-width: 1023px) {
@@ -899,9 +920,15 @@ btn.submit-job-application-btn {
         text-transform: none;
      }
 
+
      .refer-card {
         margin-bottom: 0;
      }
+
+
+    .refer-card.fade {
+        align-items: center;
+    }
 
      .desc-right {
          padding-left: 0%
@@ -931,6 +958,10 @@ btn.submit-job-application-btn {
         &.fade {
             height: auto;
         }
+    }
+
+    .return.fade {
+        margin-bottom: 30px;
     }
 
 
@@ -1003,6 +1034,13 @@ btn.submit-job-application-btn {
             li {
                 line-height: 15px;
             }
+        }
+    }
+
+    .return.fade {
+        font-size: 10px;
+        &::before {
+            font-size: 10px;
         }
     }
 
