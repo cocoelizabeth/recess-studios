@@ -31,17 +31,18 @@ const options = {
 
 
 class Career extends React.Component {
-    constructor({ job, setSelectedJobCallback, ...props}) {
-        
+    constructor(props) {
+      
         super(props)
-        this.title = job.title;
-        this.location = job.jobLocation.cityName;
-        this.description = job.jobDescription;
-        this.responsibilities = job.responsibilities;
-        this.qualifications = job.qualifications;
-        this.benefits = job.benefits;
-        this.setSelectedJobCallback = setSelectedJobCallback;
         
+        this.title = this.props.job.title;
+        this.location = this.props.job.jobLocation.cityName;
+        this.description = this.props.job.jobDescription;
+        this.responsibilities = this.props.job.responsibilities;
+        this.qualifications = this.props.job.qualifications;
+        this.benefits = this.props.job.benefits;
+        this.setSelectedJobCallback = this.props.setSelectedJobCallback;
+
 
         this.posCardRef = React.createRef();
         this.handlePosCardClick = this.handlePosCardClick.bind(this)
@@ -49,7 +50,7 @@ class Career extends React.Component {
         this.applyRef = React.createRef()
         this.handleApplyClick = this.handleApplyClick.bind(this);
         this.state = {location: ""};
-        switch (job.jobLocation.cityName.toLowerCase()) {
+        switch (this.props.job.jobLocation.cityName.toLowerCase()) {
             case 'los angeles':
                 this.state = {location: 'LA'};
                 break;
@@ -60,7 +61,7 @@ class Career extends React.Component {
                 this.state = {location: 'Portland'}
                 break;
             default:
-                this.state = {location: job.jobLocation}
+                this.state = {location: this.props.job.jobLocation}
 
         }
 
@@ -87,7 +88,7 @@ class Career extends React.Component {
         
 
         return (
-            <li key={this.title} ref={this.posCardRef} className="pos-card" id="pos_1" onClick={this.handlePosCardClick}>
+            <li ref={this.posCardRef} className="pos-card" id={`pos-${this.props.idx}`} onClick={this.handlePosCardClick}>
                 <div className="content grid job-container">
                     <div className="title location">{this.state.location}</div>
                     <div className="title position">{this.title}</div>

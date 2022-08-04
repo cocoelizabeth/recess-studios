@@ -69,7 +69,7 @@ const FormFileInput = (
                 onChange={onChange}
                 ref={ref}/>
 
-            <label className="placeholder" htmlFor="resume">
+            <label className="placeholder display-none" htmlFor={name}>
                 {labelText}
             </label>
             <div className="file-upload-container">

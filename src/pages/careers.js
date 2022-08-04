@@ -31,6 +31,7 @@ export default class CareersPage extends React.Component {
 
         this.setSelectedJobCallback = this.setSelectedJobCallback.bind(this)
         this.handleReturnClick = this.handleReturnClick.bind(this);  
+        this.closeOpenJobTabs = this.closeOpenJobTabs.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleFormChange = this.handleFormChange.bind(this);
         this.handleFileUpload = this.handleFileUpload.bind(this);
@@ -73,10 +74,18 @@ export default class CareersPage extends React.Component {
 
     // closes the application form and returns to job listings
     handleReturnClick() {
+        this.closeOpenJobTabs();
         this.referCardRef.current.classList.remove('fade');
         this.returnRef.current.classList.remove('fade');
         this.positionsRef.current.classList.remove('fadeOut');
         this.resetForm();
+
+    }
+
+    closeOpenJobTabs() {
+        Array.from(document.getElementsByClassName('reveal')).forEach((job) => {
+            job.classList.remove('reveal')
+        })
     }
 
     // success modal
@@ -203,7 +212,7 @@ export default class CareersPage extends React.Component {
         const validEmailRegex = RegExp(
             /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
         );
-        debugger
+        
         
         switch (input.name) {
            
@@ -220,29 +229,37 @@ export default class CareersPage extends React.Component {
                         : 'Invalid email.';
                 break;
             case 'resume': 
-                let resumeFileSize = input.files[0].size/1024/1024;
-                let resumeFileType = input.files[0].type;
-          
-                let invalidResumeFile = resumeFileType === "application/pdf" ? false : true;
-                console.log(resumeFileType)
-                console.log("invalidResumeFile = "+ invalidResumeFile)
-                if (resumeFileSize > 5 || invalidResumeFile) {
-                    this.state.fileError = "Invalid file. Resume must be a PDF and cannot exceed 5MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
-                    this.removeUpload('resume');
-                } else {
-                    this.state.fileError = "";
+                if (input.files[0]) {
+                    let resumeFileSize = input.files[0].size / 1024 / 1024;
+                    let resumeFileType = input.files[0].type;
+
+                    let invalidResumeFile = resumeFileType === "application/pdf" ? false : true;
+                    console.log(resumeFileType)
+                    console.log("invalidResumeFile = " + invalidResumeFile)
+                    if (resumeFileSize > 3 || invalidResumeFile) {
+                        this.state.fileError = "Resume must be a PDF and cannot exceed 3MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
+                        this.removeUpload('resume');
+                    } else {
+                        this.state.fileError = "";
+                    }
+                }else {
+                    this.removeUpload('resume')
                 }
                 break;
             case 'coverLetter': 
+            if (input.files[0]) {
                 let coverLetterFileSize = input.files[0].size / 1024 / 1024;
                 let coverLetterFileType = input.files[0].type;
                 let invalidCoverLetterFileType = coverLetterFileType === "application/pdf" ? false : true;
-                if (coverLetterFileSize > 5 || invalidCoverLetterFileType) {
-                    this.state.fileError = "Invalid file. Cover Letter must be a PDF and cannot exceed 5MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
+                if (coverLetterFileSize > 3 || invalidCoverLetterFileType) {
+                    this.state.fileError = "Cover Letter must be a PDF and cannot exceed 3MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
                     this.removeUpload('coverLetter');
                 } else {
                     this.state.fileError = "";
                 }
+            } else {
+                this.removeUpload('coverLetter')
+            }
                 break;
             default:
                 break;
@@ -259,9 +276,14 @@ export default class CareersPage extends React.Component {
 
     resetForm() {
         let requiredFormFields = Array.from(document.getElementsByClassName('req'));
+
         requiredFormFields.forEach((requiredField) => {
-            requiredField.val = "";
+            
+            requiredField.value = "";
+            requiredField.classList.remove("ui-full")
         })
+        this.removeUpload('resume');
+        this.removeUpload('coverLetter')
         this.btnRef.current.disabled=true;
         this.state.formData={};
         this.state.errors={};
@@ -286,7 +308,8 @@ export default class CareersPage extends React.Component {
             const resumeFileName = name.toUpperCase().split(" ").join("_").concat("_RESUME.pdf");
             const coverLetterFileName = name.toUpperCase().split(" ").join("_").concat("_COVER_LETTER.pdf");
             const subject = ["Job App: ", name, " - ", position, " - ", location].join("");
-            console.log(subject)
+         
+            
             fetch(
                 "https://d5ipc6569a.execute-api.us-east-1.amazonaws.com/sendEmail",
                 {
@@ -300,10 +323,8 @@ export default class CareersPage extends React.Component {
                         senderName: '"RECESS CAREERS" <coco@recessworld.com>',
                         senderEmail: "careers@recessworld.com",
                         message: "NEW MESSAGE",
-                        base64Data: resumeBase64,
                         resumeBase64Data: resumeBase64,
                         coverLetterBase64Data: coverLetterBase64,
-                        fileName: "TEST_FILE_NAME",
                         name: name,
                         email: email,
                         position: position,
@@ -317,10 +338,11 @@ export default class CareersPage extends React.Component {
                     })
                 })
                 // .then(() => alert("Success!"))
+                .then(response => console.log(response))
                 .then(()=> this.resetForm())
                 // .then(() => document.getElementById('modal').classList.remove('shrink'))
                 // .then(() => document.getElementById('modal').classList.add('show'))
-                .then(() => navigate(form.getAttribute("action")))
+                // .then(() => navigate(form.getAttribute("action")))
                 .catch(error => alert(error));
             // e.preventDefault();
         } else {
@@ -339,9 +361,11 @@ export default class CareersPage extends React.Component {
             )
         })
       
-        let careerItems = this.jobs.map(job => {
+        let careerItems = this.jobs.map((job, i) => {
             return (
                 <Career
+                    idx={i}
+                    key={i}
                     job={job.node}
                     setSelectedJobCallback={this.setSelectedJobCallback}
                 />
@@ -349,7 +373,7 @@ export default class CareersPage extends React.Component {
         })
 
         return (
-            <div className="background-image-container careers-container">
+            <div className="careers-container">
                 <Header leftText="Careers" background="black-header-background" />
                 <>
                     <div ref={this.positionsRef} className="container positions">
