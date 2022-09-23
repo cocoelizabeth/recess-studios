@@ -102,20 +102,31 @@ exports.createPages = async ({ graphql, actions }) => {
 
 
     countryResponse.data.allContentfulEcommCountry.edges.forEach(({ node }) => {
-      // Catalog page
       createPage({
-        path:
-        `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/`,
+        path:`/shop/`,
         component: path.resolve(`src/templates/catalog-page.js`),
         context: {
           // Data passed to the context is available in page queries as GraphQL variables
-          slug:
-          `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/`,
-            language: node.node_locale,
-            shipping: node.code,
-            pageTitle: "SHOP"
+          slug:`/shop/`,
+          language: node.node_locale,
+          shipping: node.code,
+          pageTitle: "SHOP"
         }
       })
+      // logic to create '/us/en-us/'
+      // createPage({
+      //   path:
+      //   `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/`,
+      //   component: path.resolve(`src/templates/catalog-page.js`),
+      //   context: {
+      //     // Data passed to the context is available in page queries as GraphQL variables
+      //     slug:
+      //     `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/`,
+      //       language: node.node_locale,
+      //       shipping: node.code,
+      //       pageTitle: "SHOP"
+      //   }
+      // })
       node.catalog.categories.map( c => {
         const categorySlug = c.name
           .trim()
