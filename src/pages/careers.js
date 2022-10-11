@@ -374,7 +374,7 @@ export default class CareersPage extends React.Component {
 
         return (
             <div className="careers-container">
-                <Header leftText="Careers" background="black-header-background" />
+                <Header leftText="Careers" background="black-header-background" leftTextLink="/careers/"/>
                 <>
                     <div ref={this.positionsRef} className="container positions">
 

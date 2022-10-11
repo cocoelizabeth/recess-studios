@@ -1,19 +1,67 @@
-import * as React from "react"
+import React, { useEffect, useRef, useState } from 'react'
 import logo from '../images/recess-logo-still.png'
 import { Link } from "gatsby";
 import '../css/header.css'
+import '../css/shop-header.css'
+import { useShoppingBag } from "../hooks/useShoppingBag";
+import ShoppingBag from './shopping-bag';
+import * as CLayer from 'commercelayer-react'
+import ShoppingBagNav from './shopping-bag-nav';
+// const ShopHeader = ({ open, close, leftText, background, leftTextLink, ...props}) => {
+//     const [status, setStatus] = useShoppingBag()
+//     const delayTimer = useRef(null)
+
+    
+
+//     useEffect(() => {
+//         return window.clearInterval(delayTimer.current)
+//     })
+//     const handleOnClick = e => {    
+//         if (e.target.hasAttribute('disabled')) {
+//             return e.preventDefault()
+//         }
+//         delayTimer.current = window.setInterval(() => {
+//             setStatus()
+//             open=status;
+//         }, 1000)
+
+//         console.log(status)
+
+//     }
+//     return (
+//                         <nav className={background} >
+
+//                 <div className="nav-bar shop-nav-bar">
+//                     <div className="our-work sidebarOpen">
+//                         <div className="sidebarOpen left-text underline-link"><Link to={leftTextLink}>{leftText}</Link></div>
+//                     </div>
+//                     <span className="logo navLogo">
+//                         <a href="/">
+//                             <img src={logo} />
+//                         </a>
+//                     </span>
+//                     <div className="our-work sidebarOpen shop-nav-cart">
+//                         <div className="sidebarOpen left-text  shop-nav-cart" onClick={handleOnClick}>CART</div>
+//                     </div>
+
+//                 </div>
 
 
-
-class Header extends React.Component {
+//  </nav>
+//     )
+// }
+class ShopHeader extends React.Component {
     constructor(props) {
         super(props);
         this.leftText = this.props.leftText;
         this.background = this.props.background;
         // this.projects = this.props.projects;
-        this.state = { visible: false }
+        this.state = { 
+            cartVisible: this.props.open, }
         this.toggle = this.toggle.bind(this)
         this.leftTextLink = this.props.leftTextLink;
+
+        
         // this.handleMobileScroll = this.handleMobileScroll.bind(this);
     }
 
@@ -22,12 +70,15 @@ class Header extends React.Component {
     // }
 
     toggle() {
-        if (this.state.visible) {
-            this.setState({ visible: false });
+        debugger
+        if (this.state.cartVisible) {
+            this.setState({ cartVisible: false });
         } else {
-            this.setState({ visible: true });
+            this.setState({ cartVisible: true });
         }
     }
+
+    
 
     // handleMobileScroll() {
     //     if (window.outerWidth < 1080) {
@@ -105,9 +156,10 @@ class Header extends React.Component {
             //     </div> */}
             // </nav>
             // TEMPORARY CODE:
+            <div>
                 <nav className={this.props.background} >
 
-                <div className="nav-bar">
+                <div className="nav-bar shop-nav-bar">
                     <div className="our-work sidebarOpen">
                         <div className="sidebarOpen left-text underline-link"><Link to={this.props.leftTextLink}>{this.leftText}</Link></div>
                     </div>
@@ -116,18 +168,31 @@ class Header extends React.Component {
                             <img src={logo} />
                         </a>
                     </span>
-                    <div className="menu" >
-
+                    <div className="our-work sidebarOpen shop-nav-cart">
+                        {/* <Link to={"/cart"}><div className="sidebarOpen left-text  shop-nav-cart">
+                        CART (<span><CLayer.ShoppingBagItemsCount /></span>)</div></Link> */}
+                        <div onClick={this.toggle} className="sidebarOpen left-text  shop-nav-cart">
+                            CART (<span><CLayer.ShoppingBagItemsCount /></span>)
+                        </div>
                     </div>
+                    
+     
                 </div>
 
 
             </nav>
 
-
+            <ShoppingBagNav
+               open={this.state.cartVisible}
+               close={this.toggle}
+               >
+      
+            </ShoppingBagNav>
+            </div>
+    
 
         )
     }
 }
 
-export default Header;
+export default ShopHeader;

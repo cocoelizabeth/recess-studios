@@ -559,6 +559,10 @@ li {
         flex-direction: row;
     }
 
+    .content.grid.job-container {
+        top: 0px;
+    }
+
 
     .title {
         font-family: 'Tiempos Headline', serif;
@@ -888,10 +892,10 @@ btn.submit-job-application-btn {
 
 @media only screen and (max-width: 1200px) {
         .req,
-            input,
-            label,
-            .file-upload-container,
-            .file-upload-btn {
+         input,
+         label,
+        .file-upload-container,
+        .file-upload-btn {
                 font-size: $font-size-large-mobile;
                 line-height: $font-size-large-mobile;
                 transition: none;

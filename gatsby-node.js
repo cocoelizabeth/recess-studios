@@ -50,6 +50,13 @@
 
 const { count } = require("console")
 const path = require("path")
+// import { getSalesChannelToken } from '@commercelayer/js-auth';
+
+// const token = await getSalesChannelToken({
+//     clientId: 'ca9Lqe-VhQpED4It7n2OO7b9MSFHTFlPyKMJCQ23XZ0',
+//     endpoint: 'https://recess-studios.commercelayer.io',
+//     scope: 'market:10564'
+//   })
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
@@ -157,7 +164,7 @@ exports.createPages = async ({ graphql, actions }) => {
               component: path.resolve(`./src/templates/product-page.js`),
                 context: {
                   slug: 
-                    `/${node.code.toLowerCase()}/${node.node_locale.toLowerCase()}/${categorySlug}/${productSlug}`,
+                    `/shop/${productSlug}`,
                         language: node.node_locale,
                         shipping: node.code,
                         categoryId: c.contentful_id,

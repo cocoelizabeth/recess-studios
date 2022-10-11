@@ -25,12 +25,14 @@ const CategoryPage = (props) => {
     const categoryName = props.data.contentfulEcommCategory.name.trim();
     const [status, setStatus] = useShoppingBag()
 
+
     return (
 
         <ShopLayout
             {...props}
             shoppingBagStatus={status}
             setShoppingBagStatus={setStatus}
+
         >
             <div className="background-image-container">
                 <img className="shop-background-image" src={backgroundImage} alt="Background Image" />

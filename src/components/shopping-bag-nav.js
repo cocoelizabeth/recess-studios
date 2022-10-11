@@ -5,7 +5,8 @@ import useAuthToken from '../hooks/useAuthToken';
 import ShopHeader from './shop-header';
 
 
-const ShoppingBag = ({ open, close, ...props }) => {
+const ShoppingBagNav = ({ open, close, ...props }) => {
+    
     const {token} = useAuthToken();
     const [checkoutLink, setCheckoutLink] = useState("#");
 
@@ -28,7 +29,7 @@ const ShoppingBag = ({ open, close, ...props }) => {
 
 
     return (
-        <div id='shopping-bag' className={open ? 'open' : ''}>
+        <div id='shopping-bag-nav' className={open ? 'open' : ''}>
             <div className='shopping-bag-content'>
                 <div className='columns'>
                     <div className='column'>
@@ -46,7 +47,7 @@ const ShoppingBag = ({ open, close, ...props }) => {
                 <CLayer.ShoppingBagItems
                     ItemsContainerTag='table'
                     itemTemplate={
-                        <table id='shopping-bag-table' className='table is-fullwidth'>
+                        <table id='shopping-bag-nav-table' className='table is-fullwidth'>
                             <tr>
                                 <td className='shopping-bag-col shopping-bag-col-image'>
                                     <CLayer.ShoppingBagItemImage />
@@ -71,7 +72,7 @@ const ShoppingBag = ({ open, close, ...props }) => {
                     <div className='column'>
                         <a
                             className='button is-fullwidth'
-                            id='shopping-bag-close'
+                            id='shopping-bag-nav-close'
                             onClick={close}
                         >
                             {'Continue Shopping'}
@@ -98,4 +99,4 @@ const ShoppingBag = ({ open, close, ...props }) => {
 //     open: false
 // }
 
-export default ShoppingBag
+export default ShoppingBagNav

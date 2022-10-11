@@ -17,7 +17,7 @@ const Product = (props) => {
     const delayTimer = useRef(null)
     const handleOnClick = e => {
         console.log(e.target.dataset)
-        
+
         if (e.target.hasAttribute('disabled')) {
             
             return e.preventDefault()
@@ -57,14 +57,6 @@ const Product = (props) => {
                         skus={variants}
                     />
                 </div>
-
-                <CLayer.AddToBag
-                    className={`add-to-bag button is-success is-fullwidth`}
-                    id="add-to-bag"
-                    AvailabilityMessageContainerId="availability-message"
-                    text="Add to Bag"
-                    onClick={handleOnClick}
-                />
 
                 <a href={props.itemLink}>
                    

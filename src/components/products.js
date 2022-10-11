@@ -13,7 +13,7 @@ import { useShoppingBag } from '../hooks/useShoppingBag'
 const Products = (props) => {
     
     const { data, shop, lang, categorySlug } = props
-    const env = process.env.NODE_ENV
+    const env = process.env.NODE_ENV;
     const productsData = props.data;
     const [status, setStatus] = useShoppingBag()
     const delayTimer = useRef(null)
@@ -36,7 +36,8 @@ const Products = (props) => {
         let itemLink = "";
              
         productSlug = product.name.trim().toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s/gm, '-').replace(/--/, "-")
-        itemLink = [categorySlug.toLowerCase(), productSlug ].join("/");
+        itemLink = productSlug;
+        // itemLink = [categorySlug.toLowerCase(), productSlug ].join("/");
         console.log(itemLink)
         return (
             <Product

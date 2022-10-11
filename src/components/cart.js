@@ -1,4 +1,5 @@
 import React from 'react'
+import * as CLayer from 'commercelayer-react'
 
 const Cart = (props) => {
     return (

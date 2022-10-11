@@ -7,11 +7,13 @@
     overflow-y: scroll;
     padding: 0;
     margin: 0;
+    z-index: -1;
 }
 
 .shop-background-image {
     width: 100%;
     height: 100%;
+
 }
 
 
@@ -20,8 +22,9 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 0;
-    z-index: 99999;
+    top: 70px;
+    /* z-index: 99999; */
+
 }
 .product-container {
     height: auto;
@@ -62,6 +65,7 @@
 }
 
 #shopping-bag-close,
+#shopping-bag-nav-close,
 a.clayer-shopping-bag-item-remove,
 a.clayer-shopping-bag-checkout {
     color: black;
@@ -146,7 +150,8 @@ a {
     display: none;
 }
 
-#shopping-bag {
+#shopping-bag,
+#shopping-bag-nav {
     height: 100%;
     /* 100% Full-height */
     width: 0;
@@ -169,7 +174,8 @@ a {
     border-left: 1px solid #eee;
 }
 
-#shopping-bag.open {
+#shopping-bag.open,
+#shopping-bag-nav.open {
     width: 500px;
 }
 
@@ -193,17 +199,20 @@ a {
     margin-bottom: 10px;
 }
 
-#shopping-bag-preview-total {
+#shopping-bag-preview-total,
+#shopping-bag-nav-preview-total {
     text-align: right;
     font-weight: bold;
 }
 
-#shopping-bag-table {
+#shopping-bag-table,
+#shopping-bag-nav-table {
     background-color: #fafafa;
     /* Black*/
 }
 
-#shopping-bag-table td {
+#shopping-bag-table td,
+#shopping-bag-nav-table td {
     border: none;
     border-top: 1px solid #eee;
     padding-top: 10px;
@@ -237,4 +246,104 @@ a {
 
 a.checkout {
     color: black;
+}
+
+ul.size-labels {
+    display:flex;
+    height:100%;
+    width: 100%;
+    flex-direction: column;
+
+}
+
+.radio-button {
+}
+
+/* commented out because it was messing up careers page */
+label {
+    /* font-size: 10px; */
+}
+input.sizeRadio {
+
+}
+
+.radio-button label {
+    font-family: inherit;
+    position: relative;
+}
+
+.radio-button label:active,
+.radio-button label:focus{
+    text-decoration: underline;
+}
+
+.radio-button:active {
+    color:red;
+}
+
+input:active ~ label {
+    text-decoration: underline;
+}
+
+label {
+    position: relative;
+    
+}
+
+
+input[type="radio"]:checked+label { font-weight: bold !important; }
+
+
+
+select.variant-select {
+  /* A reset of styles, including removing the default dropdown arrow */
+  appearance: none;
+  /* Additional resets for further consistency */
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  color: white;
+    position: relative;
+    text-transform: uppercase;
+    outline:none;
+}
+
+select.variant-select::-ms-expand {
+    display:none;
+}
+
+:root {
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+}
+
+
+
+select.variant-select:after {
+  width: 100%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
 }

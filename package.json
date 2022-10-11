@@ -15,6 +15,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@commercelayer/js-auth": "^2.3.0",
+    "@commercelayer/react-components": "^3.15.2",
     "@contentful/rich-text-react-renderer": "^15.12.1",
     "@contentful/rich-text-types": "^15.12.1",
     "gatsby": "^4.11.3",
