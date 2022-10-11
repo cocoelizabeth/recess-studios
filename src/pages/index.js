@@ -35,12 +35,15 @@ const IndexPage = () => {
           <a className="underline-link" href="mailto:321@recessworld.com" title="mailto:321@recessworld.com" target="_blank" rel="noreferrer noopener">321@RECESSWORLD.COM</a>
           <br></br>
           <br></br>
-          <Link to="/careers" className="underline-link">CAREER OPPORTUNITIES</Link>
+          {/* <Link to="/careers" className="underline-link">CAREER OPPORTUNITIES</Link> */}
         </div>
 
         <div className="grid-item grid-item-9 grid-item--width4 " />
         <div className="grid-item grid-item--10 grid-item--width6">
           <a className="underline-link" href="https://www.instagram.com/recess.studios/" target="_blank">@RECESS.STUDIOS</a>
+          <br></br>
+          <a className="underline-link" href="https://www.recess.shop" target="_blank">SHOP</a>
+
         </div>
         <div className="grid-item grid-item--11 grid-item--width10 " />
       </div>

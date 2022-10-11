@@ -41,7 +41,7 @@ const CatalogPage = () => {
     debugger
     return (
         <>
-            <div className="background-image-container">
+            <div className="background-image-container shop">
                 <img className="shop-background-image" src={backgroundImage} alt="Background Image" />
             </div>
             <div className='content'>
