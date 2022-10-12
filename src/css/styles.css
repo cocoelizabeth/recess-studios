@@ -1,9 +1,9 @@
 /* ----- GLOBAL STYLES ---- */
 
 :root {
-  --body-color: #010718;
+  --body-color: black;
   --nav-color: transparent;
-  --side-nav: #010718;
+  --side-nav: black;
   --text-color: #fff;
 }
 

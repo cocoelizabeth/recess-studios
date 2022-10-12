@@ -11,7 +11,7 @@ $font-size-large-desktop: calc(100vw/36);
 $font-size-large-mobile: calc(100vw/22);
 $underline-offset-large: 3px;
 $underline-offset-small: 2px;
-$color-off-black: #010718;
+$color-off-black: black;
 
 html {
     display: flex;
@@ -57,7 +57,7 @@ body {
 
 .card {
     border-radius: 5px;
-    background-color:#010718;
+    background-color:black;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -107,7 +107,7 @@ h1 {
     // transition: all .1s linear;
     // width: 100%;
     position: relative;
-    background: #010718;
+    background: black;
     width: fit-content;
     margin: 0 auto;
     padding-bottom: 4px;
@@ -132,7 +132,7 @@ h1 {
     color: white;
     opacity: 80%;
     transform: translate3d(0, 0, 0);
-    text-transform: capitalize;
+    // text-transform: capitalize;
     // transition: all 0.2s ease-in-out;
     width: 100%;
     text-align: center;
@@ -304,7 +304,11 @@ a {
     display: none;
     padding: 30px 50px 30px 90px;
     margin-bottom: 30px;
-    position: relative;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    text-transform: uppercase;
 
     &.show {
         animation: grow 1s 1;
@@ -328,10 +332,12 @@ a {
         left: 25px;
         top: 50%;
         margin-top: -25px;
+        display: none;
     }
 
-    h2 {
-        color: #3FB8AF;
+    h2.thank-you-h2 {
+        color:white;
+        font-family: 'Graphik', sans-serif;
         font-size: 1.2rem;
         margin-bottom: 20px;
     }
@@ -404,9 +410,16 @@ a {
 
 }
 
+.thank-you-text {
+    color: white;
+}
+
 .focus {
     font-weight: bold;
+    color: white;
 }
+
+
 
 #refer_pos {
     display: inline-block;
@@ -419,7 +432,6 @@ a {
 
     &:before {
         color: #aaa;
-   
         position: absolute;
         right: -40px;
         top: -30px;
@@ -457,6 +469,7 @@ a {
     // min-width: 475px;
     display: none;
     transition: all 0.6s ease-in-out;
+    position: relative;
 
     &.fade {
         display: block;
@@ -512,6 +525,7 @@ li {
     transition: all 0.3s ease-in-out;
     animation: fade .3s 1;
     animation-fill-mode: forwards;
+    margin-bottom: 0px;
 
     &.fadeOut {
         display: none;
@@ -831,7 +845,7 @@ btn.submit-job-application-btn {
  }
 
  input:-webkit-autofill {
-     -webkit-box-shadow: 0 0 0px 1000px #010718 inset;
+     -webkit-box-shadow: 0 0 0px 1000px black inset;
  }
 
  .open-application {
@@ -1081,5 +1095,87 @@ align-items: baseline;
   } 
 
 
+  
+.blur {
+    filter: blur(3px)
+  }
+
+  /* Centre the Spinner Container */
+.submit-spinner-careers {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    // background-color: black;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    &.show {
+        display: flex;
+        pointer-events: none;
+    }
+
+}
 
 
+.loading-spinner {
+
+	width: 2.5em;
+	height: 2.5em;
+	border: 0.3em solid transparent;
+	border-color: black;
+	border-top-color: white;
+	border-radius: 50%;
+	animation: loadingspin 1s linear infinite;
+
+}
+
+
+@keyframes loadingspin {
+	100% {
+			transform: rotate(360deg)
+	}
+}
+
+
+
+// THANK YOU PAGE
+
+.thanks-container {
+    // padding-top: 70px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+
+    .thank-you-text {
+        max-width: 60vw;
+    }
+}
+
+.careers-container {
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.equal-opportunity-text {
+    color: white;
+    padding: 2vw 40px;
+    font-size: 10px;
+
+}
+
+
+
+@media only screen and (max-width: 1023px) {
+    .equal-opportunity-text {
+        padding: 4vw 40px;
+        font-size: 8px;
+    }
+}

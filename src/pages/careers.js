@@ -4,6 +4,7 @@ import Header from '../components/header'
 import Career from '../components/career'
 import Helmet from "react-helmet";
 import FormFileInput from '../components/formFileInput'
+import logoGif from '../images/recess-chrome-v2-optimized.gif'
 
 import '../css/font.css'
 import '../css/reset.css'
@@ -41,6 +42,8 @@ export default class CareersPage extends React.Component {
 
         this.setBase64Callback = this.setBase64Callback.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.showLoadingSpinner = this.showLoadingSpinner.bind(this);
+        this.hideLoadingSpinner = this.hideLoadingSpinner.bind(this);
         this.formRef = React.createRef();
         this.btnRef = React.createRef();
         this.positionsRef = React.createRef();
@@ -54,6 +57,8 @@ export default class CareersPage extends React.Component {
         this.removeResumeBtn = React.createRef();
         this.removeCoverLetterBtn = React.createRef();
         this.errorsRef = React.createRef();
+        this.careerFormRef = React.createRef();
+        this.loadingSpinnerRef = React.createRef();
        
     }
 
@@ -99,6 +104,18 @@ export default class CareersPage extends React.Component {
         this.modalRef.current.classList.remove('show')
         this.returnRef.current.click()
 
+    }
+
+    // loading spinner 
+
+    showLoadingSpinner() {
+        this.careerFormRef.current.classList.add('blur')
+        this.loadingSpinnerRef.current.classList.add('show')
+    }
+
+    hideLoadingSpinner() {
+        this.careerFormRef.current.classList.remove('blur');
+        this.loadingSpinnerRef.current.classList.remove('show')
     }
 
     handleFormChange(e) {
@@ -232,12 +249,9 @@ export default class CareersPage extends React.Component {
                 if (input.files[0]) {
                     let resumeFileSize = input.files[0].size / 1024 / 1024;
                     let resumeFileType = input.files[0].type;
-
                     let invalidResumeFile = resumeFileType === "application/pdf" ? false : true;
-                    console.log(resumeFileType)
-                    console.log("invalidResumeFile = " + invalidResumeFile)
-                    if (resumeFileSize > 3 || invalidResumeFile) {
-                        this.state.fileError = "Resume must be a PDF and cannot exceed 3MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
+                    if (resumeFileSize > 2 || invalidResumeFile) {
+                        this.state.fileError = "Resume must be a PDF and cannot exceed 2MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
                         this.removeUpload('resume');
                     } else {
                         this.state.fileError = "";
@@ -251,8 +265,8 @@ export default class CareersPage extends React.Component {
                 let coverLetterFileSize = input.files[0].size / 1024 / 1024;
                 let coverLetterFileType = input.files[0].type;
                 let invalidCoverLetterFileType = coverLetterFileType === "application/pdf" ? false : true;
-                if (coverLetterFileSize > 3 || invalidCoverLetterFileType) {
-                    this.state.fileError = "Cover Letter must be a PDF and cannot exceed 3MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
+                if (coverLetterFileSize > 2 || invalidCoverLetterFileType) {
+                    this.state.fileError = "Cover Letter must be a PDF and cannot exceed 2MB. If you would like to include a larger file as part of your application, please use the optional 'Link to Work' field to send a public Dropbox/Google Drive link."
                     this.removeUpload('coverLetter');
                 } else {
                     this.state.fileError = "";
@@ -265,7 +279,6 @@ export default class CareersPage extends React.Component {
                 break;
         }
         this.setState({ errors, [input.name]: input.value });
-        console.log(this.state.errors)
     }
 
     validateForm(errors) {
@@ -305,10 +318,42 @@ export default class CareersPage extends React.Component {
             const linkToWork = data.linkToWork;
             const resumeBase64 = data.resumeBase64;
             const coverLetterBase64 = data.coverLetterBase64;
-            const resumeFileName = name.toUpperCase().split(" ").join("_").concat("_RESUME.pdf");
-            const coverLetterFileName = name.toUpperCase().split(" ").join("_").concat("_COVER_LETTER.pdf");
+
+            // const resumeFileName = name.toUpperCase().split(" ").join("_").concat("_RESUME.pdf");
+            // const coverLetterFileName = name.toUpperCase().split(" ").join("_").concat("_COVER_LETTER.pdf");
+            const resumeFileName = [name.toUpperCase(), "RESUME", position, location].join("_").concat(".pdf")
+            const coverLetterFileName  = [name.toUpperCase(), "COVER LETTER", position, location].join("_").concat(".pdf")
             const subject = ["Job App: ", name, " - ", position, " - ", location].join("");
          
+            this.showLoadingSpinner();
+
+            let event = {
+                    mode: "no-cors",
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        senderName: '"RECESS CAREERS" <careers@recessworld.com>',
+                        senderEmail: "careers@recessworld.com",
+                        message: "NEW MESSAGE",
+                        resumeBase64Data: resumeBase64,
+                        coverLetterBase64Data: coverLetterBase64,
+                        name: name,
+                        email: email,
+                        position: position,
+                        location: location,
+                        date: date,
+                        linkToWork: linkToWork,
+                        subject: subject,
+                        resumeFileName: resumeFileName,
+                        coverLetterFileName: coverLetterFileName,
+
+                    })
+            }
+
+
             
             fetch(
                 "https://d5ipc6569a.execute-api.us-east-1.amazonaws.com/sendEmail",
@@ -340,9 +385,18 @@ export default class CareersPage extends React.Component {
                 // .then(() => alert("Success!"))
                 .then(response => console.log(response))
                 .then(()=> this.resetForm())
+                .then(()=> this.hideLoadingSpinner())
+     
+              
                 // .then(() => document.getElementById('modal').classList.remove('shrink'))
                 // .then(() => document.getElementById('modal').classList.add('show'))
-                // .then(() => navigate(form.getAttribute("action")))
+                // .then(() => <Link to={`/careers/thanks`}/>)
+
+                // .then(()=> browserHistory.push({pathname: '/careers/thanks', state: this.state}))
+
+                
+                .then(() => navigate(form.getAttribute("action"), { state: this.state, replace: false }))
+                
                 .catch(error => alert(error));
             // e.preventDefault();
         } else {
@@ -386,15 +440,9 @@ export default class CareersPage extends React.Component {
                         Return to listings
                     </div>
                     <div className="container refer-card" ref={this.referCardRef}>
-                        <div id="modal" ref={this.modalRef} className="modal confirmed">
-                            <span ref={this.closeModalRef} onClick={this.closeModal} className="close-modal" />
-                            <h2>Thank you!</h2>
-                            <p>
-                                <span id="refer_name" className="focus" /> We have recieved your application for the {this.state.selectedJobTitle} {" "}
-                                <span id="refer_pos" className="focus" /> position.
-                            </p>
-                        </div>
-                        <div className="sign-up card">
+
+
+                        <div ref={this.careerFormRef} className="sign-up card">
                             <div className="card__header">
                                 <div className="description">
                                     APPLICATION FORM
@@ -537,10 +585,28 @@ export default class CareersPage extends React.Component {
                                 </form>
                             </div>
                         </div>
+
+                        {/* BEGIN CAREER SPINNER */}
+                        <div ref={this.loadingSpinnerRef} className="submit-spinner-careers">
+                            <div className="loading-spinner"></div>
+                            {/* <img className="logo not-found-logo" src={logoGif} alt="Logo" /> */}
+                        </div>
+
+                        {/* THANK YOU MODAL */}
+                        {/* <div id="modal" ref={this.modalRef} className="modal confirmed">
+                            <span ref={this.closeModalRef} onClick={this.closeModal} className="close-modal" />
+                            <h2 className="thank-you-h2">Thank you, {this.state.formData.name} </h2>
+                            <p className="thank-you-text">
+                            
+                                    We have recieved your application for the {this.state.selectedJobTitle} {" - "} {this.state.selectedJobLocation} {" position."}
+                        
+                            </p>
+                        </div> */}
+
                     </div>
                 </>
 
-
+                   <p className="equal-opportunity-text">Recess Studios is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to age, ancestry, color, family or medical care leave, gender identity or expression, genetic information, marital status, medical condition, national origin, physical or mental disability, political affiliation, protected veteran status, race, religion, sex (including pregnancy), sexual orientation, or any other characteristic protected by applicable laws, regulations and ordinances. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. If you need assistance and/or a reasonable accommodation due to a disability during the application or the recruiting process, please send a request via the Accommodation request form.</p>     
 
             </div>
         )
