@@ -2,11 +2,28 @@ import * as React from "react"
 import { Link } from "gatsby"
 import Header from "../../components/header";
 
+// const CareersThanks = ({ location }) => {
+//   const { state = {} } = location
+//   debugger
+//   const { modal } = state
+//   return modal ? (
+//     <dialog className="modal">I'm a modal of Some Page Component!</dialog>
+//   ) : (
+//     <div>Welcome to the Some Page Component!</div>
+//   )
+// }
+
+// export default CareersThanks;
 
 class CareersThanks extends React.Component {
     constructor(props) {
         super(props)
+        debugger
         if (this.props.location.state === null) {
+            this.props.location.state = {};
+            this.props.location.state.name = "";
+            this.props.location.state.selectedJobLocation = "";
+            this.props.location.state.selectedJobTitle = "";
             this.state = {
                 name: "",
                 location: "",
