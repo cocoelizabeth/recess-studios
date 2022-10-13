@@ -429,7 +429,7 @@ export default class CareersPage extends React.Component {
         return (
             <div className="careers-container">
                 <Header leftText="Careers" background="black-header-background" leftTextLink="/careers/"/>
-                <>
+           
                     <div ref={this.positionsRef} className="container positions">
 
                         <ul>
@@ -604,7 +604,7 @@ export default class CareersPage extends React.Component {
                         </div> */}
 
                     </div>
-                </>
+   
 
                    <p className="equal-opportunity-text">Recess Studios is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to age, ancestry, color, family or medical care leave, gender identity or expression, genetic information, marital status, medical condition, national origin, physical or mental disability, political affiliation, protected veteran status, race, religion, sex (including pregnancy), sexual orientation, or any other characteristic protected by applicable laws, regulations and ordinances. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. If you need assistance and/or a reasonable accommodation due to a disability during the application or the recruiting process, please send a request via the Accommodation request form.</p>     
 

@@ -18,13 +18,12 @@
     font-weight: normal;
     font-style: normal;
 }
-/* @import url('http://fonts.cdnfonts.com/css/tiempos-headline?styles=20872'); */
+@import url('http://fonts.cdnfonts.com/css/tiempos-headline?styles=20872');
 
 @font-face {
-    font-family: 'Tiempos Headline';
+    font-family: 'tiempos_headlineregular';
     src: url('../fonts/tiemposheadline-regular-webfont.woff2') format('woff2'),
-        url('../fonts/tiemposheadline-regular-webfont.woff') format('woff');
-    font-display: swap;
+         url('../fonts/tiemposheadline-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
