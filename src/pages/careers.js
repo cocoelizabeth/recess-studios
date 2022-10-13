@@ -386,7 +386,7 @@ export default class CareersPage extends React.Component {
                 .then(response => console.log(response))
                 .then(()=> this.resetForm())
                 .then(()=> this.hideLoadingSpinner())
-     
+                .then(() => navigate(`/careers/thanks?pos=${position.split(" ").join("-")}?loc=${location.split(" ").join("-")}?name=${name.split(" ").join("-")}`))
               
                 // .then(() => document.getElementById('modal').classList.remove('shrink'))
                 // .then(() => document.getElementById('modal').classList.add('show'))
@@ -395,7 +395,7 @@ export default class CareersPage extends React.Component {
                 // .then(()=> browserHistory.push({pathname: '/careers/thanks', state: this.state}))
 
                 
-                .then(() => navigate(form.getAttribute("action"), { state: this.state, replace: false }))
+                // .then(() => navigate(form.getAttribute("action"), { state: this.state, replace: false }))
                 
                 .catch(error => alert(error));
             // e.preventDefault();
