@@ -6,9 +6,9 @@ import Header from "../../components/header";
 class CareersThanks extends React.Component {
     constructor(props) {
         super(props)
-        this.name = this.props.location.state.name;
-        this.location = this.props.location.state.selectedJobLocation;
-        this.jobTitle = this.props.location.state.selectedJobTitle;
+        this.name = this.props.location.state.name || "";
+        this.location = this.props.location.state.selectedJobLocation || "";
+        this.jobTitle = this.props.location.state.selectedJobTitle || "";
     }
 
 
