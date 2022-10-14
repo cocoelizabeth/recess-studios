@@ -638,6 +638,9 @@ export const pageQuery = graphql`
         qualifications {
           raw
         }
+        requirements {
+          raw
+        }
         benefits {
           raw
         }

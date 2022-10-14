@@ -40,6 +40,7 @@ class Career extends React.Component {
         this.description = this.props.job.jobDescription;
         this.responsibilities = this.props.job.responsibilities;
         this.qualifications = this.props.job.qualifications;
+        this.requirements = this.props.job.requirements;
         this.benefits = this.props.job.benefits;
         this.setSelectedJobCallback = this.props.setSelectedJobCallback;
 
@@ -106,6 +107,9 @@ class Career extends React.Component {
                         <br></br>
                         <p>QUALIFICATIONS</p>
                         {renderRichText(this.qualifications, options)}
+                        <br></br>
+                        <p>REQUIREMENTS</p>
+                        {renderRichText(this.requirements, options)}
                         <br></br>
                     </div>
                     <div className="description-container desc-right">
