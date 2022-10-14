@@ -70,15 +70,17 @@ const FormFileInput = (
                 ref={ref}/>
 
             <label className="placeholder display-none" htmlFor={name}>
-                {labelText}
-            </label>
+                <span>{labelText}</span>
+            </label> 
             <div className="file-upload-container">
                 <div
                     className="file-upload-btn"
                     // onClick={() => { handleFileUploadCallback(name) }}>
                 
                    onClick={handleFileUpload}>
-                    {fileName}
+                   {fileName}
+                   {/* <span className="underline-form-field">{fileName}</span> */}
+                    
                 </div>
                 <div
                     className="remove-file-btn"

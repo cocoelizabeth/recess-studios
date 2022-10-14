@@ -128,7 +128,7 @@ h1 {
 .placeholder {
     cursor: text;
     position: absolute;
-    // top: -10px;
+    top: -10px;
     color: white;
     opacity: 80%;
     transform: translate3d(0, 0, 0);
@@ -136,10 +136,12 @@ h1 {
     // transition: all 0.2s ease-in-out;
     width: 100%;
     text-align: center;
-    text-decoration: underline;
-    text-underline-offset: $underline-offset-large;
+    // text-decoration: underline;
+    // text-underline-offset: $underline-offset-large;
     top: 0;
     margin-bottom: 2vw;
+    line-height: normal;
+
     &:hover {
         opacity: 100%;
     }
@@ -738,8 +740,7 @@ h2 {
     outline: none;
     opacity: 0;
     cursor: pointer;
-    padding-bottom: 4px;
-    // margin-bottom: 2vw;
+    
     // height: 40px;
 }
 
@@ -770,14 +771,16 @@ h2 {
     
     font-size: $font-size-large-desktop;
     font-family: "Tiempos Headline", serif;
+    line-height: normal;
     
 }
 
 .file-upload-btn {
-    text-underline-offset: $underline-offset-large;
+    // text-underline-offset: $underline-offset-large;
     font-size: $font-size-large-desktop;
     font-family: "Tiempos Headline", serif;
-    text-decoration: underline;
+    // text-decoration: underline;
+    // border-bottom: 1px solid white;
     opacity: 80%;
     cursor: pointer;
     &:hover {
@@ -1184,3 +1187,8 @@ align-items: baseline;
 .display-none {
     display: none;
 }
+
+    span.underline-form-field {
+        border-bottom: 1px solid white;
+        font-family: inherit;
+    }
