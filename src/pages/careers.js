@@ -365,7 +365,7 @@ export default class CareersPage extends React.Component {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        senderName: '"RECESS CAREERS" <coco@recessworld.com>',
+                        senderName: '"RECESS CAREERS" <careers@recessworld.com>',
                         senderEmail: "careers@recessworld.com",
                         message: "NEW MESSAGE",
                         resumeBase64Data: resumeBase64,
