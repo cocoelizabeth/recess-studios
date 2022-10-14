@@ -46,7 +46,8 @@ class CareersThanks extends React.Component {
                             <div className="thanks-container">
                                 <h2 className="thank-you-h2">Thanks, {this.state.name}.</h2>
                                 <p className="thank-you-text">
-                                    We have recieved your application for the {this.state.jobTitle} {" - "} {this.state.location} {" position."}
+                                    You have submitted your application for the {this.state.jobTitle} {" - "} {this.state.location} {" position."}
+                                    Please check your email for a copy of your application.
                                 </p>
                                 <Link className="underline-link" to="/careers/">RETURN TO CAREERS</Link>
                             </div>
