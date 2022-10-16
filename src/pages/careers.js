@@ -103,11 +103,9 @@ export default class CareersPage extends React.Component {
         this.modalRef.current.classList.add('shrink')
         this.modalRef.current.classList.remove('show')
         this.returnRef.current.click()
-
     }
 
     // loading spinner 
-
     showLoadingSpinner() {
         this.careerFormRef.current.classList.add('blur')
         this.loadingSpinnerRef.current.classList.add('show')
@@ -318,7 +316,6 @@ export default class CareersPage extends React.Component {
             const linkToWork = data.linkToWork;
             const resumeBase64 = data.resumeBase64;
             const coverLetterBase64 = data.coverLetterBase64;
-
             // const resumeFileName = name.toUpperCase().split(" ").join("_").concat("_RESUME.pdf");
             // const coverLetterFileName = name.toUpperCase().split(" ").join("_").concat("_COVER_LETTER.pdf");
             const resumeFileName = [name.toUpperCase(), "RESUME", position, location].join("_").concat(".pdf")
@@ -352,8 +349,6 @@ export default class CareersPage extends React.Component {
 
                     })
             }
-
-
             
             fetch(
                 "https://d5ipc6569a.execute-api.us-east-1.amazonaws.com/sendEmail",
@@ -382,31 +377,20 @@ export default class CareersPage extends React.Component {
 
                     })
                 })
-                // .then(() => alert("Success!"))
                 .then(response => console.log(response))
                 .then(()=> this.resetForm())
                 .then(()=> this.hideLoadingSpinner())
                 .then(() => navigate(`/careers/thanks?pos=${position.split(" ").join("-")}?loc=${location.split(" ").join("-")}?name=${name.split(" ").join("-")}`))
-              
                 // .then(() => document.getElementById('modal').classList.remove('shrink'))
                 // .then(() => document.getElementById('modal').classList.add('show'))
-                // .then(() => <Link to={`/careers/thanks`}/>)
-
-                // .then(()=> browserHistory.push({pathname: '/careers/thanks', state: this.state}))
-
-                
+                // .then(() => <Link to={`/careers/thanks`}/>)       
                 // .then(() => navigate(form.getAttribute("action"), { state: this.state, replace: false }))
-                
                 .catch(error => alert(error));
-            // e.preventDefault();
         } else {
             this.errorsRef.current.classList.remove('display-none');
             this.btnRef.current.disabled = true;
         }
     };
-
-
-
 
     render() {
         let errors = Object.values(this.state.errors).map(error => {
