@@ -2,12 +2,10 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import logoGif from '../images/recess-chrome-v2-optimized.gif'
 import backgroundImage from '../images/background.jpg'
-
 import '../css/font.css'
 import '../css/reset.css'
 import '../css/styles.css'
 import '../css/work-menu.css'
-
 
 const IndexPage = () => {
   return (
