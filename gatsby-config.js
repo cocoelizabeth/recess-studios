@@ -4,7 +4,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Recess Studios`,
+    title: `RECESS STUDIOS`,
+    description: 'NEW YORK. LOS ANGELES. PORTLAND.',
     siteUrl: `https://www.recess.studio`
   },
   plugins: [
