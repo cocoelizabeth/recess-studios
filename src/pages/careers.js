@@ -59,6 +59,7 @@ export default class CareersPage extends React.Component {
         this.errorsRef = React.createRef();
         this.careerFormRef = React.createRef();
         this.loadingSpinnerRef = React.createRef();
+        this.careersHeaderText = React.createRef();
        
     }
 
@@ -75,6 +76,7 @@ export default class CareersPage extends React.Component {
         this.positionsRef.current.classList.add('fadeOut')
         this.referCardRef.current.classList.add('fade')
         this.returnRef.current.classList.add('fade')
+        this.careersHeaderText.current.classList.add('display-none')
     }
 
     // closes the application form and returns to job listings
@@ -83,6 +85,8 @@ export default class CareersPage extends React.Component {
         this.referCardRef.current.classList.remove('fade');
         this.returnRef.current.classList.remove('fade');
         this.positionsRef.current.classList.remove('fadeOut');
+        this.careersHeaderText.current.classList.remove('display-none')
+
         this.resetForm();
 
     }
@@ -414,7 +418,7 @@ export default class CareersPage extends React.Component {
             <div className="careers-container">
                 <Header leftText="Careers" background="black-header-background" leftTextLink="/careers/"/>
 
-                <div class="careers-header-text-container">
+                <div ref={this.careersHeaderText} class="careers-header-text-container">
                     <div class="careers-header-text">Recess Studios©</div>
                     <div class="careers-header-text">— Careers</div>
                    
