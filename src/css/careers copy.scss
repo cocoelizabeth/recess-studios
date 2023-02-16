@@ -8,47 +8,42 @@
 $color-white: #fff;
 // view width
 $font-size-large-desktop: calc(100vw/36);
+// $font-size-large-desktop: calc(100vw/17);
 $font-size-large-mobile: calc(100vw/22);
 
 $font-size-medium-desktop: calc(100vw/90);
 $font-size-medium-mobile: calc(100vw/20);
 
+// pixels
+// $font-size-large-desktop: 70px;
+// $font-size-medium-desktop: 24px;
+
+// $font-size-large-mobile: 24px;
+// $font-size-medium-mobile: 12px;
 
 $underline-offset-large: 3px;
 $underline-offset-small: 2px;
 $color-off-black: black;
-
-// GENERAL STYLES
 
 html {
     display: flex;
 }
 
 body {
+    // background: #2C3B4F;
+    // @include background-image(linear-gradient(left bottom, #557b8e 0%, #c7e5ce 100%));
     width: 100%;
+
+    // margin: auto;
+
     -webkit-text-size-adjust: 100%;
     font-family: 'tiempos_headlineregular', 'Tiempos Headline', serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
 
-html,
-body {
-    min-height: 100%;
-}
-
-h1,
-h2,
-h3 {
-    font-weight: normal;
-    color: white;
-}
-
-h1 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    text-align: center;
-
+h2 {
+    color: #fff;
 }
 
 input {
@@ -65,6 +60,11 @@ input {
 
 a {
     text-decoration: none;
+}
+
+html,
+body {
+    min-height: 100%;
 }
 
 .card {
@@ -97,13 +97,27 @@ a {
 
 }
 
+h1,
+h2,
+h3 {
+    font-weight: normal;
+    color: white;
+}
 
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
 
 .req {
     border: 0 none;
     font-size: $font-size-large-desktop;
     line-height: $font-size-large-desktop;
     outline: none;
+    // transition: all .1s linear;
+    // width: 100%;
     position: relative;
     background: black;
     width: fit-content;
@@ -115,6 +129,9 @@ a {
 }
 
 .field {
+    &.line {
+        // border-bottom: 1px solid #eee;
+    }
     padding-bottom: 4px;
     margin-bottom: 2vw;
     position: relative;
@@ -123,9 +140,12 @@ a {
 .placeholder {
     cursor: text;
     position: absolute;
+    // top: -10px;
     color: white;
     opacity: 80%;
     transform: translate3d(0, 0, 0);
+    // text-transform: capitalize;
+    // transition: all 0.2s ease-in-out;
     width: 100%;
     text-align: center;
     text-decoration: underline;
@@ -282,7 +302,13 @@ a {
     }
 }
 
+// .ui-full:invalid+label {
+//     color: red;
+// }
 
+// input.ui-full:invalid {
+//     color: red;
+// }
 
 .modal {
     background-color: black;
@@ -502,12 +528,15 @@ li {
     list-style: none;
 }
 
-
+.careers-header-text {
+    font-size: $font-size-large-desktop;
+    line-height: $font-size-large-desktop;
+}
 
 .positions {
     font-family: 'tiempos_headlineregular', 'Tiempos Headline', sans-serif;
     display: table;
-    margin: auto;
+    margin: 40vh auto;
     width:100%;
     // min-width: 475px;
     transition: all 0.3s ease-in-out;
@@ -573,8 +602,10 @@ li {
 
     .title {
         // font-family: 'tiempos_headlineregular', 'Tiempos Headline', serif;
+        font-size: $font-size-large-desktop;
         color: white;
         opacity: 80%;
+        line-height: $font-size-large-desktop;
         margin: auto 0;
 
         &:hover {
@@ -582,11 +613,21 @@ li {
         }
         
         &.location {
-            padding-left: 8px;
+            // font-size: 1rem;
+            padding-left: 4px;
+            // align-self: flex-end;
+            // justify-self: flex-end;
+            // display: inline-block;
             // min-width: 22%;
             // max-width: 22%;
         }
- 
+        &.position {
+            // text-decoration: underline;
+            text-underline-offset: $underline-offset-large;
+          
+        }
+
+    
     
         &.new:after {
             content: "New";
@@ -597,6 +638,7 @@ li {
             letter-spacing: 2px;
             color: black;
             background-color: white;
+            // border-radius: 3px;
         }
     }
 
@@ -625,11 +667,13 @@ li {
     .refer {
         opacity: 0;
         padding: 15px 54px;
+        // border-radius: 3px;
         border: 1px solid #ddd;
         transition: all 0.2s ease-in-out;
 
         &:hover {
             background-color: #f8f8f8;
+            // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             color: black;
         }
     }
@@ -702,6 +746,7 @@ h2 {
         color: #fff;
         position: absolute;
         left: 0;
+        // font-weight: bold;
         font-size: 1rem;
         opacity: 1;
         transition: all 0.2s ease-in-out;
@@ -723,6 +768,8 @@ h2 {
     opacity: 0;
     cursor: pointer;
     padding-bottom: 4px;
+    // margin-bottom: 2vw;
+    // height: 40px;
 }
 
 .desc-left {
@@ -741,6 +788,7 @@ h2 {
     align-items: center;
     justify-content: center;
     position: absolute;
+    // top: -10px;
     color: white;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -751,7 +799,6 @@ h2 {
     
     font-size: $font-size-large-desktop;
     font-family: "Tiempos Headline", serif;
-    
     
 }
 
@@ -772,9 +819,13 @@ h2 {
     color:white;
     padding-left: 10px;
     font-size: 16px;
+    // letter-spacing: 1px;
     z-index: 2;
+    // line-height: 12px;
     margin: auto 0;
     opacity:80%;
+    // content: "\f404";
+    // font-family: 'Ionicons';
     &::after {
         content: "\f404";
         font-family: 'Ionicons';
@@ -798,21 +849,21 @@ div.job-container {
 }
 btn.submit-job-application-btn {
     padding: 15px 54px;
-    border: 1px solid #ddd;
-    transition: all 0.2s ease-in-out;
-    font-size: 14px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    display: table;
-    bottom: 0;
-    margin: auto;
-    color: white;
-    transition: all 0.3s ease-in-out;
-    text-transform: uppercase;
-    text-decoration: underline;
-    text-underline-offset: $underline-offset-small;
-    line-height: 14px;
+        border: 1px solid #ddd;
+        transition: all 0.2s ease-in-out;
+        font-size: 14px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: table;
+        bottom: 0;
+        margin: auto;
+        color: white;
+        transition: all 0.3s ease-in-out;
+        text-transform: uppercase;
+        text-decoration: underline;
+        text-underline-offset: $underline-offset-small;
+        line-height: 14px;
 }
 .return {
     margin-left: 40px;
@@ -923,7 +974,10 @@ btn.submit-job-application-btn {
     .positions {
         margin-top: 30vh;
     }
-
+    .positions .location-small {
+      
+        font-size: $font-size-medium-mobile;
+    }
      .positions .desc.reveal {
          flex-direction: column;
      }
@@ -1196,6 +1250,7 @@ align-items: baseline;
 
 .sub-text {
     margin-top: 4px;
+    font-size: 12px;
     display: flex;
     flex-direction: row;
     span {
@@ -1227,130 +1282,4 @@ align-items: baseline;
 }
 
 
-// VARIABLES
 
-
-$font-size-xl: 60px;
-$font-size-l: 18px;
-$font-size-s: 15px;
-
-$font-size-xl-1200: 40px;
-$font-size-l-1200: 14px;
-$font-size-s-1200: 12px;
-
-$font-size-xl-1023: 40px;
-$font-size-l-1023: 14px;
-$font-size-s-1023: 12px;
-
-$font-size-xl-767: 30px;
-$font-size-l-767: 10px;
-$font-size-s-767: 9px;
-
-$font-size-xl-480: 30px;
-$font-size-l-480: 10px;
-$font-size-s-480: 8px;
-
-// SCREEN WIDTH: 1200+;
-
-.positions {
-    margin-top: 36vh;
-}
-
-.careers-header-text,
-.positions .title.position {
-    font-family: "Tiempos Headline", serif;
-    font-size: $font-size-xl;
-    line-height: $font-size-xl;
-}
-
-.positions .title.location {
-    font-size: $font-size-l;
-    line-height: $font-size-xl;
-}
-
-.sub-text {
-    font-size: $font-size-s;
-}
-
-// .positions .desc{
-//     font-size: $font-size-l;
-//     line-height: normal;
-// }
-
-@media only screen and (max-width: 1200px) {
-    .positions {
-        margin-top: 30vh;
-    }
-    .careers-header-text,
-    .positions .title.position {
-        font-size: $font-size-xl-1200;
-        line-height: $font-size-xl-1200;
-    }
-    .positions .title.location {
-        font-size: $font-size-l-1200;
-        line-height: $font-size-xl-1200;
-
-    }
-    .sub-text {
-        font-size: $font-size-s-1200;
-    }
-}
-
-@media only screen and (max-width: 1023px) {
-    .positions {
-        margin-top: 20vh;
-    }
-    .careers-header-text,
-    .positions .title.position {
-        font-size: $font-size-xl-1023;
-        line-height: $font-size-xl-1023;
-    }
-    .positions .title.location {
-        font-size: $font-size-l-1023;
-        line-height: $font-size-xl-1023;
-    }
-    .sub-text {
-        font-size: $font-size-s-1023;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    .positions {
-        margin-top: 20vh;
-    }
-    .careers-header-text,
-    .positions .title.position {
-        font-size: $font-size-xl-767;
-        line-height: $font-size-xl-767;
-    }
-    .positions .title.location {
-        font-size: $font-size-l-767;
-        line-height: $font-size-xl-767;
-    }
-    .sub-text {
-        font-size: $font-size-s-767;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .positions {
-        margin-top: 10vh;
-    }
-    .careers-header-text,
-    .positions .title.position {
-        font-size: $font-size-xl-480;
-        line-height: $font-size-xl-480;
-    }
-    .positions .title.location {
-        font-size: $font-size-l-480;
-        line-height: $font-size-xl-480;
-    }
-    .sub-text {
-        font-size: $font-size-s-480;
-    }
-    .careers-header-text-container,
-    .positions .pos-card {
-        padding-left: 40px;
-        padding-right: 40px;
-    }
-}

@@ -6,10 +6,10 @@ import Helmet from "react-helmet";
 import FormFileInput from '../components/formFileInput'
 import logoGif from '../images/recess-chrome-v2-optimized.gif'
 
-import '../css/font.css'
-import '../css/reset.css'
-import '../css/styles.css'
-import '../css/work-menu.css'
+// import '../css/font.css'
+// import '../css/reset.css'
+// import '../css/styles.css'
+// import '../css/work-menu.css'
 // import '../css/careers.scss'
 
 export default class CareersPage extends React.Component {
@@ -589,6 +589,7 @@ export default class CareersPage extends React.Component {
                         </div> */}
 
                     </div>
+               
    
 
                    <p className="equal-opportunity-text">Recess Studios is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to age, ancestry, color, family or medical care leave, gender identity or expression, genetic information, marital status, medical condition, national origin, physical or mental disability, political affiliation, protected veteran status, race, religion, sex (including pregnancy), sexual orientation, or any other characteristic protected by applicable laws, regulations and ordinances. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements. If you need assistance and/or a reasonable accommodation due to a disability during the application or the recruiting process, please send a request an Accomodation Request form via email: <a className="underline-link" href="mailto:careers@recessworld.com">careers@recessworld.com</a></p>     
