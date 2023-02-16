@@ -1266,16 +1266,17 @@ $font-size-s-480: 8px;
 .positions .title.location {
     font-size: $font-size-l;
     line-height: $font-size-xl;
+    // font-family: "Tiempos Headline", "Tiempos", Serif;
 }
 
 .sub-text {
     font-size: $font-size-s;
 }
 
-// .positions .desc{
-//     font-size: $font-size-l;
-//     line-height: normal;
-// }
+.positions .desc.reveal {
+    font-size: $font-size-l;
+}
+
 
 @media only screen and (max-width: 1200px) {
     .positions {
@@ -1293,6 +1294,9 @@ $font-size-s-480: 8px;
     }
     .sub-text {
         font-size: $font-size-s-1200;
+    }
+    .positions .desc.reveal {
+        font-size: $font-size-l-1200;
     }
 }
 
@@ -1312,6 +1316,9 @@ $font-size-s-480: 8px;
     .sub-text {
         font-size: $font-size-s-1023;
     }
+    .positions .desc.reveal {
+        font-size: $font-size-l-1023;
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -1330,6 +1337,9 @@ $font-size-s-480: 8px;
     .sub-text {
         font-size: $font-size-s-767;
     }
+    .positions .desc.reveal {
+        font-size: $font-size-l-767;
+    }
 }
 
 @media only screen and (max-width: 480px) {
@@ -1347,6 +1357,9 @@ $font-size-s-480: 8px;
     }
     .sub-text {
         font-size: $font-size-s-480;
+    }
+    .positions .desc.reveal {
+        font-size: $font-size-l-480;
     }
     .careers-header-text-container,
     .positions .pos-card,

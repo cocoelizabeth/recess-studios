@@ -18,6 +18,7 @@ export default class CareersPage extends React.Component {
         this.totalJobs = props.data.allContentfulJobListing.totalListings;
         this.jobs = props.data.allContentfulJobListing.edges;
 
+        
         this.state = {
             selectedJobLocation: "",
             selectedJobTitle: "",
@@ -637,6 +638,10 @@ export const pageQuery = graphql`
         }
         benefits {
           raw
+        }
+        employmentType {
+            type
+            id
         }
         contentful_id
       }

@@ -53,6 +53,8 @@ class Career extends React.Component {
         this.requirements = this.props.job.requirements;
         this.benefits = this.props.job.benefits;
         this.setSelectedJobCallback = this.props.setSelectedJobCallback;
+        
+        this.employmentType = this.props.job.employmentType.type;
 
 
         this.posCardRef = React.createRef();
@@ -96,7 +98,11 @@ class Career extends React.Component {
 
     }
     render() {
+        let benefitsSummary = "";
 
+        if (this.employmentType.toLowerCase() == "full time") {
+            benefitsSummary = "401k + PTO + Health, Dental & Vision Insurance"
+        }
         
         // let benefitsRichText = renderRichText(this.benefits, options);
         // let benefits;
@@ -121,11 +127,11 @@ class Career extends React.Component {
                     {/* <div className="refer" data-position-title={this.title} data-position-location={this.location} onClick={this.handleApplyClick} ref={this.applyRef}>Apply</div> */}
                 </div>
                  <div className="sub-text">
-                    <span class="full-time">Full Time</span>
+                    <span class="full-time">{this.employmentType}</span>
 
                     {/* Get benefits item to create summary (logic to display first 2 in css) */}
                    {/* {renderRichText(this.benefits, summaryOptions)} */}
-                   <span>401k + PTO + Health, Dental & Vision Insurance</span>
+                   <span>{benefitsSummary}</span>
                  </div>
                 <div ref={this.descRef} className="desc pp-project-copy">
                     <div className="description-container desc-left">
