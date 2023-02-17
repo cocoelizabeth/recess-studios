@@ -13,10 +13,13 @@ export const SEO = ({ title, description, pathname, children }) => {
 
   return (
     <>
-      <title>{seo.title}</title>
-      <meta name="description" content={seo.description} />
-      <meta name="image" content={seo.image} />
-      {children}
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="image" content={seo.image} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:image" content={seo.image} />
+            {children}
     </>
   )
 }
