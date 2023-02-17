@@ -602,6 +602,7 @@ export default class CareersPage extends React.Component {
 
 
 
+
 export const pageQuery = graphql`
       query  {
            allContentfulJobListing(sort: {order: DESC, fields: createdAt}) {
@@ -628,6 +629,10 @@ export const pageQuery = graphql`
         }
         benefits {
           raw
+        }
+        employmentType {
+            type
+            id
         }
         contentful_id
       }
