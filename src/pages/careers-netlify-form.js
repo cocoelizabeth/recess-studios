@@ -517,6 +517,10 @@ export const pageQuery = graphql`
         benefits {
           raw
         }
+        employmentType {
+            type
+            id
+        }
         contentful_id
       }
     }
