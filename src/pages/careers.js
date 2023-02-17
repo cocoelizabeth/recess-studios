@@ -4,7 +4,6 @@ import Header from '../components/header'
 import Career from '../components/career'
 import Helmet from "react-helmet";
 import FormFileInput from '../components/formFileInput'
-import logoGif from '../images/recess-chrome-v2-optimized.gif'
 
 import '../css/font.css'
 import '../css/reset.css'

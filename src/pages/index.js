@@ -6,6 +6,7 @@ import '../css/font.css'
 import '../css/reset.css'
 import '../css/styles.css'
 import '../css/work-menu.css'
+import { SEO } from '../components/seo'
 
 const IndexPage = () => {
   return (
@@ -46,4 +47,8 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+
+export const Head = () => (
+  <SEO />
+)
 

@@ -113,7 +113,7 @@ class Header extends React.Component {
                     </div>
                     <span className="logo navLogo">
                         <a href="/">
-                            <img src={logo} />
+                            <img src={logo} alt="Recess Studios Logo"/>
                         </a>
                     </span>
                     <div className="menu" >

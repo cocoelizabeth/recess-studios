@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { INLINES, BLOCKS, MARKS } from '@contentful/rich-text-types'
 
@@ -30,14 +29,14 @@ const options = {
 }
 
 
-const summaryOptions = {
-    renderNode: {
-        [BLOCKS.UL_LIST]: (node, children) => (
-            <div className="benefits-summary-container">{children}</div>
-        ),
-        [BLOCKS.LIST_ITEM]: (node, children) => <span className="benefits-summary-item">{children}</span>,
-    }
-}
+// const summaryOptions = {
+//     renderNode: {
+//         [BLOCKS.UL_LIST]: (node, children) => (
+//             <div className="benefits-summary-container">{children}</div>
+//         ),
+//         [BLOCKS.LIST_ITEM]: (node, children) => <span className="benefits-summary-item">{children}</span>,
+//     }
+// }
 
 
 class Career extends React.Component {
@@ -100,7 +99,7 @@ class Career extends React.Component {
     render() {
         let benefitsSummary = "";
 
-        if (this.employmentType.toLowerCase() == "full time") {
+        if (this.employmentType.toLowerCase() === "full time") {
             benefitsSummary = "401k + PTO + Health, Dental & Vision Insurance"
         }
         
