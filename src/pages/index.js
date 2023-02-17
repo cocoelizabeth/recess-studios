@@ -51,6 +51,6 @@ const IndexPage = () => {
 export default IndexPage
 
 export const Head = () => (
-  <SEO title="HELO"/>
+  <SEO />
 )
 
