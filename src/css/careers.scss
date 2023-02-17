@@ -9,7 +9,6 @@ $color-white: #fff;
 // view width
 $font-size-large-desktop: calc(100vw/36);
 $font-size-large-mobile: calc(100vw/22);
-
 $font-size-medium-desktop: calc(100vw/90);
 $font-size-medium-mobile: calc(100vw/20);
 
@@ -503,7 +502,6 @@ li {
 }
 
 
-
 .positions {
     font-family: 'tiempos_headlineregular', 'Tiempos Headline', sans-serif;
     display: table;
@@ -572,7 +570,7 @@ li {
 
 
     .title {
-        // font-family: 'tiempos_headlineregular', 'Tiempos Headline', serif;
+        font-family: 'tiempos_headlineregular', 'Tiempos Headline', serif;
         color: white;
         opacity: 80%;
         margin: auto 0;
