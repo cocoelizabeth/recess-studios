@@ -1,6 +1,6 @@
 import React from "react"
 import { useSiteMetadata } from "../hooks/useSiteMetaData"
-import logoGif from "../images/recess-chrome-v2-optimized.gif"
+import linkPreview from "../images/recess-link-preview.jpg"
 
 export const SEO = ({ title, description, image, pathname, children }) => {
   const { title: defaultTitle, description: defaultDescription, siteUrl } = useSiteMetadata()
@@ -8,7 +8,7 @@ export const SEO = ({ title, description, image, pathname, children }) => {
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: image || `${siteUrl}${logoGif}`,
+    image: image || `${siteUrl}${linkPreview}`,
     url: `${siteUrl}${pathname || ``}`,
   }
 
