@@ -10,6 +10,7 @@ import { SEO } from '../components/seo'
 
 const IndexPage = () => {
   return (
+
     <div className="background-image-container">
       <img className="background-image" src={backgroundImage} alt="Background Image" />
       <div className="grid">
@@ -19,6 +20,7 @@ const IndexPage = () => {
             <img className="logo" src={logoGif} alt="Logo" />
           </Link>
         </div>
+      
         <div className="grid-item grid-item--3 grid-item--width6 " />
         <div className="grid-item grid-item--4 grid-item--width24">Recess Studios is a full service marketing agency &amp; production studio based in New York, Los Angeles, &amp; Portland.</div>
         <div className="grid-item grid-item--5 grid-item--width4 " />
@@ -49,6 +51,6 @@ const IndexPage = () => {
 export default IndexPage
 
 export const Head = () => (
-  <SEO />
+  <SEO title="HELO"/>
 )
 

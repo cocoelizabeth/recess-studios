@@ -1,13 +1,14 @@
 import React from "react"
 import { useSiteMetadata } from "../hooks/useSiteMetaData"
+import logoGif from "../images/recess-chrome-v2-optimized.gif"
 
-export const SEO = ({ title, description, pathname, children }) => {
-  const { title: defaultTitle, description: defaultDescription, image, siteUrl } = useSiteMetadata()
+export const SEO = ({ title, description, image, pathname, children }) => {
+  const { title: defaultTitle, description: defaultDescription, siteUrl } = useSiteMetadata()
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image}`,
+    image: image || `${siteUrl}${logoGif}`,
     url: `${siteUrl}${pathname || ``}`,
   }
 
