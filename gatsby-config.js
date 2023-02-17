@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `RECESS STUDIOS`,
     description: 'NEW YORK. LOS ANGELES. PORTLAND.',
-    image: '/src/images/recess-chrome-v2-optimized.gif',
+    image: '/recess-chrome-v2-optimized.gif',
     siteUrl: `https://www.recess.studio`
   },
   plugins: [

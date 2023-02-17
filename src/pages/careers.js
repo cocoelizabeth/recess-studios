@@ -4,6 +4,7 @@ import Header from '../components/header'
 import Career from '../components/career'
 import Helmet from "react-helmet";
 import FormFileInput from '../components/formFileInput'
+import { SEO } from '../components/seo';
 
 import '../css/font.css'
 import '../css/reset.css'
@@ -649,3 +650,7 @@ export const pageQuery = graphql`
   }
       }
 `
+
+export const Head = () => (
+  <SEO title="RECESS STUDIOS | CAREERS" />
+)
