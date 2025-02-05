@@ -27,25 +27,26 @@ const CategoryPage = (props) => {
 
 
     return (
+        <></>
 
-        <ShopLayout
-            {...props}
-            shoppingBagStatus={status}
-            setShoppingBagStatus={setStatus}
+        // <ShopLayout
+        //     {...props}
+        //     shoppingBagStatus={status}
+        //     setShoppingBagStatus={setStatus}
 
-        >
-            <div className="background-image-container shop">
-                <img className="shop-background-image" src={backgroundImage} alt="Background Image" />
-            </div>
+        // >
+        //     <div className="background-image-container shop">
+        //         <img className="shop-background-image" src={backgroundImage} alt="Background Image" />
+        //     </div>
 
-            <Products
-                shop={shop}
-                lang={lang}
-                data={products}
-                categorySlug={categorySlug}
-            />
+        //     <Products
+        //         shop={shop}
+        //         lang={lang}
+        //         data={products}
+        //         categorySlug={categorySlug}
+        //     />
 
-        </ShopLayout>
+        // </ShopLayout>
         // <ShopLayout>
 
         // <ShopLayout 
