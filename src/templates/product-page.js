@@ -42,15 +42,16 @@ export default (props) => {
        
         return (
  
-                <CLayer.VariantRadio
-                    skuCode={v.code}
-                    skuName={v.name}
-                    PriceContainerId="price"
-                    AvailabilityMessageContainerId="availability-message"
-                    AddToBagId="add-to-bag"
-                    text={v.size.name}
-                    className="sizeRadio"
-                />
+            <></>
+                // <CLayer.VariantRadio
+                //     skuCode={v.code}
+                //     skuName={v.name}
+                //     PriceContainerId="price"
+                //     AvailabilityMessageContainerId="availability-message"
+                //     AddToBagId="add-to-bag"
+                //     text={v.size.name}
+                //     className="sizeRadio"
+                // />
                 // <>
                 // <input 
                 //     class="clayer-variant clayer-variant-radio sizeRadio" 
