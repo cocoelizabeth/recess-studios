@@ -1,13 +1,9 @@
 import React from 'react';
 import { graphql, Link} from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
 
 import Video from '../components/video';
 import ProjectDescription from '../components/project-description'
 import Slideshow from '../components/slideshow';
-import WorkMenu from '../components/work-menu';
-
 import logo from '../images/recess-logo-still.png'
 import '../css/project-page.css'
 
@@ -163,7 +159,7 @@ class ProjectPage extends React.Component {
     addVimeoVideo() {
         
         console.log('addVimeoVideo() ==> SLIDESHOWCOPY')
-        if (this.state.hasVimeoVideo && ((this.slideshowMedia === null) || (this.slideshowMedia[0] != "vimeo video")) ) {
+        if (this.state.hasVimeoVideo && ((this.slideshowMedia === null) || (this.slideshowMedia[0] !== "vimeo video")) ) {
            
             let slideshowCopy=this.slideshowMedia || [];
      
@@ -212,7 +208,7 @@ class ProjectPage extends React.Component {
                         </div>
                         <span className="logo navLogo">
                             <a href="/">
-                                <img src={logo} />
+                                <img src={logo} alt="Logo for recess studios that looks like it is made out of chrome." />
                             </a>
                         </span>
                         <div className="menu" >
