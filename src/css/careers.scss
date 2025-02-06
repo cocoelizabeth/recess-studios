@@ -259,6 +259,8 @@ select {
 
     &:active {
         background-color: darken(white, 5%);
+        // background-color: color.scale($color, $lightness: -21.4285714286%);
+        // color.adjust($color, $lightness: -10%);
     }
 
     &[disabled] {
