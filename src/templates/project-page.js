@@ -10,11 +10,19 @@ import '../css/project-page.css'
 export const query = graphql`
   query($slug: String!) {
     contentfulProject(slug: { eq: $slug }) {
+
       title
       id
       vimeoVideoLink
-      pressLink
       copy {
+        references {
+                    slug
+                    contentful_id
+                    id
+                    internal {
+                        type
+                    }
+        }
           raw
       }
       slideshowMedia {
@@ -25,78 +33,25 @@ export const query = graphql`
           }
       }
       }
+      allContentfulPressLink(
+    filter: {project: {slug: {eq: $slug}}}
+  ) {
+    edges {
+      node {
+        id
+        createdAt
+        datePublished
+        source
+        articleTitle
+        link
+      }
+    }
+  }
     }
 `
 
 
-// const ProjectPage = props => {
-//     var projectTitle = props.data.contentfulProject.title;
-//     var projectPressLink = props.data.contentfulProject.pressLink;
-//     var copy = props.data.contentfulProject.copy;
-//     var slideshowMedia = props.data.contentfulProject.slideshowMedia;
-//     let hasVimeoVideo = false;
-//     let videoSrcUrl = "";
-    
-    // let projectPageMedia;
-    // if (props.data.contentfulProject.vimeoVideoLink) {
-    //    hasVimeoVideo = true;
-    //     videoSrcUrl = "https://player.vimeo.com/video/"
-    //     videoSrcUrl += props.data.contentfulProject.vimeoVideoLink.split(".com/")[1]
 
-    //         slideshowMedia.unshift(
-    //             "vimeo video"
-
-    //         )
-
-    //     }
-
-    //     projectPageMedia = (
-                 
-    //         <Slideshow
-    //             slideshowMedia={slideshowMedia}
-    //             projectTitle={projectTitle}
-    //             hasVimeoVideo={hasVimeoVideo}
-    //             videoSrcUrl={videoSrcUrl}
-    //         />
-    //     )
-
-    
-
-    // return (
-    //         <div className='project-page-container'>
-    //             <nav>
-    //                 <div className="nav-bar">
-    //                     <div className="back-to-work sidebarOpen">
-    //                         <Link to="/work" className="sidebarOpen back-to-work-text">BACK TO WORK</Link>
-    //                     </div>
-    //                     <span className="logo navLogo">
-    //                         <a href="/">
-    //                             <img src={logo} />
-    //                         </a>
-    //                     </span>
-    //                     <div className="menu" >
-    //                         <div className="logo-toggle">
-    //                             <span className="logo"></span>
-    //                             {/* <i className='bx bx-x siderbarClose' onClick={this.toggle}></i> */}
-    //                         </div>
-
-    //                     </div>
-    //                 </div>
-    //             </nav>
-    //             {projectPageMedia}
-    //             <ProjectDescription 
-    //                 projectTitle={projectTitle} 
-    //                 projectPressLink = {projectPressLink}
-    //                 copy = {copy}
-    //             />
-        
-    //         </div>
-
-
-    // )
-// }
-
-// export default ProjectPage;
 
 
 
@@ -105,12 +60,14 @@ class ProjectPage extends React.Component {
     constructor(props) {
         console.log('constructor')
         super(props)
-     
+
+        
         this.projectTitle = props.data.contentfulProject.title;
-        this.projectPressLink = props.data.contentfulProject.pressLink;
         this.copy = props.data.contentfulProject.copy;
+        this.references = this.copy.references;
         this.slideshowMedia = props.data.contentfulProject.slideshowMedia;
         this.vimeoVideoLink = props.data.contentfulProject.vimeoVideoLink;
+        this.pressLinks = props.data.allContentfulPressLink.edges;
         this.state = {
             hasVimeoVideo: this.hasVimeoVideo(),
             videoSrcUrl: this.videoSrcUrl(),
@@ -118,6 +75,8 @@ class ProjectPage extends React.Component {
         }
 
     }
+
+
 
 
     videoSrcUrl() {
@@ -223,8 +182,9 @@ class ProjectPage extends React.Component {
                 {projectPageMedia}
                 <ProjectDescription
                     projectTitle={this.projectTitle}
-                    projectPressLink={this.projectPressLink}
                     copy={this.copy}
+                    projectPressLinks={this.pressLinks}
+                    copyReferences={this.references || []} 
                 />
 
             </div>
