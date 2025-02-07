@@ -76,7 +76,6 @@ export const pageQuery = graphql`
                 title
                 id
                 slug
-                pressLink
                 hero {
                   gatsbyImageData
                   file {

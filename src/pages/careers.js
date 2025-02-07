@@ -615,7 +615,7 @@ export default class CareersPage extends React.Component {
 
 export const pageQuery = graphql`
       query  {
-           allContentfulJobListing(sort: {order: DESC, fields: createdAt}) {
+           allContentfulJobListing(sort:  {createdAt: DESC}) {
     edges {
       node {
         id
