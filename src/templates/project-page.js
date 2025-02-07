@@ -16,12 +16,12 @@ export const query = graphql`
       vimeoVideoLink
       copy {
         references {
-                    slug
-                    contentful_id
-                    id
-                    internal {
-                        type
-                    }
+            slug
+            contentful_id
+            id
+            internal {
+                type
+            }
         }
           raw
       }
@@ -50,18 +50,10 @@ export const query = graphql`
     }
 `
 
-
-
-
-
-
 class ProjectPage extends React.Component {
-
     constructor(props) {
         console.log('constructor')
         super(props)
-
-        
         this.projectTitle = props.data.contentfulProject.title;
         this.copy = props.data.contentfulProject.copy;
         this.references = this.copy.references;
@@ -71,13 +63,9 @@ class ProjectPage extends React.Component {
         this.state = {
             hasVimeoVideo: this.hasVimeoVideo(),
             videoSrcUrl: this.videoSrcUrl(),
-        
         }
 
     }
-
-
-
 
     videoSrcUrl() {
         console.log('videoSrcUrl()')
@@ -98,8 +86,6 @@ class ProjectPage extends React.Component {
             return (false)
         }
     }
-
-
 
     setVimeoVideoLink () {
         console.log('SetVimeoVideoLink()')
