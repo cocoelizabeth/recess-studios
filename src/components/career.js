@@ -88,7 +88,15 @@ class Career extends React.Component {
         
 
         return (
-            <li ref={this.posCardRef} className="pos-card" id={`pos-${this.props.idx}`} onClick={this.handlePosCardClick}>
+            <li 
+                ref={this.posCardRef} 
+                className="pos-card" 
+                id={`pos-${this.props.idx}`} 
+                onClick={this.handlePosCardClick}
+                role="button"
+                tabIndex="0"
+                onKeyDown={this.handlePosCardClick}
+            >
                 <div className="content grid job-container">
                     <div className="title position">{this.title}</div>
                     <div className="title location">{this.state.location}</div>
@@ -122,7 +130,18 @@ class Career extends React.Component {
                     <div className="description-container desc-right">
                         <p>BENEFITS</p>
                         {renderRichText(this.benefits, options)}
-                        <div className="open-application" data-position-title={this.title} data-position-location={this.location} onClick={this.handleApplyClick} ref={this.applyRef}>Apply</div>
+                        <div 
+                            className="open-application" 
+                            data-position-title={this.title} 
+                            data-position-location={this.location} 
+                            onClick={this.handleApplyClick} 
+                            ref={this.applyRef}
+                            onKeyDown={this.handleApplyClick}
+                            tabIndex="0"
+                            role="button"
+                        >
+                                Apply
+                        </div>
 
                     </div>
                        

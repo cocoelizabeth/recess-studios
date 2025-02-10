@@ -76,16 +76,23 @@ const FormFileInput = (
                 <div
                     className="file-upload-btn"
                     // onClick={() => { handleFileUploadCallback(name) }}>
-                
-                   onClick={handleFileUpload}>
-                   {fileName}
+                    role="button"
+                    tabIndex="0"
+                    onClick={handleFileUpload}
+                    onKeyDown={handleFileUpload}
+                >
+    
+                    {fileName}
                    {/* <span className="underline-form-field">{fileName}</span> */}
                     
                 </div>
                 <div
                     className="remove-file-btn"
+                    role="button"
+                    tabIndex="0"
                     // onClick={() => { removeUploadCallback(name) }}
                     onClick={handleRemoveFile}
+                    onKeyDown={handleRemoveFile}
                     // onClick={() => { removeUploadCallback() }}
                     hidden={removeFileBtn}>
                 </div>

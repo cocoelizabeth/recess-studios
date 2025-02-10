@@ -6,11 +6,11 @@ import Helmet from "react-helmet";
 import FormFileInput from '../components/formFileInput'
 import logoGif from '../images/recess-chrome-v2-optimized.gif'
 
-// import '../css/font.css'
-// import '../css/reset.css'
-// import '../css/styles.css'
-// import '../css/work-menu.css'
-// import '../css/careers.scss'
+import '../css/font.css'
+import '../css/reset.css'
+import '../css/styles.css'
+import '../css/work-menu.css'
+import '../css/archive/careers-old.scss'
 
 export default class CareersPage extends React.Component {
     constructor(props) {

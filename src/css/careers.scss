@@ -16,7 +16,7 @@ $font-size-medium-desktop: calc(100vw/90);
 $font-size-medium-mobile: calc(100vw/20);
 
 
-$underline-offset-large: 3px;
+$underline-offset-large: 4px;
 $underline-offset-small: 2px;
 $color-off-black: black;
 
@@ -132,6 +132,7 @@ a {
     text-align: center;
     text-decoration: underline;
     text-underline-offset: $underline-offset-large;
+    text-decoration-thickness: 1px;
     top: 0;
     margin-bottom: 2vw;
     &:hover {
@@ -156,6 +157,7 @@ input {
     font-family: "Tiempos Headline", serif;
     text-decoration: underline;
     text-underline-offset: $underline-offset-large;
+    text-decoration-thickness: 1px;
     text-align: center;
     font-size: $font-size-large-desktop;
     &.ui-full+label,
@@ -244,8 +246,8 @@ select {
     background-color: transparent;
     border: 1px solid white;
     color: white;
-    text-decoration: underline;
-    text-underline-offset: $underline-offset-small;
+    // text-decoration: underline;
+    // text-underline-offset: $underline-offset-small;
     border-radius: 1px;
     font-size: 1rem;
     margin-top: 20px;
@@ -481,6 +483,7 @@ a {
         text-transform: uppercase;
         text-underline-offset: $underline-offset-small;
         text-decoration: underline;
+        text-decoration-thickness: 1px;
         font-size: 12px;
     }
     &.fade::before {
@@ -620,6 +623,7 @@ li {
         text-transform: uppercase;
         text-decoration: underline;
         text-underline-offset: $underline-offset-small;
+        text-decoration-thickness: 1px;
         line-height: 14px;
     }
 
@@ -761,11 +765,16 @@ h2 {
     font-size: $font-size-large-desktop;
     font-family: "Tiempos Headline", serif;
     text-decoration: underline;
+    text-decoration-thickness: 1px;
     opacity: 80%;
     cursor: pointer;
     &:hover {
         opacity: 100%;
     }
+    &:focus {
+        outline: 1px solid white;
+    }
+
 
 }
 
@@ -784,6 +793,11 @@ h2 {
     }
     &:hover {
         opacity:100%;
+        cursor: pointer;
+    }
+    &:focus {
+        outline: 1px solid white;
+        padding-right: 10px;            
     }
 }
 
@@ -841,8 +855,8 @@ btn.submit-job-application-btn {
     color: white;
     transition: all 0.3s ease-in-out;
     text-transform: uppercase;
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    // text-decoration: underline;
+    // text-underline-offset: 2px;
     line-height: 14px;
     cursor: pointer;
     &:hover {
