@@ -1,9 +1,12 @@
+@use "sass:color";
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+
+
 .job-title {
     font-family: 'tiempos_headlineregular', 'Tiempos Headline', serif;
     color: white;
 }
-
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
 
 $color-white: #fff;
 // view width
@@ -258,9 +261,7 @@ select {
     }
 
     &:active {
-        background-color: darken(white, 5%);
-        // background-color: color.scale($color, $lightness: -21.4285714286%);
-        // color.adjust($color, $lightness: -10%);
+        background-color: color.adjust(white, $lightness: -5%);
     }
 
     &[disabled] {
@@ -429,7 +430,7 @@ a {
     }
 
     &:hover:before {
-        color: darken(#aaa, 10%);
+        color: color.adjust(#aaa, $lightness: -10%);
     }
 }
 
@@ -445,7 +446,7 @@ a {
     transition: all 0.2 ease-in-out;
 
     &:hover {
-        color: darken(#777, 10%);
+        color: color.adjust(#777, $lightness: -10%);
     }
 }
 

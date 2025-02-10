@@ -29,16 +29,6 @@ const options = {
 }
 
 
-// const summaryOptions = {
-//     renderNode: {
-//         [BLOCKS.UL_LIST]: (node, children) => (
-//             <div className="benefits-summary-container">{children}</div>
-//         ),
-//         [BLOCKS.LIST_ITEM]: (node, children) => <span className="benefits-summary-item">{children}</span>,
-//     }
-// }
-
-
 class Career extends React.Component {
     constructor(props) {
       
@@ -77,13 +67,6 @@ class Career extends React.Component {
 
         }
 
-
-        // this.projectTitle = this.props.projectTitle;
-        // this.contentType = this.props.contentType;
-        // this.id = this.props.id;
-        // this.heroFileUrl = this.props.heroFileUrl;
-        // this.gatsbyImageData = this.props.gatsbyImageData;
-        // this.slug = this.props.slug;
     }
 
     handlePosCardClick() {
@@ -103,23 +86,12 @@ class Career extends React.Component {
             benefitsSummary = "401k + PTO + Health, Dental & Vision Insurance"
         }
         
-        // let benefitsRichText = renderRichText(this.benefits, options);
-        // let benefits;
-        // if (benefitsRichText[0].props.children[0].props.children[0].props.children) {
-        //     benefitsRichText = renderRichText(this.benefits, options);
-        //     benefits = benefitsRichText[0].props.children[0].props.children[0].props.children;
-
-        // }
-        // debugger
-        
 
         return (
             <li ref={this.posCardRef} className="pos-card" id={`pos-${this.props.idx}`} onClick={this.handlePosCardClick}>
                 <div className="content grid job-container">
                     <div className="title position">{this.title}</div>
-                    {/* Note: changed the class name for this; if the form stops working try commenting this in and taking out 'location-small'; */}
                     <div className="title location">{this.state.location}</div>
-                    {/* <div className="location-small">{this.state.location}</div> */}
 
                     {/* <div className="dept">Design</div> */}
                     {/* <div className="date">June 4</div> */}
